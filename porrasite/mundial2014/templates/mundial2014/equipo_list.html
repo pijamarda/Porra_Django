@@ -1,0 +1,25 @@
+{% extends 'mundial2014/base.html' %}
+
+{% block content %}
+
+    <h2><a href="">Equipos</a></h2>
+    <table class="table-condensed">
+    	<tr>
+    		<th>Id</th>
+    		<th>Nombre</th>
+    		<th>Flag-Name</th>
+    		<th>Flag</th>
+    	</tr>
+    {% for equipo in equipos %}
+    	<tr>
+    		
+				<td> {{equipo.equipo_id}} </td>
+				<td> {{equipo.nombre}} </td>
+				<td> {{equipo.flag}} </td>
+				<td> <img src="/static/img/{{equipo.flag}}.png"> </td>
+			
+    	</tr>
+    {% endfor %}
+    </table>
+
+{% endblock content %}

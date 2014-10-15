@@ -1,0 +1,60 @@
+{% extends 'mundial2014/base.html' %}
+
+{% block content %}
+
+    <h2><a href="">Listado de partidos de {{usuario}}</a></h2>
+    <table class="table-striped">
+    	<tr>
+    		<th>Nº partido</th>
+    		<th>Local</th>
+    		<th>nombre L</th>
+    		<th>Goles</th>
+    		<th>Visitante</th>
+    		<th>nombre V</th>
+    		<th>Goles</th>
+    	</tr>
+    	
+	    {% for partido in partidos %}
+	    <tr>
+	    	<td>
+	    		<a href="{% url 'mundial2014.views.partido_detalle' pk_user=usuario.pk pk=partido.pk %}"> 
+	             {{partido.partido_id}} 
+	             </a>
+	        </td>
+	        <td> {{partido.local_id}} </td>
+	        <td> 
+	        	{% for equipo in equipos %}
+	        		{% if equipo.equipo_id == partido.local_id %}
+	        			{{equipo.nombre}}
+	        		{% endif %}
+	        	 {% endfor %}
+
+	        </td>
+	        <td> {{partido.local}} </td>
+	        <td> {{partido.visitante_id}} </td>
+	        <td>
+	        	{% for equipo in equipos %}
+	        		{% if equipo.equipo_id == partido.visitante_id %}
+	        			{{equipo.nombre}}
+	        		{% endif %}
+	        	 {% endfor %}
+
+	        </td>
+	        <td> {{partido.visitante}} </td>
+	        <td>
+	        	{% if user.is_authenticated %}
+	        		{% if user.pk == usuario.pk %}
+		        		<a href="{% url 'mundial2014.views.partido_edit' pk_user=usuario.pk pk=partido.pk %}"> 
+		        		EDITAR
+		        		</a>
+	        		{% endif %}	
+	        	{% endif %}
+	        </td>
+
+	    	
+	    </tr>
+	    {% endfor %}
+	</table>
+
+
+{% endblock content %}
