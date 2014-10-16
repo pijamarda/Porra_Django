@@ -17,7 +17,8 @@ def partido_list(request, pk):
 	usuario = User.objects.get(pk=pk)
 	partidos = Partido.objects.filter(usuario = usuario).order_by('partido_id')
 	equipos = Equipo.objects.all()
-	return render(request, 'mundial2014/partido_list.html', {'partidos': partidos, 'usuario': usuario, 'equipos': equipos})
+	grupos_todos = Grupo.objects.all().order_by('grupo_id')
+	return render(request, 'mundial2014/partido_list.html', {'partidos': partidos, 'usuario': usuario, 'equipos': equipos, 'grupos_todos':grupos_todos})
 
 def partido_detalle(request, pk, pk_user):
 
@@ -50,6 +51,16 @@ def grupo_list(request):
 	grupos = Grupo.objects.all()
 	equipos = Equipo.objects.all()
 	return render(request, 'mundial2014/grupo_list.html', {'grupos': grupos, 'equipos': equipos})
+
+def grupo_equipos(request, pk, pk_user):		
+	
+	grupos = Grupo.objects.filter(pk=pk)
+	equipos = Equipo.objects.filter(grupo=pk)
+	partidos = Partido.objects.filter(usuario=pk_user)
+	usuario = User.objects.get(pk=pk_user)
+	grupos_todos = Grupo.objects.all().order_by('grupo_id')
+	print(equipos)
+	return render(request, 'mundial2014/grupo_equipos.html', {'grupos': grupos, 'equipos': equipos, 'usuario':usuario, 'grupos_todos':grupos_todos})
 
 def partido_edit(request, pk, pk_user):
 

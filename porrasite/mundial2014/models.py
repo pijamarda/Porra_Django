@@ -28,6 +28,8 @@ class Partido(models.Model):
 	local = models.IntegerField()
 	visitante = models.IntegerField()	
 	
+	def __str__(self):
+		return str(self.partido_id)
 
 class Rank(models.Model):
 	usuario = models.ForeignKey(User, unique=True)

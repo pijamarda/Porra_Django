@@ -1,36 +1,16 @@
-{% load staticfiles %}
+{% extends 'home/base.html' %}
 
-<html>
-    <head>
+{% block content %}
+    
+    <ul class="nav nav-pills">
+        <li class="active"><a href="{% url 'mundial2014.views.partido_list' pk=usuario.pk %}">Home</a></li>
+        {% for grupo in grupos_todos %}
+            <li><a href="{% url 'mundial2014.views.grupo_equipos' pk_user=usuario.pk pk=grupo.pk %}">{{grupo.nombre}}</a></li>
+        {% endfor %}
+    </ul>
+    {% block child %}
+    {% endblock %}
+    
 
-    	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="{% static 'css/mundial.css' %}">
 
-        <title>Mundial 2014</title>
-    </head>
-    <body>
-        <div class="page-header">
-            {% if user.is_authenticated %}
-                <p class="top-menu">Hello {{ user.username }}
-                    <small>(<a href="{% url 'django.contrib.auth.views.logout' %}">Log out</a>)
-                </p>
-            {% else %}
-                <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu">
-                    <span class="glyphicon glyphicon-lock"></span>
-                </a>
-            {% endif %}
-        </div>
-        <div>
-            <h1>Porra</h1>
-        </div>
-
-        <div>
-            {% block content %}
-            {% endblock %}           
-            
-        </div>
-        
-    </body>
-</html>
+{% endblock content %}

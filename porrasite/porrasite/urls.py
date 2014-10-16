@@ -9,7 +9,7 @@ from mundial2014 import views
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'porrasite.views.home', name='home'),
+    url(r'^$', 'mundial2014.views.rank_list', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),

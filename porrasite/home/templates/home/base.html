@@ -1,0 +1,36 @@
+{% load staticfiles %}
+
+<html>
+    <head>
+
+    	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="{% static 'css/mundial.css' %}">
+
+        <title>Mundial 2014</title>
+    </head>
+    <body>
+        <div class="page-header">
+            {% if user.is_authenticated %}
+                <p class="top-menu">Hello {{ user.username }}
+                    <small>(<a href="{% url 'django.contrib.auth.views.logout' %}">Log out</a>)
+                </p>
+            {% else %}
+                <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu">
+                    <span class="glyphicon glyphicon-lock"></span>
+                </a>
+            {% endif %}
+        </div>
+        <div>
+            <h1><a href="/mundial/"> Porra </a></h1>
+        </div>
+
+        <div>
+            {% block content %}
+            {% endblock %}           
+            
+        </div>
+        
+    </body>
+</html>
