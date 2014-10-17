@@ -2,11 +2,12 @@
 
 {% block child %}
 
-    <h2><a href="">Grupos</a></h2>
+    <h2>Grupo {% for grupo in grupos %}
+    	{{grupo.nombre}}
 
-    {% for grupo in grupos %}
-    	{{grupo.grupo_id}} {{grupo.nombre}}
-
+    	{% endfor %}
+    </h2>
+   {% for grupo in grupos %}
     	
 	    <table class="table-condensed">
 	    	<tr>
@@ -14,12 +15,67 @@
 	    		<th>Nombre</th>	    		
 	    	</tr>
 	    	{% for equipo in equipos %}
-	    		{% if equipo.grupo_id == grupo.grupo_id %}
+	    		{% if equipo.grupo.pk == grupo.pk %}
 			    	<tr>    		
 							<td> {{equipo.equipo_id}} </td>
 							<td> {{equipo.nombre}} </td>	
 							<td> <img src="/static/img/{{equipo.flag}}.png"> </td>			
 					</tr>
+				{% endif %}
+	    	{% endfor %}
+	    </table>
+
+	    <table class="table-condensed">
+	    	<tr>
+	    		<th>Nº partido</th>
+	    		<th>Local</th>
+	    		<th>nombre L</th>
+	    		<th>Goles</th>
+	    		<th>Visitante</th>
+	    		<th>nombre V</th>
+	    		<th>Goles</th>
+    		</tr>
+	    	{% for partido in partidos %}    		
+	    	
+	    		{% if partido.pk in partidos_fase_grupos %}
+			    	<tr>
+				    	<td>
+				    		<a href="{% url 'mundial2014.views.partido_detalle' pk_user=usuario.pk pk=partido.pk %}"> 
+				             {{partido.partido_id}} 
+				             </a>
+				             {{partido.pk}}
+				        </td>
+				        <td> {{partido.local_id}} </td>
+				        <td> 
+				        	{% for equipo in equipos %}
+				        		{% if equipo.equipo_id == partido.local_id %}
+				        			{{equipo.nombre}}
+				        		{% endif %}
+				        	 {% endfor %}
+
+				        </td>
+				        <td> {{partido.local}} </td>
+				        <td> {{partido.visitante_id}} </td>
+				        <td>
+				        	{% for equipo in equipos %}
+				        		{% if equipo.equipo_id == partido.visitante_id %}
+				        			{{equipo.nombre}}
+				        		{% endif %}
+				        	 {% endfor %}
+
+				        </td>
+				        <td> {{partido.visitante}} </td>
+				        <td>
+				        	{% if user.is_authenticated %}
+				        		{% if user.pk == usuario.pk %}
+					        		<a href="{% url 'mundial2014.views.partido_edit' pk_user=usuario.pk pk=partido.pk %}"> 
+					        		EDITAR
+					        		</a>
+				        		{% endif %}	
+				        	{% endif %}
+				        </td>	    	
+	    			</tr>
+	    			
 				{% endif %}
 	    	{% endfor %}
 	    </table>

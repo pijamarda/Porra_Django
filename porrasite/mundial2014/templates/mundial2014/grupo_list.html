@@ -5,7 +5,7 @@
     <h2><a href="">Grupos</a></h2>
 
     {% for grupo in grupos %}
-    	{{grupo.grupo_id}} {{grupo.nombre}}
+    	<h3>Grupo: {{grupo.nombre}} </h3>
 
     	
 	    <table class="table-condensed">
@@ -14,7 +14,7 @@
 	    		<th>Nombre</th>	    		
 	    	</tr>
 	    	{% for equipo in equipos %}
-	    		{% if equipo.grupo_id == grupo.grupo_id %}
+	    		{% if equipo.grupo.pk == grupo.pk %}
 			    	<tr>    		
 							<td> {{equipo.equipo_id}} </td>
 							<td> {{equipo.nombre}} </td>	

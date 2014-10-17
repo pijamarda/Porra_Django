@@ -4,7 +4,7 @@
 	
 
     <h2><a href="">Listado de partidos de {{usuario}}</a></h2>
-    <table class="table-striped">
+    <table class="table-condensed">
     	<tr>
     		<th>Nº partido</th>
     		<th>Local</th>
@@ -21,6 +21,7 @@
 	    		<a href="{% url 'mundial2014.views.partido_detalle' pk_user=usuario.pk pk=partido.pk %}"> 
 	             {{partido.partido_id}} 
 	             </a>
+	             {{partido.pk}}
 	        </td>
 	        <td> {{partido.local_id}} </td>
 	        <td> 
