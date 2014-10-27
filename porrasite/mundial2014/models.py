@@ -33,11 +33,23 @@ class Partido(models.Model):
 
 class Rank(models.Model):
 	usuario = models.ForeignKey(User, unique=True)
-	puntos = models.IntegerField()
-	a1 = models.IntegerField()
-	a2 = models.IntegerField()
-	b1 = models.IntegerField()
-	b2 = models.IntegerField()
+	puntos = models.IntegerField(default=0)
+	a1 = models.IntegerField(default=0)
+	a2 = models.IntegerField(default=0)
+	b1 = models.IntegerField(default=0)
+	b2 = models.IntegerField(default=0)
+	c1 = models.IntegerField(default=0)
+	c2 = models.IntegerField(default=0)
+	d1 = models.IntegerField(default=0)
+	d2 = models.IntegerField(default=0)
+	e1 = models.IntegerField(default=0)
+	e2 = models.IntegerField(default=0)
+	f1 = models.IntegerField(default=0)
+	f2 = models.IntegerField(default=0)
+	g1 = models.IntegerField(default=0)
+	g2 = models.IntegerField(default=0)
+	h1 = models.IntegerField(default=0)
+	h2 = models.IntegerField(default=0)
 
 	def __str__(self):
 		return str(self.usuario)

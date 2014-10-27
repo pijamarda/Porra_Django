@@ -16,10 +16,55 @@ from .models import Partido, Rank, Equipo, Grupo
 #con lo que
 
 class CEquipo:
+	equipo_id = 0
 	puntos = 0
 	ganados = 0
 	empatados = 0
-	perdidos = 0	
+	perdidos = 0
+	name = "Spain"
+	flag = "es"
+
+def actualizar_grupo(grupo_id, usuario, teams):
+	rank = Rank.objects.get(usuario=usuario)
+
+	primero = teams[0]
+	segundo = teams[1]
+	temporal = teams[2]
+	for team in teams:
+		if (team.puntos > primero.puntos):
+			temporal = primero
+			primero = team
+			segundo = temporal
+		elif (team.puntos > segundo.puntos and team.equipo_id != primero.equipo_id):
+			segundo = team
+	print("Primero " + primero.name)
+	print("Segundo " + segundo.name)
+	#marcamos quienes pasan de fase en el Grupo A
+	if (grupo_id == 1):		
+		rank.a1=primero.equipo_id
+		rank.a2=segundo.equipo_id		
+	elif (grupo_id == 2):		
+		rank.b1=primero.equipo_id
+		rank.b2=segundo.equipo_id
+	elif (grupo_id == 3):		
+		rank.c1=primero.equipo_id
+		rank.c2=segundo.equipo_id
+	elif (grupo_id == 4):		
+		rank.d1=primero.equipo_id
+		rank.d2=segundo.equipo_id
+	elif (grupo_id == 5):		
+		rank.e1=primero.equipo_id
+		rank.e2=segundo.equipo_id
+	elif (grupo_id == 6):		
+		rank.f1=primero.equipo_id
+		rank.f2=segundo.equipo_id
+	elif (grupo_id == 7):		
+		rank.g1=primero.equipo_id
+		rank.g2=segundo.equipo_id	
+	elif (grupo_id == 8):		
+		rank.h1=primero.equipo_id
+		rank.h2=segundo.equipo_id	
+	rank.save()
 
 def get_partidos_fase_grupos(grupo_id,usuario):
 	
@@ -67,16 +112,6 @@ def get_partidos_fase_grupos(grupo_id,usuario):
 				partidos_grupo.append(partido.pk)
 	return(partidos_grupo)
 
-def get_puntos_fase_grupos(grupo_id, usuario):	
-	
-	partidos_grupo_usuario = get_partidos_fase_grupos(grupo_id, usuario)
-	puntos = []	
-	
-	for partido in partidos:
-		if (partido.partido_id in [1,2,17,18,33,34]):
-			partidos_grupo.append(partido.pk)
-	
-	return(puntos)	
 
 def partido_list(request, pk):
 	
@@ -122,15 +157,55 @@ def grupo_equipos(request, pk, pk_user):
 	
 	grupos = Grupo.objects.filter(pk=pk)	
 	equipos = Equipo.objects.all()
+	equipos_grupo = Equipo.objects.filter(grupo=pk)
 	partidos = Partido.objects.all().order_by('partido_id')
 	usuario = User.objects.get(pk=pk_user)
-	grupos_todos = Grupo.objects.all().order_by('grupo_id')	
-
+	grupos_todos = Grupo.objects.all().order_by('grupo_id')
 	partidos_fase_grupos = get_partidos_fase_grupos(grupos[0].grupo_id, usuario)
 	
-	print(partidos_fase_grupos)
+	#print(equipos_grupo)
 
-	return render(request, 'mundial2014/grupo_equipos.html', {'grupos': grupos, 'equipos': equipos, 'usuario':usuario, 'grupos_todos':grupos_todos, 'partidos': partidos, 'partidos_fase_grupos':partidos_fase_grupos})
+	teams = []
+	for e in equipos_grupo:
+		team = CEquipo()
+		team.equipo_id = e.equipo_id
+		team.name = e.name
+		team.flag = e.flag
+		teams.append(team)		
+
+	for partido in partidos_fase_grupos:		
+		partido_temp = Partido.objects.get(pk=partido)
+		local_goles = partido_temp.local
+		visitante_goles = partido_temp.visitante
+		if (local_goles > visitante_goles):
+			for team in teams:
+				if (team.equipo_id == partido_temp.local_id):
+					team.puntos += 3
+					team.ganados += 1
+				elif (team.equipo_id == partido_temp.visitante_id):
+					team.perdidos += 1
+		elif (local_goles < visitante_goles):
+			for team in teams:
+				if (team.equipo_id == partido_temp.visitante_id):
+					team.puntos += 3
+					team.ganados += 1
+				elif (team.equipo_id == partido_temp.local_id):
+					team.perdidos += 1
+		else:
+			for team in teams:
+				if (team.equipo_id == partido_temp.local_id):
+					team.puntos += 1
+					team.empatados += 1
+				elif (team.equipo_id == partido_temp.visitante_id):
+					team.puntos += 1
+					team.empatados += 1
+	
+
+	
+	grupo_id = grupos[0].id
+	actualizar_grupo(grupo_id, usuario, teams)
+
+	return render(request, 'mundial2014/grupo_equipos.html', {'grupos': grupos, 'equipos': equipos, 'usuario':usuario, 'grupos_todos':grupos_todos, 'partidos': partidos, 'partidos_fase_grupos':partidos_fase_grupos, 'teams': teams})
 
 
 def partido_edit(request, pk, pk_user):
@@ -153,16 +228,3 @@ def partido_edit(request, pk, pk_user):
 
 	return render(request, 'mundial2014/partido_edit.html', {'form': form, 'usuario':usuario, 'grupos_todos':grupos_todos})
 
-def grupo_equipos_test(request, pk, pk_user):		
-	
-	grupos = Grupo.objects.filter(pk=pk)	
-	equipos = Equipo.objects.all()
-	partidos = Partido.objects.all().order_by('partido_id')
-	usuario = User.objects.get(pk=pk_user)
-	grupos_todos = Grupo.objects.all().order_by('grupo_id')	
-
-	partidos_fase_grupos = get_partidos_fase_grupos(grupos[0].grupo_id, usuario)
-	
-	print(partidos_fase_grupos)
-
-	return render(request, 'mundial2014/grupo_equipos.html', {'grupos': grupos, 'equipos': equipos, 'usuario':usuario, 'grupos_todos':grupos_todos, 'partidos': partidos, 'partidos_fase_grupos':partidos_fase_grupos})

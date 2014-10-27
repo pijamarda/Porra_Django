@@ -3,11 +3,35 @@
 {% block content %}
 
     <h2>Detalle de partido</h2>
-    
-    	<div>    		
-            {{partido.usuario}} {{partido.partido_id}} {{partido.local}} {{partido.visitante}}
+    <table class="table-condensed">
+    	<tr>
+    		<th>Usuario</th>
+    		<th>PArtido ID</th>
+    		<th>ID local</th>
+    		<th>ID visitante</th>
+    		<th>gol L</th>
+    		<th>gol V</th>
+    	</tr>
+    	<tr>
+    		<td>{{partido.usuario}}</td>
+    	
+    	<td>
+    		{{partido.partido_id}}
+    	</td>
+    	<td>
+    		{{partido.local_id}}
+    	</td>
+    	<td>
+    		{{partido.visitante_id}}
+    	</td>
+    	<td>
+    		{{partido.local}}
+    	</td>
+    	<td>
+    		 {{partido.visitante}}
+    	</td>            
            
-    	</div>
-    
+    	</tr>
+    </table>
 
 {% endblock content %}

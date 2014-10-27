@@ -19,7 +19,8 @@ def init_new_user(instance, created, raw, **kwargs):
 	if (created and not raw):
 		#instance.groups.add(Group.objects.get(name='new-user-group'))
 		print("usuario creado")
-		Rank.objects.create(usuario=instance, puntos=0)
+		#Rank.objects.create(usuario=instance, puntos=0, a1=0, a2=0, b1=0, b2=0)
+		Rank.objects.create(usuario=instance)
 
 		#GRUPO A
 		Partido.objects.create(usuario=instance, partido_id=1, local_id=1, visitante_id=2, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
@@ -61,14 +62,14 @@ def init_new_user(instance, created, raw, **kwargs):
 		Partido.objects.create(usuario=instance, partido_id=12, local_id=23, visitante_id=24, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
 		Partido.objects.create(usuario=instance, partido_id=27, local_id=21, visitante_id=23, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
 		Partido.objects.create(usuario=instance, partido_id=28, local_id=24, visitante_id=22, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
-		Partido.objects.create(usuario=instance, partido_id=43, local_id=24, visitante_id=11, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		Partido.objects.create(usuario=instance, partido_id=43, local_id=24, visitante_id=21, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
 		Partido.objects.create(usuario=instance, partido_id=44, local_id=22, visitante_id=23, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
 		#GRUPO G
 		Partido.objects.create(usuario=instance, partido_id=13, local_id=25, visitante_id=26, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
 		Partido.objects.create(usuario=instance, partido_id=14, local_id=27, visitante_id=28, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
 		Partido.objects.create(usuario=instance, partido_id=29, local_id=25, visitante_id=27, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
 		Partido.objects.create(usuario=instance, partido_id=30, local_id=28, visitante_id=26, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
-		Partido.objects.create(usuario=instance, partido_id=45, local_id=28, visitante_id=15, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		Partido.objects.create(usuario=instance, partido_id=45, local_id=28, visitante_id=25, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
 		Partido.objects.create(usuario=instance, partido_id=46, local_id=26, visitante_id=27, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
 		#GRUPO H
 		Partido.objects.create(usuario=instance, partido_id=15, local_id=29, visitante_id=30, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))

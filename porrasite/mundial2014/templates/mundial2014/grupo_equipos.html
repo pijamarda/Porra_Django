@@ -12,17 +12,26 @@
 	    <table class="table-condensed">
 	    	<tr>
 	    		<th>Id</th>
-	    		<th>Nombre</th>	    		
+	    		<th>Nombre</th>
+	    		<th>Flag</th>
+	    		<th>Ganados</th>
+	    		<th>Empatados</th>
+	    		<th>Perdidos</th>
+	    		<th>Puntos</th>
 	    	</tr>
-	    	{% for equipo in equipos %}
-	    		{% if equipo.grupo.pk == grupo.pk %}
-			    	<tr>    		
-							<td> {{equipo.equipo_id}} </td>
-							<td> {{equipo.nombre}} </td>	
-							<td> <img src="/static/img/{{equipo.flag}}.png"> </td>			
-					</tr>
-				{% endif %}
-	    	{% endfor %}
+	    	
+    		{% for team in teams %}	    		
+		    	<tr>    		
+						<td> {{team.equipo_id}} </td>
+						<td> {{team.name}} </td>	
+						<td> <img src="/static/aimg/{{team.flag}}.png"> </td>
+						<td> {{team.ganados}} </td>
+						<td> {{team.empatados}} </td>
+						<td> {{team.perdidos}} </td>
+						<td> {{team.puntos}} </td>
+				</tr>				
+    		{% endfor %}
+	    	
 	    </table>
 
 	    <table class="table-condensed">
