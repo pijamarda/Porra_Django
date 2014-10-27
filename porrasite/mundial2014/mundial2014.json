@@ -1,0 +1,231 @@
+{
+	"equipos":[
+		{"id": 1, "nombre":"Brasil", "name":"Brazil", "nombreCorto":"bra", "flag":"br"},
+		{"id": 2, "nombre":"Croacia", "name":"Croatia", "nombreCorto":"cro", "flag":"cs"},
+		{"id": 3, "nombre":"Mexico", "name":"Croatia", "nombreCorto":"cro", "flag":"mx"},
+		{"id": 4, "nombre":"Camerun", "name":"Croatia", "nombreCorto":"cro", "flag":"cm"},
+		{"id": 5, "nombre":"España", "name":"Croatia", "nombreCorto":"cro", "flag":"es"},
+		{"id": 6, "nombre":"Paises Bajos", "name":"Croatia", "nombreCorto":"cro", "flag":"pa"},
+		{"id": 7, "nombre":"Chile", "name":"Croatia", "nombreCorto":"cro", "flag":"cl"},
+		{"id": 8, "nombre":"Australia", "name":"Croatia", "nombreCorto":"cro", "flag":"au"},
+		{"id": 9, "nombre":"Colombia", "name":"Croatia", "nombreCorto":"cro", "flag":"co"},
+		{"id": 10, "nombre":"Grecia", "name":"Croatia", "nombreCorto":"cro", "flag":"gr"},
+		{"id": 11, "nombre":"Costa de Marfil", "name":"Croatia", "nombreCorto":"cro", "flag":"cm"},
+		{"id": 12, "nombre":"Japon", "name":"Croatia", "nombreCorto":"cro", "flag":"jp"},
+		{"id": 13, "nombre":"Uruguay", "name":"Croatia", "nombreCorto":"cro", "flag":"uy"},
+		{"id": 14, "nombre":"Costa Rica", "name":"Croatia", "nombreCorto":"cro", "flag":"cr"},
+		{"id": 15, "nombre":"Inglaterra", "name":"Croatia", "nombreCorto":"cro", "flag":"england"},
+		{"id": 16, "nombre":"Italia", "name":"Croatia", "nombreCorto":"cro", "flag":"it"},
+		{"id": 17, "nombre":"Suiza", "name":"Brazil", "nombreCorto":"bra", "flag":"sw"},
+		{"id": 18, "nombre":"Ecuador", "name":"Croatia", "nombreCorto":"cro", "flag":"ec"},
+		{"id": 19, "nombre":"Francia", "name":"Croatia", "nombreCorto":"cro", "flag":"fr"},
+		{"id": 20, "nombre":"Honduras", "name":"Croatia", "nombreCorto":"cro", "flag":"hn"},
+		{"id": 21, "nombre":"Argentina", "name":"Croatia", "nombreCorto":"cro", "flag":"ar"},
+		{"id": 22, "nombre":"Bosnia y Herzegovina", "name":"Croatia", "nombreCorto":"cro", "flag":"ba"},
+		{"id": 23, "nombre":"Iran", "name":"Croatia", "nombreCorto":"cro", "flag":"ir"},
+		{"id": 24, "nombre":"Nigeria", "name":"Croatia", "nombreCorto":"cro", "flag":"ng"},
+		{"id": 25, "nombre":"Alemania", "name":"Croatia", "nombreCorto":"cro", "flag":"alemania"},
+		{"id": 26, "nombre":"Portugal", "name":"Croatia", "nombreCorto":"cro", "flag":"pt"},
+		{"id": 27, "nombre":"Ghana", "name":"Croatia", "nombreCorto":"cro", "flag":"gh"},
+		{"id": 28, "nombre":"EEUU", "name":"Croatia", "nombreCorto":"cro", "flag":"us"},
+		{"id": 29, "nombre":"Belgica", "name":"Croatia", "nombreCorto":"cro", "flag":"be"},
+		{"id": 30, "nombre":"Argelia", "name":"Croatia", "nombreCorto":"cro", "flag":"argelia"},
+		{"id": 31, "nombre":"Rusia", "name":"Croatia", "nombreCorto":"cro", "flag":"ru"},
+		{"id": 32, "nombre":"Republica de Corea", "name":"Croatia", "nombreCorto":"cro", "flag":"kr"}
+	],
+
+	"grupos": [
+		{	
+			"nombre": "Grupo A",
+			"equipos": [{"id":1},{"id":2},{"id":3},{"id":4}],
+			"partidos":[
+				{"id":1, "ronda":1, "fecha":"12-6-2014","local":1,"visitante":2 },
+				{"id":2, "ronda":1, "fecha":"13-6-2014","local":3,"visitante":4 },
+				{"id":17, "ronda":1, "fecha":"17-6-2014","local":1,"visitante":3 },
+				{"id":18, "ronda":1, "fecha":"19-6-2014","local":4,"visitante":2 },
+				{"id":33, "ronda":1, "fecha":"23-6-2014","local":4,"visitante":1 },
+				{"id":34, "ronda":1, "fecha":"23-6-2014","local":2,"visitante":3 }
+			],
+			"pasan":[{"id":1},{"id":2}]
+		},{	
+			"nombre": "Grupo B",
+			"equipos": [{"id":5},{"id":6},{"id":7},{"id":8}],
+			"partidos":[
+				{"id":3, "ronda":1, "fecha":"12-6-2014","local":5,"visitante":6 },
+				{"id":4, "ronda":1, "fecha":"13-6-2014","local":7,"visitante":8 },
+				{"id":20, "ronda":1, "fecha":"17-6-2014","local":5,"visitante":7 },
+				{"id":19, "ronda":1, "fecha":"19-6-2014","local":8,"visitante":6 },
+				{"id":35, "ronda":1, "fecha":"23-6-2014","local":8,"visitante":5 },
+				{"id":36, "ronda":1, "fecha":"23-6-2014","local":6,"visitante":7 }
+			],
+			"pasan":[{"id":5},{"id":6}]
+		},{	
+			"nombre": "Grupo C",
+			"equipos": [{"id":9},{"id":10},{"id":11},{"id":12}],
+			"partidos":[
+				{"id":5, "ronda":1, "fecha":"12-6-2014","local":9,"visitante":10 },
+				{"id":6, "ronda":1, "fecha":"13-6-2014","local":11,"visitante":12 },
+				{"id":21, "ronda":1, "fecha":"17-6-2014","local":9,"visitante":11 },
+				{"id":22, "ronda":1, "fecha":"19-6-2014","local":12,"visitante":10 },
+				{"id":37, "ronda":1, "fecha":"23-6-2014","local":12,"visitante":9 },
+				{"id":38, "ronda":1, "fecha":"23-6-2014","local":10,"visitante":11 }
+			],
+			"pasan":[{"id":9},{"id":10}]
+		},{	
+			"nombre": "Grupo D",
+			"equipos": [{"id":13},{"id":14},{"id":15},{"id":16}],
+			"partidos":[
+				{"id":7, "ronda":1, "fecha":"12-6-2014","local":13,"visitante":14 },
+				{"id":8, "ronda":1, "fecha":"13-6-2014","local":15,"visitante":16 },
+				{"id":23, "ronda":1, "fecha":"17-6-2014","local":13,"visitante":15 },
+				{"id":24, "ronda":1, "fecha":"19-6-2014","local":16,"visitante":14 },
+				{"id":39, "ronda":1, "fecha":"23-6-2014","local":16,"visitante":13 },
+				{"id":40, "ronda":1, "fecha":"23-6-2014","local":14,"visitante":15 }
+			],
+			"pasan":[{"id":13},{"id":14}]
+		},{	
+			"nombre": "Grupo E",
+			"equipos": [{"id":17},{"id":18},{"id":19},{"id":20}],
+			"partidos":[
+				{"id":9, "ronda":1, "fecha":"12-6-2014","local":17,"visitante":18 },
+				{"id":10, "ronda":1, "fecha":"13-6-2014","local":19,"visitante":20 },
+				{"id":25, "ronda":1, "fecha":"17-6-2014","local":17,"visitante":19 },
+				{"id":26, "ronda":1, "fecha":"19-6-2014","local":20,"visitante":18 },
+				{"id":41, "ronda":1, "fecha":"23-6-2014","local":20,"visitante":17 },
+				{"id":42, "ronda":1, "fecha":"23-6-2014","local":18,"visitante":19 }
+			],
+			"pasan":[{"id":17},{"id":18}]
+		},{	
+			"nombre": "Grupo F",
+			"equipos": [{"id":21},{"id":22},{"id":23},{"id":24}],
+			"partidos":[
+				{"id":11, "ronda":1, "fecha":"12-6-2014","local":21,"visitante":22 },
+				{"id":12, "ronda":1, "fecha":"13-6-2014","local":23,"visitante":24 },
+				{"id":27, "ronda":1, "fecha":"17-6-2014","local":21,"visitante":23 },
+				{"id":28, "ronda":1, "fecha":"19-6-2014","local":24,"visitante":22 },
+				{"id":43, "ronda":1, "fecha":"23-6-2014","local":24,"visitante":21 },
+				{"id":44, "ronda":1, "fecha":"23-6-2014","local":22,"visitante":23 }
+			],
+			"pasan":[{"id":21},{"id":22}]
+		},{	
+			"nombre": "Grupo G",
+			"equipos": [{"id":25},{"id":26},{"id":27},{"id":28}],
+			"partidos":[
+				{"id":13, "ronda":1, "fecha":"12-6-2014","local":25,"visitante":26 },
+				{"id":14, "ronda":1, "fecha":"13-6-2014","local":27,"visitante":28 },
+				{"id":29, "ronda":1, "fecha":"17-6-2014","local":25,"visitante":27 },
+				{"id":30, "ronda":1, "fecha":"19-6-2014","local":28,"visitante":26 },
+				{"id":45, "ronda":1, "fecha":"23-6-2014","local":28,"visitante":25 },
+				{"id":46, "ronda":1, "fecha":"23-6-2014","local":26,"visitante":27 }
+			],
+			"pasan":[{"id":25},{"id":26}]
+		},{	
+			"nombre": "Grupo H",
+			"equipos": [{"id":29},{"id":30},{"id":31},{"id":32}],
+			"partidos":[
+				{"id":15, "ronda":1, "fecha":"12-6-2014","local":29,"visitante":30 },
+				{"id":16, "ronda":1, "fecha":"13-6-2014","local":31,"visitante":32 },
+				{"id":31, "ronda":1, "fecha":"17-6-2014","local":29,"visitante":31 },
+				{"id":32, "ronda":1, "fecha":"19-6-2014","local":32,"visitante":30 },
+				{"id":47, "ronda":1, "fecha":"23-6-2014","local":32,"visitante":29 },
+				{"id":48, "ronda":1, "fecha":"23-6-2014","local":30,"visitante":31 }
+			],
+			"pasan":[{"id":29},{"id":30}]
+		}
+	],
+
+	"eliminatorias":
+	{
+		"seeds":[{"id":49, "local":1,"visitante":2 },
+				{"id":50, "local":5,"visitante":6 },
+				{"id":51, "local":9,"visitante":10 },
+				{"id":52, "local":13,"visitante":14 },
+				{"id":53, "local":17,"visitante":18 },
+				{"id":54, "local":21,"visitante":22 },
+				{"id":55, "local":25,"visitante":26 },
+				{"id":56, "local":29,"visitante":30 }				
+		],
+		"cuartos":[{"id":57, "local":1,"visitante":2 },
+					{"id":58, "local":5,"visitante":6 },
+					{"id":59, "local":9,"visitante":10 },
+					{"id":60, "local":13,"visitante":14 }
+		],
+		"semis":[{"id":61, "local":1,"visitante":2 },
+				{"id":62, "local":5,"visitante":6 }				
+		],
+		"consolacion":{"id":63, "local":5,"visitante":6 },			
+		"final":{"id":64, "local":5,"visitante":6 },			
+		
+		"primero":{"id":1, "nombre":"brasil"}, 
+		"segundo":{"id":1, "nombre":"brasil"}, 
+		"tercero":{"id":1, "nombre":"brasil"}, 
+		"cuarto":{"id":1, "nombre":"brasil"}
+	},
+
+	"resultados":[
+		{"id":1,"local": 2,"visitante": 3},
+		{"id":2,"local": 1,"visitante": 0},
+		{"id":3,"local": 1,"visitante": 3},
+		{"id":4,"local": 0,"visitante": 4},
+		{"id":5,"local": 4,"visitante": 5},
+		{"id":6,"local": 2,"visitante": 3},
+		{"id":7,"local": 1,"visitante": 0},
+		{"id":8,"local": 0,"visitante": 0},
+		{"id":9,"local": 0,"visitante": 0},
+		{"id":10,"local": 0,"visitante": 0},
+		{"id":11,"local": 0,"visitante": 0},
+		{"id":12,"local": 2,"visitante": 3},
+		{"id":13,"local": 2,"visitante": 0},
+		{"id":14,"local": 1,"visitante": 0},
+		{"id":15,"local": 2,"visitante": 2},
+		{"id":16,"local": 2,"visitante": 2},
+		{"id":17,"local": 2,"visitante": 2},
+		{"id":18,"local": 2,"visitante": 3},
+		{"id":19,"local": 2,"visitante": 4},
+		{"id":20,"local": 2,"visitante": 3},
+		{"id":21,"local": 2,"visitante": 1},
+		{"id":22,"local": 2,"visitante": 0},
+		{"id":23,"local": 2,"visitante": 0},
+		{"id":24,"local": 2,"visitante": 0},
+		{"id":25,"local": 2,"visitante": 0},
+		{"id":26,"local": 2,"visitante": 0},
+		{"id":27,"local": 2,"visitante": 0},
+		{"id":28,"local": 2,"visitante": 0},
+		{"id":29,"local": 2,"visitante": 0},
+		{"id":30,"local": 2,"visitante": 0},
+		{"id":31,"local": 2,"visitante": 0},
+		{"id":32,"local": 2,"visitante": 0},
+		{"id":33,"local": 2,"visitante": 0},
+		{"id":34,"local": 2,"visitante": 0},
+		{"id":35,"local": 2,"visitante": 0},
+		{"id":36,"local": 2,"visitante": 0},
+		{"id":37,"local": 2,"visitante": 0},
+		{"id":38,"local": 2,"visitante": 0},
+		{"id":39,"local": 2,"visitante": 0},
+		{"id":40,"local": 2,"visitante": 0},
+		{"id":41,"local": 2,"visitante": 0},
+		{"id":42,"local": 2,"visitante": 0},
+		{"id":43,"local": 2,"visitante": 0},
+		{"id":44,"local": 2,"visitante": 0},
+		{"id":45,"local": 2,"visitante": 0},
+		{"id":46,"local": 2,"visitante": 0},
+		{"id":47,"local": 2,"visitante": 0},
+		{"id":48,"local": 12,"visitante": 13},
+		{"id":49,"local": 2,"visitante": 0},
+		{"id":50,"local": 2,"visitante": 0},
+		{"id":51,"local": 2,"visitante": 0},
+		{"id":52,"local": 2,"visitante": 0},
+		{"id":53,"local": 2,"visitante": 0},
+		{"id":54,"local": 2,"visitante": 0},
+		{"id":55,"local": 2,"visitante": 0},
+		{"id":56,"local": 2,"visitante": 0},
+		{"id":57,"local": 2,"visitante": 0},
+		{"id":58,"local": 2,"visitante": 0},
+		{"id":59,"local": 2,"visitante": 0},
+		{"id":60,"local": 2,"visitante": 0},
+		{"id":61,"local": 2,"visitante": 0},
+		{"id":62,"local": 2,"visitante": 0},
+		{"id":63,"local": 2,"visitante": 0},
+		{"id":64,"local": 3,"visitante": 1}	
+	]
+}
