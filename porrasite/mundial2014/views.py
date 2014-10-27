@@ -15,10 +15,15 @@ from .models import Partido, Rank, Equipo, Grupo
 #Aqui asociamos a cada grupo el partido_id de la lista de partidos
 #con lo que
 
-def get_partidos_fase_grupos(grupo_id,usuario):
+class CEquipo:
+	puntos = 0
+	ganados = 0
+	empatados = 0
+	perdidos = 0	
 
+def get_partidos_fase_grupos(grupo_id,usuario):
 	
-	partidos = Partido.objects.filter(usuario = usuario)
+	partidos = Partido.objects.filter(usuario = usuario).order_by("partido_id")
 	partidos_grupo = []
 	#Grupo A id=1
 	if (grupo_id==1):
@@ -62,6 +67,17 @@ def get_partidos_fase_grupos(grupo_id,usuario):
 				partidos_grupo.append(partido.pk)
 	return(partidos_grupo)
 
+def get_puntos_fase_grupos(grupo_id, usuario):	
+	
+	partidos_grupo_usuario = get_partidos_fase_grupos(grupo_id, usuario)
+	puntos = []	
+	
+	for partido in partidos:
+		if (partido.partido_id in [1,2,17,18,33,34]):
+			partidos_grupo.append(partido.pk)
+	
+	return(puntos)	
+
 def partido_list(request, pk):
 	
 	usuario = User.objects.get(pk=pk)
@@ -104,32 +120,49 @@ def grupo_list(request):
 
 def grupo_equipos(request, pk, pk_user):		
 	
-	grupos = Grupo.objects.filter(pk=pk)
-	#equipos = Equipo.objects.filter(grupo=pk)
+	grupos = Grupo.objects.filter(pk=pk)	
 	equipos = Equipo.objects.all()
-	partidos = Partido.objects.all()
+	partidos = Partido.objects.all().order_by('partido_id')
 	usuario = User.objects.get(pk=pk_user)
-	grupos_todos = Grupo.objects.all().order_by('grupo_id')
-	#print(equipos)
+	grupos_todos = Grupo.objects.all().order_by('grupo_id')	
 
 	partidos_fase_grupos = get_partidos_fase_grupos(grupos[0].grupo_id, usuario)
+	
 	print(partidos_fase_grupos)
 
 	return render(request, 'mundial2014/grupo_equipos.html', {'grupos': grupos, 'equipos': equipos, 'usuario':usuario, 'grupos_todos':grupos_todos, 'partidos': partidos, 'partidos_fase_grupos':partidos_fase_grupos})
 
 
-
-
 def partido_edit(request, pk, pk_user):
 
+	usuario = User.objects.get(pk=pk_user)
 	partido = get_object_or_404(Partido, pk=pk)
+	equipo = Equipo.objects.filter(equipo_id=partido.local_id)
+	grupo_pk = 1
+	for e in equipo:
+		grupo_pk = e.grupo.pk
+	grupos_todos = Grupo.objects.all().order_by('grupo_id')
 	if request.method == "POST":
 		form = PartidoForm(request.POST, instance=partido)
 		if form.is_valid():
 			partido = form.save(commit=False)            
 			partido.save()
-			return redirect('mundial2014.views.partido_detalle', pk=pk, pk_user=pk_user)
+			return redirect('mundial2014.views.grupo_equipos', pk=grupo_pk, pk_user=pk_user)
 	else:
 		form = PartidoForm(instance=partido)
 
-	return render(request, 'mundial2014/partido_edit.html', {'form': form})
+	return render(request, 'mundial2014/partido_edit.html', {'form': form, 'usuario':usuario, 'grupos_todos':grupos_todos})
+
+def grupo_equipos_test(request, pk, pk_user):		
+	
+	grupos = Grupo.objects.filter(pk=pk)	
+	equipos = Equipo.objects.all()
+	partidos = Partido.objects.all().order_by('partido_id')
+	usuario = User.objects.get(pk=pk_user)
+	grupos_todos = Grupo.objects.all().order_by('grupo_id')	
+
+	partidos_fase_grupos = get_partidos_fase_grupos(grupos[0].grupo_id, usuario)
+	
+	print(partidos_fase_grupos)
+
+	return render(request, 'mundial2014/grupo_equipos.html', {'grupos': grupos, 'equipos': equipos, 'usuario':usuario, 'grupos_todos':grupos_todos, 'partidos': partidos, 'partidos_fase_grupos':partidos_fase_grupos})
