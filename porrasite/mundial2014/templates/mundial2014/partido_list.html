@@ -6,24 +6,31 @@
     <h2><a href="">Listado de partidos de {{usuario}}</a></h2>
     <table class="table-condensed">
     	<tr>
-    		<th>Nº partido</th>
+    		{% if debug %}
+    			<th>Nº partido</th>    		
+    			<th>Local - id</th>
+    		{% endif %}
     		<th>Local</th>
-    		<th>nombre L</th>
-    		<th>Goles</th>
+    		<th>Goles L</th>
+    		<th>Goles V</th>
+    		{% if debug %}
+    			<th>Visitante - id</th>
+    		{% endif %}
     		<th>Visitante</th>
-    		<th>nombre V</th>
-    		<th>Goles</th>
+    		
     	</tr>
     	
 	    {% for partido in partidos %}
 	    <tr>
-	    	<td>
-	    		<a href="{% url 'mundial2014.views.partido_detalle' pk_user=usuario.pk pk=partido.pk %}"> 
-	             {{partido.partido_id}} 
-	             </a>
-	             {{partido.pk}}
-	        </td>
-	        <td> {{partido.local_id}} </td>
+	    	{% if debug %}
+		    	<td>
+		    		<a href="{% url 'mundial2014.views.partido_detalle' pk_user=usuario.pk pk=partido.pk %}"> 
+		             {{partido.partido_id}} 
+		             </a>	             
+		             {{partido.pk}}	             
+		        </td>
+	        	<td> {{partido.local_id}} </td>
+	        {% endif %}
 	        <td> 
 	        	{% for equipo in equipos %}
 	        		{% if equipo.equipo_id == partido.local_id %}
@@ -32,8 +39,11 @@
 	        	 {% endfor %}
 
 	        </td>
-	        <td> {{partido.local}} </td>
-	        <td> {{partido.visitante_id}} </td>
+	        <td> <center> {{partido.local}} </center></td>
+	        {% if debug %}
+	        	<td> {{partido.visitante_id}} </td>
+	        {% endif %}
+	        <td> <center> {{partido.visitante}} </center> </td>
 	        <td>
 	        	{% for equipo in equipos %}
 	        		{% if equipo.equipo_id == partido.visitante_id %}
@@ -42,7 +52,7 @@
 	        	 {% endfor %}
 
 	        </td>
-	        <td> {{partido.visitante}} </td>
+	        
 	        <td>
 	        	{% if user.is_authenticated %}
 	        		{% if user.pk == usuario.pk %}

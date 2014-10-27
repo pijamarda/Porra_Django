@@ -15,6 +15,8 @@ from .models import Partido, Rank, Equipo, Grupo
 #Aqui asociamos a cada grupo el partido_id de la lista de partidos
 #con lo que
 
+DEBUG = False
+
 class CEquipo:
 	equipo_id = 0
 	puntos = 0
@@ -119,7 +121,7 @@ def partido_list(request, pk):
 	partidos = Partido.objects.filter(usuario = usuario).order_by('partido_id')
 	equipos = Equipo.objects.all()
 	grupos_todos = Grupo.objects.all().order_by('grupo_id')
-	return render(request, 'mundial2014/partido_list.html', {'partidos': partidos, 'usuario': usuario, 'equipos': equipos, 'grupos_todos':grupos_todos})
+	return render(request, 'mundial2014/partido_list.html', {'partidos': partidos, 'usuario': usuario, 'equipos': equipos, 'grupos_todos':grupos_todos, 'debug': DEBUG})
 
 def partido_detalle(request, pk, pk_user):
 
@@ -205,7 +207,7 @@ def grupo_equipos(request, pk, pk_user):
 	grupo_id = grupos[0].id
 	actualizar_grupo(grupo_id, usuario, teams)
 
-	return render(request, 'mundial2014/grupo_equipos.html', {'grupos': grupos, 'equipos': equipos, 'usuario':usuario, 'grupos_todos':grupos_todos, 'partidos': partidos, 'partidos_fase_grupos':partidos_fase_grupos, 'teams': teams})
+	return render(request, 'mundial2014/grupo_equipos.html', {'grupos': grupos, 'equipos': equipos, 'usuario':usuario, 'grupos_todos':grupos_todos, 'partidos': partidos, 'partidos_fase_grupos':partidos_fase_grupos, 'teams': teams, 'debug':DEBUG})
 
 
 def partido_edit(request, pk, pk_user):
