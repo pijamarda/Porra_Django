@@ -14,4 +14,5 @@ urlpatterns = patterns('',
     url(r'^user/(?P<pk_user>[0-9]+)/grupo/(?P<pk>[0-9]+)/$', views.grupo_equipos),
     url(r'^equipos/$', views.equipo_list),
     url(r'^grupos/$', views.grupo_list),
+    url(r'^suma_puntos/$', views.suma_puntos, name='suma_puntos'),
 )
