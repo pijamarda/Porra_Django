@@ -479,7 +479,23 @@ ALTER SEQUENCE mundial2014_partido_id_seq OWNED BY mundial2014_partido.id;
 CREATE TABLE mundial2014_rank (
     id integer NOT NULL,
     puntos integer NOT NULL,
-    usuario_id integer NOT NULL
+    usuario_id integer NOT NULL,
+    a1 integer NOT NULL,
+    a2 integer NOT NULL,
+    b1 integer NOT NULL,
+    b2 integer NOT NULL,
+    c1 integer NOT NULL,
+    c2 integer NOT NULL,
+    d1 integer NOT NULL,
+    d2 integer NOT NULL,
+    f1 integer NOT NULL,
+    f2 integer NOT NULL,
+    g1 integer NOT NULL,
+    g2 integer NOT NULL,
+    h1 integer NOT NULL,
+    h2 integer NOT NULL,
+    e1 integer NOT NULL,
+    e2 integer NOT NULL
 );
 
 
@@ -677,15 +693,19 @@ SELECT pg_catalog.setval('auth_permission_id_seq', 30, true);
 --
 
 COPY auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
+23	pbkdf2_sha256$12000$reMSpXFsdUXJ$+7BQrCXyLyjyp22IqkhdJ8cqCU08fV8d0SQbAtzaaFs=	2014-10-27 15:09:41.004291+01	f	test2				f	t	2014-10-27 15:09:41.004355+01
 3	pbkdf2_sha256$12000$zC8VixNiqJ3i$xi/cTEqyQu3H8rSBOQMfMO7pKZ+cVtWkF+CFfXnidzQ=	2014-09-18 15:49:23.448993+02	f	agormaz				f	t	2014-09-18 15:49:23.449105+02
+24	pbkdf2_sha256$12000$YcHKt1QJUrqC$fIgBr7hQzGcfqLWjWYkcT4glxkw2Vty9LtuYlUBwTlw=	2014-10-27 15:14:20.04323+01	t	test3				t	t	2014-10-27 15:12:40+01
+25	pbkdf2_sha256$12000$kR0NzZDL67MM$0GHqA00UPofyVO9MpkYu0IWiR6s9o9OJ6v+UB4gxz9Q=	2014-10-27 17:29:35.43556+01	f	test4				f	t	2014-10-27 15:49:26.268293+01
+1	pbkdf2_sha256$12000$wMTvaLW103hO$ZUYLP/jjp23Be8tspKDU6nIQfY1FiFPMPNlpD2rbzvk=	2014-10-29 15:04:30.039022+01	t	zeneke			zeneke@gmail.com	t	t	2014-09-18 12:46:26.487391+02
 12	pbkdf2_sha256$12000$pn745G0YB0lV$p1i8QgN5zJrKpUwnwHRd41eJX+Aw2E+2+UwxR06Jegw=	2014-09-22 14:17:48.25936+02	f	as				f	t	2014-09-22 14:17:48.259419+02
 13	pbkdf2_sha256$12000$oxacgZxtzX2E$zpeTMcvTr8n6zuyXUT2FQayOnCgN5mrkDdT2qUXwXVE=	2014-09-22 14:18:04.983597+02	f	we				f	t	2014-09-22 14:18:04.983649+02
 17	pbkdf2_sha256$12000$YvbQeaf1AxTv$ZxJ1wR7TCEBCmk73ub8k3riEvJ286iqmLp8BwvAnPKA=	2014-09-22 16:55:04.635677+02	f	random				f	t	2014-09-22 16:55:04.635733+02
 18	pbkdf2_sha256$12000$riQKik3hKhbJ$2LzheKL7o3G0innpC0eLXfxQl3ZW2QZPDCV5Kkp1xHc=	2014-10-15 17:46:11.61588+02	f	hola				f	t	2014-10-15 17:46:11.615944+02
 2	pbkdf2_sha256$12000$3CmFoAj7Tqkn$TSrgsOZ5EOAidb3lE02QHtTMNATI6HWqSbu2INqH3I0=	2014-10-16 17:57:32.737323+02	f	fgimenez				f	t	2014-09-18 12:52:58.954764+02
 19	pbkdf2_sha256$12000$8GYpcWAqFCF7$7hX1Qpb1ZN8eRttap7q40zf5JrJPEaZmYYGkL1jOJy8=	2014-10-16 18:19:30.275692+02	f	grupoAB				f	t	2014-10-16 18:19:30.27575+02
-1	pbkdf2_sha256$12000$wMTvaLW103hO$ZUYLP/jjp23Be8tspKDU6nIQfY1FiFPMPNlpD2rbzvk=	2014-10-17 10:50:44.243589+02	t	zeneke			zeneke@gmail.com	t	t	2014-09-18 12:46:26.487391+02
 20	pbkdf2_sha256$12000$YkXInOGhB2NI$rkl+6QjQQsTko8crRQ87QGezinrGgubDvfL02s5JpZs=	2014-10-17 11:33:52.097366+02	f	ABCDgrupos				f	t	2014-10-17 11:33:52.097422+02
+22	pbkdf2_sha256$12000$SJlAb3aH3VW1$A+yGOSYs+ZM1JMUQXe2ynjqhEj7sl34abpz0MIeXkAU=	2014-10-27 15:07:39.194014+01	f	testpuntos				f	t	2014-10-27 15:07:39.194079+01
 \.
 
 
@@ -708,7 +728,7 @@ SELECT pg_catalog.setval('auth_user_groups_id_seq', 1, false);
 -- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zeneke
 --
 
-SELECT pg_catalog.setval('auth_user_id_seq', 20, true);
+SELECT pg_catalog.setval('auth_user_id_seq', 25, true);
 
 
 --
@@ -800,6 +820,8 @@ COPY django_admin_log (id, action_time, object_id, object_repr, action_flag, cha
 67	2014-10-17 11:23:12.091173+02	30	Argelia	1		8	1
 68	2014-10-17 11:23:21.9482+02	31	Rusia	1		8	1
 69	2014-10-17 11:23:40.995358+02	32	Republica de Corea	1		8	1
+70	2014-10-27 13:17:30.73991+01	21	allgroups	2	Changed is_staff and is_superuser.	4	1
+73	2014-10-27 15:14:11.095609+01	24	test3	2	Changed is_staff and is_superuser.	4	1
 \.
 
 
@@ -807,7 +829,7 @@ COPY django_admin_log (id, action_time, object_id, object_repr, action_flag, cha
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zeneke
 --
 
-SELECT pg_catalog.setval('django_admin_log_id_seq', 69, true);
+SELECT pg_catalog.setval('django_admin_log_id_seq', 73, true);
 
 
 --
@@ -852,6 +874,9 @@ COPY django_migrations (id, app, name, applied) FROM stdin;
 10	mundial2014	0006_auto_20140922_1605	2014-09-22 16:05:23.09299+02
 11	mundial2014	0007_auto_20140922_1634	2014-09-22 16:34:41.848142+02
 12	mundial2014	0008_auto_20140922_1642	2014-09-22 16:43:01.366338+02
+13	mundial2014	0009_auto_20141027_1412	2014-10-27 14:12:45.78956+01
+14	mundial2014	0010_auto_20141027_1548	2014-10-27 15:49:09.975806+01
+15	mundial2014	0011_auto_20141027_1600	2014-10-27 16:00:14.925662+01
 \.
 
 
@@ -859,7 +884,7 @@ COPY django_migrations (id, app, name, applied) FROM stdin;
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zeneke
 --
 
-SELECT pg_catalog.setval('django_migrations_id_seq', 12, true);
+SELECT pg_catalog.setval('django_migrations_id_seq', 15, true);
 
 
 --
@@ -868,6 +893,8 @@ SELECT pg_catalog.setval('django_migrations_id_seq', 12, true);
 
 COPY django_session (session_key, session_data, expire_date) FROM stdin;
 scegmzu7tq9alyaf5eohr2ji63pe6a84	MDNmOWRhODBkZjlhZWZhNmRmZGRmNjE4Y2ZiMjNjNTY3NGJiMTA2Nzp7Il9hdXRoX3VzZXJfaGFzaCI6Ijc4MjVhY2ZlMzFhZmMyYzFlZmYxODgzZGJhMzRiMzQzNzlmMzllN2YiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOjF9	2014-10-02 12:51:50.302507+02
+m3ybbcyt00rrvh0dwp2o3j5e7no0hziu	MDNmOWRhODBkZjlhZWZhNmRmZGRmNjE4Y2ZiMjNjNTY3NGJiMTA2Nzp7Il9hdXRoX3VzZXJfaGFzaCI6Ijc4MjVhY2ZlMzFhZmMyYzFlZmYxODgzZGJhMzRiMzQzNzlmMzllN2YiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOjF9	2014-11-11 10:09:27.303085+01
+chl2er11ol61rh7vhedui1v3lk13023w	MDNmOWRhODBkZjlhZWZhNmRmZGRmNjE4Y2ZiMjNjNTY3NGJiMTA2Nzp7Il9hdXRoX3VzZXJfaGFzaCI6Ijc4MjVhY2ZlMzFhZmMyYzFlZmYxODgzZGJhMzRiMzQzNzlmMzllN2YiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOjF9	2014-11-12 15:04:30.139368+01
 ps08dykml0krmlefok0kdfna7hdd4o9u	MDNmOWRhODBkZjlhZWZhNmRmZGRmNjE4Y2ZiMjNjNTY3NGJiMTA2Nzp7Il9hdXRoX3VzZXJfaGFzaCI6Ijc4MjVhY2ZlMzFhZmMyYzFlZmYxODgzZGJhMzRiMzQzNzlmMzllN2YiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOjF9	2014-10-07 11:51:59.157789+02
 vsbi0rjdzvkw3o6ess8w4v3f7bge8ku0	ZGM5MzcxZmYxMDAzOWIyZGZjZmUyZDAxZjQ2OTAxNGZmYjJjYmMyNjp7fQ==	2014-10-29 10:41:59.542315+01
 u8pdp4gtidnmwk8xqwn62eh3kp5xft2s	ZGM5MzcxZmYxMDAzOWIyZGZjZmUyZDAxZjQ2OTAxNGZmYjJjYmMyNjp7fQ==	2014-10-29 10:42:55.493477+01
@@ -1189,6 +1216,150 @@ COPY mundial2014_partido (id, partido_id, usuario_id, local, local_id, visitante
 360	24	20	1	16	1	14
 361	39	20	3	16	1	13
 362	40	20	3	14	2	15
+459	1	24	0	1	3	2
+460	2	24	3	3	0	4
+461	17	24	2	1	1	3
+462	18	24	1	4	2	2
+463	33	24	3	4	2	1
+464	34	24	0	2	1	3
+465	3	24	1	5	1	6
+466	4	24	1	7	1	8
+467	19	24	3	5	2	7
+468	20	24	0	8	3	6
+469	35	24	2	8	2	5
+470	36	24	2	6	1	7
+471	5	24	2	9	2	10
+472	6	24	1	11	1	12
+411	1	23	2	1	3	2
+412	2	23	2	3	0	4
+413	17	23	2	1	2	3
+414	18	23	3	4	0	2
+415	33	23	0	4	2	1
+416	34	23	1	2	3	3
+417	3	23	1	5	2	6
+418	4	23	2	7	0	8
+419	19	23	0	5	2	7
+420	20	23	3	8	1	6
+421	35	23	3	8	0	5
+422	36	23	2	6	2	7
+423	5	23	0	9	3	10
+424	6	23	3	11	1	12
+425	21	23	0	9	3	11
+426	22	23	1	12	3	10
+427	37	23	2	12	2	9
+428	38	23	2	10	1	11
+429	7	23	0	13	0	14
+430	8	23	1	15	3	16
+431	23	23	3	13	0	15
+432	24	23	1	16	3	14
+433	39	23	3	16	3	13
+434	40	23	0	14	3	15
+435	9	23	0	17	3	18
+436	10	23	0	19	0	20
+437	25	23	2	17	1	19
+438	26	23	2	20	2	18
+439	41	23	3	20	0	17
+440	42	23	2	18	3	19
+441	11	23	0	21	3	22
+442	12	23	0	23	1	24
+443	27	23	1	21	0	23
+444	28	23	3	24	0	22
+445	43	23	1	24	2	21
+446	44	23	2	22	3	23
+447	13	23	3	25	1	26
+448	14	23	0	27	1	28
+449	29	23	3	25	1	27
+450	30	23	2	28	3	26
+451	45	23	3	28	2	25
+452	46	23	1	26	0	27
+453	15	23	2	29	0	30
+454	16	23	0	31	2	32
+455	31	23	0	29	0	31
+456	32	23	0	32	3	30
+457	47	23	1	32	3	29
+458	48	23	3	30	0	31
+473	21	24	1	9	1	11
+474	22	24	1	12	0	10
+475	37	24	1	12	3	9
+476	38	24	1	10	1	11
+477	7	24	3	13	2	14
+478	8	24	2	15	1	16
+479	23	24	2	13	0	15
+480	24	24	0	16	3	14
+481	39	24	1	16	1	13
+482	40	24	3	14	0	15
+483	9	24	2	17	0	18
+484	10	24	3	19	3	20
+485	25	24	1	17	0	19
+486	26	24	1	20	0	18
+487	41	24	2	20	1	17
+488	42	24	3	18	0	19
+489	11	24	3	21	3	22
+490	12	24	0	23	3	24
+491	27	24	3	21	2	23
+492	28	24	3	24	2	22
+494	44	24	3	22	1	23
+495	13	24	1	25	2	26
+496	14	24	0	27	1	28
+497	29	24	2	25	3	27
+498	30	24	0	28	3	26
+499	45	24	3	28	0	25
+500	46	24	2	26	2	27
+501	15	24	0	29	3	30
+502	16	24	0	31	0	32
+503	31	24	0	29	1	31
+504	32	24	0	32	0	30
+505	47	24	2	32	2	29
+506	48	24	2	30	1	31
+493	43	24	3	24	4	21
+509	17	25	2	1	3	3
+510	18	25	1	4	1	2
+511	33	25	3	4	0	1
+512	34	25	0	2	1	3
+513	3	25	1	5	2	6
+514	4	25	3	7	3	8
+515	19	25	2	5	3	7
+516	20	25	2	8	3	6
+517	35	25	0	8	1	5
+518	36	25	3	6	1	7
+519	5	25	2	9	2	10
+520	6	25	1	11	1	12
+521	21	25	0	9	0	11
+522	22	25	1	12	3	10
+523	37	25	3	12	0	9
+524	38	25	0	10	3	11
+525	7	25	0	13	0	14
+507	1	25	3	1	3	2
+508	2	25	3	3	3	4
+526	8	25	2	15	1	16
+527	23	25	1	13	3	15
+528	24	25	2	16	0	14
+529	39	25	0	16	2	13
+530	40	25	1	14	0	15
+531	9	25	3	17	0	18
+532	10	25	1	19	3	20
+533	25	25	2	17	0	19
+534	26	25	3	20	3	18
+535	41	25	0	20	3	17
+536	42	25	2	18	0	19
+537	11	25	1	21	2	22
+538	12	25	0	23	0	24
+539	27	25	2	21	2	23
+540	28	25	2	24	0	22
+541	43	25	0	24	0	21
+542	44	25	0	22	0	23
+543	13	25	3	25	2	26
+544	14	25	3	27	2	28
+545	29	25	0	25	2	27
+546	30	25	0	28	3	26
+547	45	25	2	28	1	25
+548	46	25	1	26	1	27
+549	15	25	1	29	3	30
+550	16	25	1	31	1	32
+551	31	25	1	29	2	31
+552	32	25	3	32	0	30
+553	47	25	1	32	3	29
+554	48	25	3	30	2	31
 \.
 
 
@@ -1196,23 +1367,26 @@ COPY mundial2014_partido (id, partido_id, usuario_id, local, local_id, visitante
 -- Name: mundial2014_partido_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zeneke
 --
 
-SELECT pg_catalog.setval('mundial2014_partido_id_seq', 362, true);
+SELECT pg_catalog.setval('mundial2014_partido_id_seq', 554, true);
 
 
 --
 -- Data for Name: mundial2014_rank; Type: TABLE DATA; Schema: public; Owner: zeneke
 --
 
-COPY mundial2014_rank (id, puntos, usuario_id) FROM stdin;
-1	5	2
-2	3	1
-3	23	3
-5	0	12
-6	0	13
-10	0	17
-11	0	18
-12	0	19
-13	0	20
+COPY mundial2014_rank (id, puntos, usuario_id, a1, a2, b1, b2, c1, c2, d1, d2, f1, f2, g1, g2, h1, h2, e1, e2) FROM stdin;
+1	5	2	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0
+5	0	12	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0
+6	0	13	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0
+10	0	17	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0
+11	0	18	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0
+12	0	19	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0
+13	0	20	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0
+16	0	23	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+17	4	24	2	3	6	5	0	0	0	0	0	0	0	0	0	0	0	0
+2	3	1	1	1	1	1	0	0	0	0	0	0	0	0	17	18	0	0
+18	0	25	3	4	6	7	0	0	11	10	24	22	27	26	17	18	0	0
+3	32	3	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0
 \.
 
 
@@ -1220,7 +1394,7 @@ COPY mundial2014_rank (id, puntos, usuario_id) FROM stdin;
 -- Name: mundial2014_rank_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zeneke
 --
 
-SELECT pg_catalog.setval('mundial2014_rank_id_seq', 13, true);
+SELECT pg_catalog.setval('mundial2014_rank_id_seq', 18, true);
 
 
 --
