@@ -8,7 +8,15 @@
     	{% endfor %}
     </h2>
    {% for grupo in grupos %}
-    	
+    	{% if debug %}
+    		<h4>
+	    		<b> Pasan a siguiente ronda: </b> <br />
+		    	{% for e in teams_pasan %}
+		    		<br />
+		    		{{e.0}} {{e.1}}	    		
+		    	{% endfor %}		    	
+	    	</h4>
+    	{% endif %}
 	    <table class="table-condensed">
 	    	<tr>
 	    		{% if debug %}

@@ -114,7 +114,9 @@ def grupo_equipos(request, pk, pk_user):
 					team.empatados += 1
 	
 	grupo_id = grupos[0].id
-	actualizar_grupo(grupo_id, usuario, teams)
+	teams_pasan = []
+	teams_pasan = actualizar_grupo(grupo_id, usuario, teams)
+	print(teams_pasan)
 
 	return render(request, 'mundial2014/grupo_equipos.html', {'grupos': grupos, 
 															  'equipos': equipos, 
@@ -122,7 +124,9 @@ def grupo_equipos(request, pk, pk_user):
 															  'grupos_todos':grupos_todos, 
 															  'partidos': partidos, 
 															  'partidos_fase_grupos':partidos_fase_grupos, 
-															  'teams': teams, 'debug':DEBUG})
+															  'teams': teams, 'debug':DEBUG,
+															  'teams_pasan': teams_pasan,
+															  })
 
 def partido_edit(request, pk, pk_user):
 
@@ -162,3 +166,20 @@ def suma_puntos(request):
 			usuario.save()
 
 	return HttpResponse(likes)
+
+def octavos(request, pk_user):
+	
+	
+	usuario = User.objects.get(pk=pk_user)
+	rank = Rank.objects.get(usuario=pk_user)
+	partidos = Partido.objects.filter(usuario=pk_user)
+	equipos = Equipo.objects.all()
+	#print(equipos_grupo)
+
+	
+
+	return render(request, 'mundial2014/octavos.html', {'usuario': usuario,
+														'rank': rank,
+														'partidos': partidos,
+														'equipos': equipos
+														})

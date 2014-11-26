@@ -79,6 +79,15 @@ def init_new_user(instance, created, raw, **kwargs):
 		Partido.objects.create(usuario=instance, partido_id=47, local_id=32, visitante_id=29, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
 		Partido.objects.create(usuario=instance, partido_id=48, local_id=30, visitante_id=31, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
 
+		#Octavos
+		Partido.objects.create(usuario=instance, partido_id=49, local_id=1, visitante_id=5, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		Partido.objects.create(usuario=instance, partido_id=50, local_id=2, visitante_id=6, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		Partido.objects.create(usuario=instance, partido_id=51, local_id=9, visitante_id=13, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		Partido.objects.create(usuario=instance, partido_id=52, local_id=10, visitante_id=14, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		Partido.objects.create(usuario=instance, partido_id=53, local_id=17, visitante_id=21, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		Partido.objects.create(usuario=instance, partido_id=54, local_id=18, visitante_id=22, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		Partido.objects.create(usuario=instance, partido_id=55, local_id=25, visitante_id=29, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		Partido.objects.create(usuario=instance, partido_id=56, local_id=26, visitante_id=30, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
 		#TODO: Hay que completar el resto de partidos: fase de cuartos, semis, ect...
 
         

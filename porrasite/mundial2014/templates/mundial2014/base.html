@@ -3,10 +3,15 @@
 {% block content %}
     
     <ul class="nav nav-pills">
-        <li class="active"><a href="{% url 'mundial2014.views.partido_list' pk=usuario.pk %}">Home</a></li>
+        <li class="active"><a href="{% url 'mundial2014.views.partido_list' pk=usuario.pk %}">Grupos</a></li>
         {% for grupo in grupos_todos %}
             <li><a href="{% url 'mundial2014.views.grupo_equipos' pk_user=usuario.pk pk=grupo.pk %}">{{grupo.nombre}}</a></li>
         {% endfor %}
+    </ul>
+    <ul class="nav nav-pills">
+    	<li><a href="{% url 'mundial2014.views.octavos' pk_user=usuario.pk %}">Octavos</a></li>
+    	<li><a href="{% url 'mundial2014.views.octavos' pk_user=usuario.pk %}">Cuartos</a></li>
+        
     </ul>
     {% block child %}
     {% endblock %}

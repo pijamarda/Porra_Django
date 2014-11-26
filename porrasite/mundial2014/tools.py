@@ -24,6 +24,9 @@ def actualizar_grupo(grupo_id, usuario, teams):
 			segundo = team
 	print("Primero " + primero.name)
 	print("Segundo " + segundo.name)
+	teams_passan = []
+	teams_passan.append([primero.equipo_id,primero.name])
+	teams_passan.append([segundo.equipo_id,segundo.name])
 	#marcamos quienes pasan de fase segun su grupo
 	if (grupo_id == 1):		
 		rank.a1=primero.equipo_id
@@ -50,6 +53,7 @@ def actualizar_grupo(grupo_id, usuario, teams):
 		rank.h1=primero.equipo_id
 		rank.h2=segundo.equipo_id	
 	rank.save()
+	return teams_passan
 
 def get_partidos_fase_grupos(grupo_id,usuario):
 	
