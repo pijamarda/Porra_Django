@@ -2,61 +2,33 @@
 
 {% block child %}
 
+
 {% for partido in partidos %}
-	{% if partido.partido_id == 49 %}
+	{% if partido.partido_id >= 49 and partido.partido_id <= 56 %}
+		<div>
 		{{partido.partido_id}}
 		{% for equipo in equipos %}
 			{% if equipo.equipo_id == partido.local_id %}
-				{{equipo.nombre}} vs 
+				{{equipo.nombre}}
 			{% endif %}
+		{% endfor %}
+		{{partido.local}}
+		vs 
+		{{partido.visitante}}
+		{% for equipo in equipos %}
 			{% if equipo.equipo_id == partido.visitante_id %}
 				{{equipo.nombre}}
 			{% endif %}
 		{% endfor %}
 		{% if user.is_authenticated %}
     		{% if user.pk == usuario.pk %}
-        		<a href="{% url 'mundial2014.views.partido_edit' pk_user=usuario.pk pk=partido.pk %}"> 
+        		<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}"> 
         		EDITAR
         		</a>
     		{% endif %}	
     	{% endif %}
-	{% endif %}
-
-	{% if partido.partido_id == 50 %}
-		{{partido.partido_id}}
-		{% for equipo in equipos %}
-			{% if equipo.equipo_id == partido.local_id %}
-				{{equipo.nombre}} vs 
-			{% endif %}
-			{% if equipo.equipo_id == partido.visitante_id %}
-				{{equipo.nombre}}
-			{% endif %}
-		{% endfor %}
-	{% endif %}
-
-	{% if partido.partido_id == 51 %}
-		{{partido.partido_id}}
-		{% for equipo in equipos %}
-			{% if equipo.equipo_id == partido.local_id %}
-				{{equipo.nombre}} vs 
-			{% endif %}
-			{% if equipo.equipo_id == partido.visitante_id %}
-				{{equipo.nombre}}
-			{% endif %}
-		{% endfor %}
-	{% endif %}
-
-	{% if partido.partido_id == 52 %}
-		{{partido.partido_id}}
-		{% for equipo in equipos %}
-			{% if equipo.equipo_id == partido.local_id %}
-				{{equipo.nombre}} vs 
-			{% endif %}
-			{% if equipo.equipo_id == partido.visitante_id %}
-				{{equipo.nombre}}
-			{% endif %}
-		{% endfor %}
-	{% endif %}
+    	</div>
+	{% endif %}	
 {% endfor %}
 
 {% endblock child %}

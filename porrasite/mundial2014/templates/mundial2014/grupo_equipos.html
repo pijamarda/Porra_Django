@@ -96,7 +96,7 @@
 				        <td>
 				        	{% if user.is_authenticated %}
 				        		{% if user.pk == usuario.pk %}
-					        		<a href="{% url 'mundial2014.views.partido_edit' pk_user=usuario.pk pk=partido.pk %}"> 
+					        		<a href="{% url 'partido_edit_group' pk_user=usuario.pk pk=partido.pk %}"> 
 					        		EDITAR
 					        		</a>
 				        		{% endif %}	

@@ -118,6 +118,8 @@ def grupo_equipos(request, pk, pk_user):
 	teams_pasan = actualizar_grupo(grupo_id, usuario, teams)
 	print(teams_pasan)
 
+	vengo_desde = 'grupos'
+
 	return render(request, 'mundial2014/grupo_equipos.html', {'grupos': grupos, 
 															  'equipos': equipos, 
 															  'usuario':usuario, 
@@ -126,9 +128,10 @@ def grupo_equipos(request, pk, pk_user):
 															  'partidos_fase_grupos':partidos_fase_grupos, 
 															  'teams': teams, 'debug':DEBUG,
 															  'teams_pasan': teams_pasan,
+															  'vengo_desde': vengo_desde,
 															  })
 
-def partido_edit(request, pk, pk_user):
+def partido_edit(request, pk, pk_user, desde):
 
 	usuario = User.objects.get(pk=pk_user)
 	partido = get_object_or_404(Partido, pk=pk)
@@ -142,7 +145,11 @@ def partido_edit(request, pk, pk_user):
 		if form.is_valid():
 			partido = form.save(commit=False)            
 			partido.save()
-			return redirect('mundial2014.views.grupo_equipos', pk=grupo_pk, pk_user=pk_user)
+			print (desde)
+			if (desde == 'grupos'):
+				return redirect('mundial2014.views.grupo_equipos', pk=grupo_pk, pk_user=pk_user)
+			elif (desde == 'octavos'):
+				return redirect('mundial2014.views.octavos', pk_user=pk_user)
 	else:
 		form = PartidoForm(instance=partido)
 
@@ -172,8 +179,9 @@ def octavos(request, pk_user):
 	
 	usuario = User.objects.get(pk=pk_user)
 	rank = Rank.objects.get(usuario=pk_user)
-	partidos = Partido.objects.filter(usuario=pk_user)
-	equipos = Equipo.objects.all()
+	partidos = Partido.objects.filter(usuario=pk_user).order_by('partido_id')
+	equipos = Equipo.objects.all()	
+	vengo_desde = 'octavos'
 	#print(equipos_grupo)
 
 	
