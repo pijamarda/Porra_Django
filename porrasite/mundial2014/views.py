@@ -30,6 +30,9 @@ def partido_list(request, pk):
 	partidos = Partido.objects.filter(usuario = usuario).order_by('partido_id')
 	equipos = Equipo.objects.all()
 	grupos_todos = Grupo.objects.all().order_by('grupo_id')
+
+	
+
 	return render(request, 'mundial2014/partido_list.html', {'partidos': partidos, 
 															 'usuario': usuario, 
 															 'equipos': equipos, 
@@ -78,44 +81,14 @@ def grupo_equipos(request, pk, pk_user):
 	
 	#print(equipos_grupo)
 
-	teams = []
-	for e in equipos_grupo:
-		team = CEquipo()
-		team.equipo_id = e.equipo_id
-		team.name = e.name
-		team.flag = e.flag
-		teams.append(team)		
+	datos = []
 
-	for partido in partidos_fase_grupos:		
-		partido_temp = Partido.objects.get(pk=partido)
-		local_goles = partido_temp.local
-		visitante_goles = partido_temp.visitante
-		if (local_goles > visitante_goles):
-			for team in teams:
-				if (team.equipo_id == partido_temp.local_id):
-					team.puntos += 3
-					team.ganados += 1
-				elif (team.equipo_id == partido_temp.visitante_id):
-					team.perdidos += 1
-		elif (local_goles < visitante_goles):
-			for team in teams:
-				if (team.equipo_id == partido_temp.visitante_id):
-					team.puntos += 3
-					team.ganados += 1
-				elif (team.equipo_id == partido_temp.local_id):
-					team.perdidos += 1
-		else:
-			for team in teams:
-				if (team.equipo_id == partido_temp.local_id):
-					team.puntos += 1
-					team.empatados += 1
-				elif (team.equipo_id == partido_temp.visitante_id):
-					team.puntos += 1
-					team.empatados += 1
 	
-	grupo_id = grupos[0].id
-	teams_pasan = []
-	teams_pasan = actualizar_grupo(grupo_id, usuario, teams)
+	datos = actualizar_grupo(pk, usuario)
+
+	teams = datos[0]
+	teams_pasan = datos[1]
+
 	print(teams_pasan)
 
 	vengo_desde = 'grupos'
@@ -126,7 +99,8 @@ def grupo_equipos(request, pk, pk_user):
 															  'grupos_todos':grupos_todos, 
 															  'partidos': partidos, 
 															  'partidos_fase_grupos':partidos_fase_grupos, 
-															  'teams': teams, 'debug':DEBUG,
+															  'teams': teams,
+															  'debug':DEBUG,
 															  'teams_pasan': teams_pasan,
 															  'vengo_desde': vengo_desde,
 															  })
@@ -183,8 +157,9 @@ def octavos(request, pk_user):
 	equipos = Equipo.objects.all()	
 	vengo_desde = 'octavos'
 	#print(equipos_grupo)
-
-	
+	grupos_todos = Grupo.objects.all().order_by('grupo_id')
+	for gr in grupos_todos:
+		actualizar_grupo(gr.pk, usuario)
 
 	return render(request, 'mundial2014/octavos.html', {'usuario': usuario,
 														'rank': rank,

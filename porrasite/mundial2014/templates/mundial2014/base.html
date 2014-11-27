@@ -8,9 +8,10 @@
             <li><a href="{% url 'mundial2014.views.grupo_equipos' pk_user=usuario.pk pk=grupo.pk %}">{{grupo.nombre}}</a></li>
         {% endfor %}
     </ul>
+    <br />
     <ul class="nav nav-pills">
-    	<li><a href="{% url 'mundial2014.views.octavos' pk_user=usuario.pk %}">Octavos</a></li>
-    	<li><a href="{% url 'mundial2014.views.octavos' pk_user=usuario.pk %}">Cuartos</a></li>
+    	<li class="active"><a href="{% url 'mundial2014.views.octavos' pk_user=usuario.pk %}">Eliminatorias</a></li>
+    	
         
     </ul>
     {% block child %}

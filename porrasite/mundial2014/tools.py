@@ -9,8 +9,49 @@ class CEquipo:
 	name = "Spain"
 	flag = "es"
 
-def actualizar_grupo(grupo_id, usuario, teams):
-	rank = Rank.objects.get(usuario=usuario)
+def actualizar_grupo(grupo_id, usuario):
+
+	grupo = Grupo.objects.get(pk=grupo_id)
+	equipos_grupo = Equipo.objects.filter(grupo=grupo_id)
+	partidos_fase_grupos = get_partidos_fase_grupos(grupo.grupo_id, usuario)
+	
+
+	teams = []
+	for e in equipos_grupo:
+		team = CEquipo()
+		team.equipo_id = e.equipo_id
+		team.name = e.name
+		team.flag = e.flag
+		teams.append(team)		
+
+	for partido in partidos_fase_grupos:		
+		partido_temp = Partido.objects.get(pk=partido)
+		local_goles = partido_temp.local
+		visitante_goles = partido_temp.visitante
+		if (local_goles > visitante_goles):
+			for team in teams:
+				if (team.equipo_id == partido_temp.local_id):
+					team.puntos += 3
+					team.ganados += 1
+				elif (team.equipo_id == partido_temp.visitante_id):
+					team.perdidos += 1
+		elif (local_goles < visitante_goles):
+			for team in teams:
+				if (team.equipo_id == partido_temp.visitante_id):
+					team.puntos += 3
+					team.ganados += 1
+				elif (team.equipo_id == partido_temp.local_id):
+					team.perdidos += 1
+		else:
+			for team in teams:
+				if (team.equipo_id == partido_temp.local_id):
+					team.puntos += 1
+					team.empatados += 1
+				elif (team.equipo_id == partido_temp.visitante_id):
+					team.puntos += 1
+					team.empatados += 1
+	
+	grupo_id = grupo.id
 
 	primero = teams[0]
 	segundo = teams[1]
@@ -27,33 +68,92 @@ def actualizar_grupo(grupo_id, usuario, teams):
 	teams_passan = []
 	teams_passan.append([primero.equipo_id,primero.name])
 	teams_passan.append([segundo.equipo_id,segundo.name])
-	#marcamos quienes pasan de fase segun su grupo
-	if (grupo_id == 1):		
-		rank.a1=primero.equipo_id
-		rank.a2=segundo.equipo_id		
+
+	
+	#Ahora recorro los grupos y segun el grupo marco los partidos como deben ser
+	#jugados en la fase de octavos
+	if (grupo_id == 1):				
+		partido_temp = Partido.objects.get(usuario=usuario, partido_id=49)
+		partido_temp.local_id=primero.equipo_id
+		partido_temp.save()		
+		partido_temp = Partido.objects.get(usuario=usuario, partido_id=50)
+		partido_temp.visitante_id=segundo.equipo_id
+		partido_temp.save()
 	elif (grupo_id == 2):		
-		rank.b1=primero.equipo_id
-		rank.b2=segundo.equipo_id
+		partido_temp = Partido.objects.get(usuario=usuario, partido_id=50)
+		partido_temp.local_id=primero.equipo_id
+		partido_temp.save()		
+		partido_temp = Partido.objects.get(usuario=usuario, partido_id=49)
+		partido_temp.visitante_id=segundo.equipo_id
+		partido_temp.save()
 	elif (grupo_id == 3):		
-		rank.c1=primero.equipo_id
-		rank.c2=segundo.equipo_id
+		partido_temp = Partido.objects.get(usuario=usuario, partido_id=51)
+		partido_temp.local_id=primero.equipo_id
+		partido_temp.save()		
+		partido_temp = Partido.objects.get(usuario=usuario, partido_id=52)
+		partido_temp.visitante_id=segundo.equipo_id
+		partido_temp.save()
 	elif (grupo_id == 4):		
-		rank.d1=primero.equipo_id
-		rank.d2=segundo.equipo_id
+		partido_temp = Partido.objects.get(usuario=usuario, partido_id=52)
+		partido_temp.local_id=primero.equipo_id
+		partido_temp.save()		
+		partido_temp = Partido.objects.get(usuario=usuario, partido_id=51)
+		partido_temp.visitante_id=segundo.equipo_id
+		partido_temp.save()
 	elif (grupo_id == 5):		
-		rank.e1=primero.equipo_id
-		rank.e2=segundo.equipo_id
+		partido_temp = Partido.objects.get(usuario=usuario, partido_id=53)
+		partido_temp.local_id=primero.equipo_id
+		partido_temp.save()		
+		partido_temp = Partido.objects.get(usuario=usuario, partido_id=54)
+		partido_temp.visitante_id=segundo.equipo_id
+		partido_temp.save()
 	elif (grupo_id == 6):		
-		rank.f1=primero.equipo_id
-		rank.f2=segundo.equipo_id
+		partido_temp = Partido.objects.get(usuario=usuario, partido_id=54)
+		partido_temp.local_id=primero.equipo_id
+		partido_temp.save()		
+		partido_temp = Partido.objects.get(usuario=usuario, partido_id=53)
+		partido_temp.visitante_id=segundo.equipo_id
+		partido_temp.save()
 	elif (grupo_id == 7):		
-		rank.g1=primero.equipo_id
-		rank.g2=segundo.equipo_id	
+		partido_temp = Partido.objects.get(usuario=usuario, partido_id=55)
+		partido_temp.local_id=primero.equipo_id
+		partido_temp.save()		
+		partido_temp = Partido.objects.get(usuario=usuario, partido_id=56)
+		partido_temp.visitante_id=segundo.equipo_id
+		partido_temp.save()
 	elif (grupo_id == 8):		
-		rank.h1=primero.equipo_id
-		rank.h2=segundo.equipo_id	
-	rank.save()
-	return teams_passan
+		partido_temp = Partido.objects.get(usuario=usuario, partido_id=56)
+		partido_temp.local_id=primero.equipo_id
+		partido_temp.save()		
+		partido_temp = Partido.objects.get(usuario=usuario, partido_id=55)
+		partido_temp.visitante_id=segundo.equipo_id
+		partido_temp.save()
+	
+	#Ahora vamos a recorrer los cuartos y actualizar los equipos que pasan a estos
+	#lo que hago es comparar simplemente los resultados de la fase de cuartos
+
+	partidos = Partido.objects.filter(usuario=usuario)
+	for partido in partidos:
+		if (partido.partido_id == 49):
+			partido_temp = Partido.objects.get(usuario=usuario, partido_id=57)
+			if (partido.local > partido.visitante):				
+				partido_temp.local_id = partido.local_id
+			else:
+				partido_temp.local_id = partido.visitante_id
+			partido_temp.save()
+		if (partido.partido_id == 50):
+			partido_temp = Partido.objects.get(usuario=usuario, partido_id=57)
+			if (partido.local > partido.visitante):				
+				partido_temp.visitante_id = partido.local_id
+			else:
+				partido_temp.visitante_id = partido.visitante_id
+			partido_temp.save()
+
+	datos = []
+	datos.append(teams)
+	datos.append(teams_passan)
+
+	return datos
 
 def get_partidos_fase_grupos(grupo_id,usuario):
 	
