@@ -63,8 +63,8 @@ def actualizar_grupo(grupo_id, usuario):
 			segundo = temporal
 		elif (team.puntos > segundo.puntos and team.equipo_id != primero.equipo_id):
 			segundo = team
-	print("Primero " + primero.name)
-	print("Segundo " + segundo.name)
+	#print("Primero " + primero.name)
+	#print("Segundo " + segundo.name)
 	teams_passan = []
 	teams_passan.append([primero.equipo_id,primero.name])
 	teams_passan.append([segundo.equipo_id,segundo.name])
@@ -129,7 +129,7 @@ def actualizar_grupo(grupo_id, usuario):
 		partido_temp.visitante_id=segundo.equipo_id
 		partido_temp.save()
 	
-	#Ahora vamos a recorrer los cuartos y actualizar los equipos que pasan a estos
+	#Ahora vamos a recorrer los octavos y actualizar los equipos que pasan a cuartos
 	#lo que hago es comparar simplemente los resultados de la fase de cuartos
 
 	partidos = Partido.objects.filter(usuario=usuario)

@@ -79,7 +79,7 @@ def grupo_equipos(request, pk, pk_user):
 	grupos_todos = Grupo.objects.all().order_by('grupo_id')
 	partidos_fase_grupos = get_partidos_fase_grupos(grupos[0].grupo_id, usuario)
 	
-	#print(equipos_grupo)
+	
 
 	datos = []
 
@@ -89,7 +89,7 @@ def grupo_equipos(request, pk, pk_user):
 	teams = datos[0]
 	teams_pasan = datos[1]
 
-	print(teams_pasan)
+	
 
 	vengo_desde = 'grupos'
 
