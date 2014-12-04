@@ -6,3 +6,19 @@ body {
     padding-left: 15px;
 }
 
+table, th, td{
+	border: 1px solid black;
+}
+
+
+.braket .team{
+	width: 100px;
+	text-align: center;
+	background-color: blue;
+}
+
+.braket .resultado{
+	width: 25px;
+	text-align: center;
+	background-color: green;
+}

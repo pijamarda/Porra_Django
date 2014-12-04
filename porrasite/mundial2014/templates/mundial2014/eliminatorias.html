@@ -1,0 +1,638 @@
+{% extends 'mundial2014/base.html' %}
+
+{% block child %}
+
+<table class="braket">
+	<tr>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 49 %}
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}				
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+			{% endif %}	
+    	{% endfor %}
+				<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+				<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 50 %}
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}
+			{% endif %}	
+    	{% endfor %}					
+    		
+	</tr>
+	<tr>
+		<td></td><td></td>
+
+		{% for partido in partidos %}
+			{% if partido.partido_id == 49 %}
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}				
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+			{% endif %}	
+    	{% endfor %}
+
+		<td></td> <td></td> <td></td> <td></td>
+		<td></td> <td></td> <td></td> <td></td>
+
+		{% for partido in partidos %}
+			{% if partido.partido_id == 50 %}
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.visitante_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}
+			{% endif %}	
+    	{% endfor %}
+		<td></td><td></td>
+	</tr>
+
+	<tr>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 49 %}
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}				
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+			{% endif %}	
+    	{% endfor %}
+				<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+				<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 50 %}
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}
+			{% endif %}	
+    	{% endfor %}					
+    		
+	</tr>
+
+	<tr>
+		<td></td> <td></td> <td></td> <td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 49 %}
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}				
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+			{% endif %}	
+    	{% endfor %}
+		<td></td> <td></td> <td></td> <td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 50 %}
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}
+			{% endif %}	
+    	{% endfor %}	
+		<td></td> <td></td> <td></td> <td></td>
+	</tr>
+
+	<tr>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 49 %}
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}				
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+			{% endif %}	
+    	{% endfor %}
+		<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+		<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 50 %}
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}
+			{% endif %}	
+    	{% endfor %}	
+	</tr>
+	<tr>
+		<td></td><td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 49 %}
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}				
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+			{% endif %}	
+    	{% endfor %}
+		<td></td> <td></td> <td></td> <td></td>
+		<td></td> <td></td> <td></td> <td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 50 %}
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}
+			{% endif %}	
+    	{% endfor %}	
+		<td></td><td></td>
+	</tr>
+	<tr>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 49 %}
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}				
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+			{% endif %}	
+    	{% endfor %}
+		<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+		<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 50 %}
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}
+			{% endif %}	
+    	{% endfor %}	
+	</tr>
+
+
+
+
+	<tr>
+		<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 49 %}
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}				
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+			{% endif %}	
+    	{% endfor %}
+		
+		{% for partido in partidos %}
+			{% if partido.partido_id == 50 %}
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}
+			{% endif %}	
+    	{% endfor %}
+		<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+	</tr>
+
+
+
+	<tr>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 49 %}
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}				
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+			{% endif %}	
+    	{% endfor %}
+		<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+		<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 50 %}
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}
+			{% endif %}	
+    	{% endfor %}
+	</tr>
+	<tr>
+		<td></td><td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 49 %}
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}				
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+			{% endif %}	
+    	{% endfor %}
+		<td></td> <td></td> <td></td> <td></td>
+		<td></td> <td></td> <td></td> <td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 50 %}
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}
+			{% endif %}	
+    	{% endfor %}
+		<td></td><td></td>
+	</tr>
+	<tr>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 49 %}
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}				
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+			{% endif %}	
+    	{% endfor %}
+		<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+		<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 50 %}
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}
+			{% endif %}	
+    	{% endfor %}
+	</tr>
+
+	<tr>
+		<td></td> <td></td> <td></td> <td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 49 %}
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}				
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+			{% endif %}	
+    	{% endfor %}
+		<td></td> <td></td> <td></td> <td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 50 %}
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}
+			{% endif %}	
+    	{% endfor %}
+		<td></td> <td></td> <td></td> <td></td>
+	</tr>
+
+	<tr>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 49 %}
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}				
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+			{% endif %}	
+    	{% endfor %}
+		<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+		<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 50 %}
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}
+			{% endif %}	
+    	{% endfor %}
+	</tr>
+	<tr>
+		<td></td><td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 49 %}
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}				
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+			{% endif %}	
+    	{% endfor %}
+		<td></td> <td></td> <td></td> <td></td>
+		<td></td> <td></td> <td></td> <td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 50 %}
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}
+			{% endif %}	
+    	{% endfor %}
+		<td></td><td></td>
+	</tr>
+	<tr>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 49 %}
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}				
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+			{% endif %}	
+    	{% endfor %}
+		<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+		<td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+		{% for partido in partidos %}
+			{% if partido.partido_id == 50 %}
+				<td class="resultado">
+					{% if user.is_authenticated %}
+	    				{% if user.pk == usuario.pk %}
+	    					<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}">
+	    				{% endif %}
+	    			{% endif %}
+					{{partido.local}}
+					</a>
+				</td>
+				{% for equipo in equipos %}
+					{% if equipo.equipo_id == partido.local_id %}						
+						<td class="team">{{equipo.nombre}}</td>
+					{% endif %}
+				{% endfor %}
+			{% endif %}	
+    	{% endfor %}
+	</tr>
+
+</table>
+
+
+{% endblock child %}

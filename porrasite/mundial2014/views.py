@@ -148,7 +148,7 @@ def suma_puntos(request):
 
 	return HttpResponse(likes)
 
-def octavos(request, pk_user):
+def octavos(request, pk_user, formato):
 	
 	
 	usuario = User.objects.get(pk=pk_user)
@@ -161,7 +161,11 @@ def octavos(request, pk_user):
 	for gr in grupos_todos:
 		actualizar_grupo(gr.pk, usuario)
 
-	return render(request, 'mundial2014/octavos.html', {'usuario': usuario,
+	template_to_render = 'mundial2014/octavos.html'
+	if (formato == 'tabla'):
+		template_to_render = 'mundial2014/eliminatorias.html'
+
+	return render(request, template_to_render, {'usuario': usuario,
 														'rank': rank,
 														'partidos': partidos,
 														'equipos': equipos
