@@ -6,7 +6,10 @@ body {
     padding-left: 15px;
 }
 
-table, th, td{
+.braket th{
+	border: 1px solid black;
+}
+.braket td{
 	border: 1px solid black;
 }
 
