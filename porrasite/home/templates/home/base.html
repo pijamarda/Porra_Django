@@ -13,25 +13,33 @@
     </head>
     <body>
         <div class="page-header">
-            {% if user.is_authenticated %}
-                <p class="top-menu">Hello {{ user.username }}
-                    <small>(<a href="{% url 'django.contrib.auth.views.logout' %}">Log out</a>)
-                </p>
-            {% else %}
-                <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu">
-                    <span class="glyphicon glyphicon-lock"></span>
-                </a>
-            {% endif %}
+            <h1> Porra LDS</h1>            
         </div>
-        <div>
-            <h1><a href="/mundial/"> Porra </a></h1>
-        </div>
+        <div class="content">
+            <div>
+                {% if user.is_authenticated %}
+                    <p class="top-menu">Hello {{ user.username }} </p>
+                    <small><a href="{% url 'django.contrib.auth.views.logout' %}">
+                            <span class="glyphicon glyphicon-share"> Logout </span>
+                    </a>
+                {% else %}
+                    <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu">
+                        <span class="glyphicon glyphicon-lock"> Login </span>
+                    </a>
+                    <a href="{% url 'mundial2014.views.register' %}" class="top-menu">
+                        <span class="glyphicon glyphicon-edit"> Register </span>
+                    </a>
+                {% endif %}
+            </div>
+            <div>
+                <h1><a href="/mundial/"> Porra </a></h1>
+            </div>
 
-        <div>
-            {% block content %}
-            {% endblock %}           
-            
+            <div>
+                {% block content %}
+                {% endblock %}           
+                
+            </div>
         </div>
-        
     </body>
 </html>
