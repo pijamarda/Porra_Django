@@ -35,8 +35,8 @@ And the following PIP package:
 1. Clone repo:  
 *git clone https://github.com/pijamarda/Porra_Django*
 
-2. Configure PostgreSQL
-*sudo su - postgres*
+2. Configure PostgreSQL  
+*sudo su - postgres*  
 *createuser --interactive zeneke*  
 *exit*  
 *createdb -U zeneke porra_proyect*  
