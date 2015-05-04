@@ -66,3 +66,6 @@ Windows install
 
 Not worth it...
 
+# Install WSGI serving pages with NGINX
+http://uwsgi-docs.readthedocs.org/en/latest/tutorials/Django_and_nginx.html
+
