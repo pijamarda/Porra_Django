@@ -47,9 +47,9 @@ scripts/restoredb.sh
 Go to the project directory
 cd Porra_Django
 create virtualenv:
-virtualenv-3.4 venv_porra
+virtualenv-3.4 virtualPorra
 then activate:
-source venv_porra/bin/activate
+source virtualPorra/bin/activate
 
 4.- Install django packages:
 pip install django==1.7
