@@ -17,7 +17,7 @@ from .tools import *
 
 # Debug marca en principio:
 #	- En los templates si queremos mostrar las columnas con los ID de la mayoria de los elementos
-DEBUG = True
+DEBUG = False
 
 # Por ahora es nuestra pagina de inicio y muestra a todos los usuarios y sus puntos
 def rank_list(request):
@@ -143,6 +143,12 @@ def suma_puntos(request):
 
 	return HttpResponse(likes)
 
+
+'''
+	Esta funcion sirve para modificar los partidos en modo AJAX, es decir sin tener que utilizar
+	un formulario estandar, ni tener que abrir nueva ventana
+	Funcionamiento:
+'''
 def edita_partido_ajax(request):
 	
 	partido_id = None

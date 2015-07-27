@@ -39,11 +39,19 @@
 	        	 {% endfor %}
 
 	        </td>
-	        <td> <center> {{partido.local}} </center></td>
+	        
+	        <td> <center> 					        
+		        <input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
+	        </center></td>
+
+	        <td><center> 				        	
+	        	<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
+	        </center></td>
+
+
 	        {% if debug %}
 	        	<td> {{partido.visitante_id}} </td>
 	        {% endif %}
-	        <td> <center> {{partido.visitante}} </center> </td>
 	        <td>
 	        	{% for equipo in equipos %}
 	        		{% if equipo.equipo_id == partido.visitante_id %}
@@ -52,17 +60,28 @@
 	        	 {% endfor %}
 
 	        </td>
-	        
 	        <td>
 	        	{% if user.is_authenticated %}
 	        		{% if user.pk == usuario.pk %}
-		        		<a href="{% url 'mundial2014.views.partido_edit' pk_user=usuario.pk pk=partido.pk %}"> 
-		        		EDITAR
-		        		</a>
+		        		<button id="edit" class="edit_ajax" 
+		        			data-partidoid="{{partido.id}}" 					        			 
+		        			class="btn btn-primary" type="button">
+	                    	Ok
+	                    </button>
 	        		{% endif %}	
 	        	{% endif %}
 	        </td>
-
+	        {% if debug %}
+		        <td>
+		        	{% if user.is_authenticated %}
+		        		{% if user.pk == usuario.pk %}
+			        		<a href="{% url 'mundial2014.views.partido_edit' pk_user=usuario.pk pk=partido.pk %}"> 
+			        		EDITAR
+			        		</a>
+		        		{% endif %}	
+		        	{% endif %}
+		        </td>
+		    {% endif %}
 	    	
 	    </tr>
 	    {% endfor %}
