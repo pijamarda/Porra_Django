@@ -79,12 +79,15 @@
 				        	 {% endfor %}
 
 				        </td>
-				        <td> <center> {{partido.local}} </center></td>
+				        <td> <center> 
+					        
+					        <input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
+				        </center></td>
 
-				        <td><center> {{partido.visitante}} </center></td>
-				        {% if debug %}
-				        	<td> {{partido.visitante_id}} </td>
-				        {% endif %}
+				        <td><center> 				        	
+				        	<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
+				        </center></td>
+				        
 				        <td>
 				        	{% for equipo in equipos %}
 				        		{% if equipo.equipo_id == partido.visitante_id %}
@@ -92,7 +95,10 @@
 				        		{% endif %}
 				        	 {% endfor %}
 
-				        </td>				        
+				        </td>	
+				        {% if debug %}
+				        	<td> {{partido.visitante_id}} </td>
+				        {% endif %}			        
 				        <td>
 				        	{% if user.is_authenticated %}
 				        		{% if user.pk == usuario.pk %}
@@ -101,7 +107,20 @@
 					        		</a>
 				        		{% endif %}	
 				        	{% endif %}
-				        </td>	    	
+				        </td>
+				        <td>
+				        	{% if user.is_authenticated %}
+				        		{% if user.pk == usuario.pk %}
+					        		<button id="edit" class="edit_ajax" 
+					        			data-partidoid="{{partido.id}}" 
+					        			data-local="{{partido.local}}" 
+					        			data-visitante="{{partido.visitante}}" 
+					        			class="btn btn-primary" type="button">
+				                    	Edit
+				                    </button>
+				        		{% endif %}	
+				        	{% endif %}
+				        </td>
 	    			</tr>
 	    			
 				{% endif %}

@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, render_to_response, redi
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 
 
 from .forms import PartidoForm
@@ -77,19 +77,14 @@ def grupo_equipos(request, pk, pk_user):
 	partidos = Partido.objects.all().order_by('partido_id')
 	usuario = User.objects.get(pk=pk_user)
 	grupos_todos = Grupo.objects.all().order_by('grupo_id')
-	partidos_fase_grupos = get_partidos_fase_grupos(grupos[0].grupo_id, usuario)
-	
-	
+	partidos_fase_grupos = get_partidos_fase_grupos(grupos[0].grupo_id, usuario)	
 
 	datos = []
-
 	
 	datos = actualizar_grupo(pk, usuario)
 
 	teams = datos[0]
-	teams_pasan = datos[1]
-
-	
+	teams_pasan = datos[1]	
 
 	vengo_desde = 'grupos'
 
@@ -147,6 +142,35 @@ def suma_puntos(request):
 			usuario.save()
 
 	return HttpResponse(likes)
+
+def edita_partido_ajax(request):
+	
+	partido_id = None
+	local = 0
+	visitante = 0
+	if request.method == 'GET':		
+		partido_id = request.GET['partido_id']
+		local = request.GET['local']
+		visitante = request.GET['visitante']
+	
+	if partido_id:
+		partido = Partido.objects.get(id=int(partido_id))
+		print(partido)
+		if partido:
+			#likes = usuario.puntos + 1
+			#usuario.puntos =  likes
+			#usuario.save()
+			#likes = partido.id
+
+			partido.local = local
+			partido.visitante = visitante
+			partido.save()
+			response = 'ok'
+			#response['ida'] = response.write('33')
+			#response['vuelta'] = response.write('77')
+			#data = {'33','77'};
+
+	return HttpResponse(response)
 
 def octavos(request, pk_user, formato):
 	
