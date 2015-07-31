@@ -11,15 +11,7 @@
     {% for rank in ranking %}
     	<tr>    		
 			<td> <a href="{% url 'mundial2014.views.partido_list' pk=rank.usuario.pk %}"> {{rank.usuario}} </a></td>
-			<td> {{rank.puntos}} </td>	
-            <td>
-                <p>
-                    <b id="suma_puntos">{{ rank.puntos }}</b> numero puntos                    
-                    <button id="suma" class="sumaClass" data-catid="{{rank.id}}" class="btn btn-primary" type="button">                   
-                    Suma
-                    </button>                    
-                </p>
-            </td>		
+			<td> {{rank.puntos}} </td>	            		
     	</tr>
     {% endfor %}
     </table>

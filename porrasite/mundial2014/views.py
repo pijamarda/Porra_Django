@@ -154,32 +154,28 @@ def edita_partido_ajax(request):
 	partido_id = None
 	local = 0
 	visitante = 0
+	# Primero nos traemos desde el GET las nuevas variables a modificar
 	if request.method == 'GET':		
 		partido_id = request.GET['partido_id']
 		local = request.GET['local']
 		visitante = request.GET['visitante']
 	
 	if partido_id:
+		# Si existe el partido entonces buscamos el partido en la base de datos de partidos
+		# este sera unico para el usuario
 		partido = Partido.objects.get(id=int(partido_id))
-		print(partido)
+		
 		if partido:
-			#likes = usuario.puntos + 1
-			#usuario.puntos =  likes
-			#usuario.save()
-			#likes = partido.id
-
+			# Si ha encontrado el partido entonces modificamos con los nuevos valores de 
+			# goles del local y del visitante
 			partido.local = local
 			partido.visitante = visitante
 			partido.save()
-			response = 'ok'
-			#response['ida'] = response.write('33')
-			#response['vuelta'] = response.write('77')
-			#data = {'33','77'};
+			response = 'ok'			
 
 	return HttpResponse(response)
 
-def octavos(request, pk_user, formato):
-	
+def octavos(request, pk_user, formato):	
 	
 	usuario = User.objects.get(pk=pk_user)
 	rank = Rank.objects.get(usuario=pk_user)
