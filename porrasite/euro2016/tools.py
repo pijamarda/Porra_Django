@@ -173,6 +173,10 @@ def actualizar_grupo(grupo_id, usuario):
 
 	return datos
 
+'''
+	Funcion auxiliar que te permite calcular el ID de los partidos segun el grupo
+	devuelve un array con los ID de los partidos del grupo buscado asignado al usuario
+'''
 def get_partidos_fase_grupos(grupo_id,usuario):
 	
 	partidos = PartidoEuro2016.objects.filter(usuario = usuario).order_by("partido_id")
@@ -180,41 +184,30 @@ def get_partidos_fase_grupos(grupo_id,usuario):
 	#Grupo A id=1
 	if (grupo_id==1):
 		for partido in partidos:
-			if (partido.partido_id in [1,2,17,18,33,34]):
+			if (partido.partido_id in [1,2,14,15,25,26]):
 				partidos_grupo.append(partido.pk)
 	#Grupo B id=2
 	elif (grupo_id==2):
 		for partido in partidos:
-			if (partido.partido_id in [3,4,20,19,35,36]):
+			if (partido.partido_id in [3,4,13,16,27,28]):
 				partidos_grupo.append(partido.pk)
 	#Grupo C id=3
 	elif (grupo_id==3):
 		for partido in partidos:
-			if (partido.partido_id in [5,6,21,22,37,38]):
+			if (partido.partido_id in [6,7,17,18,29,30]):
 				partidos_grupo.append(partido.pk)
 	#Grupo D id=4
 	elif (grupo_id==4):
 		for partido in partidos:
-			if (partido.partido_id in [7,8,23,24,39,40]):
+			if (partido.partido_id in [5,8,20,21,31,32]):
 				partidos_grupo.append(partido.pk)
 	#Grupo E id=5
 	elif (grupo_id==5):
 		for partido in partidos:
-			if (partido.partido_id in [9,10,25,26,41,42]):
+			if (partido.partido_id in [9,10,19,22,35,36]):
 				partidos_grupo.append(partido.pk)
 	#Grupo F id=6
 	elif (grupo_id==6):
 		for partido in partidos:
-			if (partido.partido_id in [11,12,27,28,43,44]):
+			if (partido.partido_id in [11,12,23,24,33,34]):
 				partidos_grupo.append(partido.pk)
-	#Grupo G id=7
-	elif (grupo_id==7):
-		for partido in partidos:
-			if (partido.partido_id in [13,14,29,30,45,46]):
-				partidos_grupo.append(partido.pk)
-	#Grupo H id=8
-	elif (grupo_id==8):
-		for partido in partidos:
-			if (partido.partido_id in [15,16,31,32,47,48]):
-				partidos_grupo.append(partido.pk)
-	return(partidos_grupo)
