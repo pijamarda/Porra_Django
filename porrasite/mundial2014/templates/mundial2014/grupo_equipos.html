@@ -17,7 +17,8 @@
 		    	{% endfor %}		    	
 	    	</h4>
     	{% endif %}
-	    <table class="table-condensed">
+    	
+	    <table class="table-condensed table-striped">
 	    	<tr>
 	    		{% if debug %}
 	    			<th>Id</th>
@@ -28,6 +29,8 @@
 	    		<th>Empatados</th>
 	    		<th>Perdidos</th>
 	    		<th>Puntos</th>
+	    		<th>Gf</th>
+	    		<th>Gc</th>
 	    	</tr>
 	    	
     		{% for team in teams %}	    		
@@ -41,11 +44,13 @@
 					<td> <center>{{team.empatados}} </center></td>
 					<td> <center>{{team.perdidos}} </center></td>
 					<td> <center>{{team.puntos}} </center></td>
+					<td> <center>{{team.favor}} </center></td>
+					<td> <center>{{team.contra}} </center></td>
 				</tr>				
     		{% endfor %}
 	    	
 	    </table>
-
+	    
 	    <table class="table-condensed">
 	    	<tr>
 	    		{% if debug %}

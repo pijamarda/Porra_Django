@@ -6,6 +6,8 @@ class CEquipo:
 	ganados = 0
 	empatados = 0
 	perdidos = 0
+	favor = 0
+	contra = 0
 	name = "Spain"
 	flag = "es"
 
@@ -15,7 +17,8 @@ def actualizar_grupo(grupo_id, usuario):
 	equipos_grupo = Equipo.objects.filter(grupo=grupo_id)
 	partidos_fase_grupos = get_partidos_fase_grupos(grupo.grupo_id, usuario)
 	
-
+	#teams guarda los equipos del grupo que vamos a analizar
+	# y guardamos varios datos del equipo para luego utilizarlos en la vista
 	teams = []
 	for e in equipos_grupo:
 		team = CEquipo()
@@ -50,7 +53,17 @@ def actualizar_grupo(grupo_id, usuario):
 				elif (team.equipo_id == partido_temp.visitante_id):
 					team.puntos += 1
 					team.empatados += 1
-	
+		#Ahora voy a actualizar los goles a favor y en contra de los equipos para mostrarlos
+		# en la vista de la fase de grupos, y en caso de empate poder utilizar estos datos
+		# como desempate
+		for team in teams:
+				if (team.equipo_id == partido_temp.local_id):
+					team.favor += local_goles
+					team.contra += visitante_goles
+				elif (team.equipo_id == partido_temp.visitante_id):
+					team.favor += visitante_goles
+					team.contra += local_goles
+
 	grupo_id = grupo.id
 
 	primero = teams[0]
