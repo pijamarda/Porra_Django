@@ -1,4 +1,5 @@
-from .models import PartidoEuro2016, RankEuro2016, Equipo, Grupo
+from .models import PartidoEuro2016, RankEuro2016, Grupo
+from mundial2014.models import Equipo
 
 class CEquipo:
 	equipo_id = 0
@@ -13,9 +14,18 @@ class CEquipo:
 
 
 def actualizar_grupo(grupo_id, usuario):
-
-	grupo = Grupo.objects.get(pk=grupo_id)
-	equipos_grupo = Equipo.objects.filter(grupo=grupo_id)
+	grupo_chungo = grupo_id
+	#BORRAR:
+	if (grupo_id == '3'):
+		grupo_chungo = '4'
+		print(grupo_chungo)
+	if (grupo_id == 3):
+		grupo_chungo = 4
+		print(grupo_chungo)
+	#BORRAR
+	#MODIFICAR
+	grupo = Grupo.objects.get(pk=grupo_chungo)
+	equipos_grupo = Equipo.objects.filter(grupo=grupo_chungo)
 	partidos_fase_grupos = get_partidos_fase_grupos(grupo.grupo_id, usuario)
 	
 	#teams guarda los equipos del grupo que vamos a analizar
@@ -211,3 +221,5 @@ def get_partidos_fase_grupos(grupo_id,usuario):
 		for partido in partidos:
 			if (partido.partido_id in [11,12,23,24,33,34]):
 				partidos_grupo.append(partido.pk)
+
+	return(partidos_grupo)

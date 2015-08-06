@@ -46,10 +46,6 @@ class RankEuro2016(models.Model):
 	e2 = models.IntegerField(default=0)
 	f1 = models.IntegerField(default=0)
 	f2 = models.IntegerField(default=0)
-	g1 = models.IntegerField(default=0)
-	g2 = models.IntegerField(default=0)
-	h1 = models.IntegerField(default=0)
-	h2 = models.IntegerField(default=0)
 
 	def __str__(self):
 		return str(self.usuario)

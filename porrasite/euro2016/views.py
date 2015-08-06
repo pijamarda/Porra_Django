@@ -6,7 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 
 
-from .models import PartidoEuro2016, RankEuro2016, Equipo, Grupo
+from .models import PartidoEuro2016, RankEuro2016, Grupo
+from mundial2014.models import Equipo
 
 #
 from .tools import *
