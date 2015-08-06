@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'home',
     'mundial2014',
+    'euro2016',
 )
 
 MIDDLEWARE_CLASSES = (

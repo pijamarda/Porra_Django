@@ -1,12 +1,8 @@
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, get_object_or_404, render_to_response, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
-
-
-from .forms import PartidoForm
 
 from .models import Partido, Rank, Equipo, Grupo
 
@@ -43,17 +39,6 @@ def partido_list(request, pk):
 def partido_detalle(request, pk, pk_user):
 	partido = get_object_or_404(Partido, pk=pk)
 	return render(request, 'mundial2014/partido_detalle.html', {'partido': partido})
-
-# Utilizado para el registro de nuevos usuarios
-def register(request):
-	if request.method == 'POST':
-		form = UserCreationForm(request.POST)
-		if form.is_valid():
-			new_user = form.save()
-			return HttpResponseRedirect("/mundial/")
-	else:
-		form = UserCreationForm()
-	return render(request, "registration/register.html", {'form': form })
 
 # Listado de todos los equipos
 def equipo_list(request):	

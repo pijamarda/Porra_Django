@@ -11,6 +11,7 @@ class CEquipo:
 	name = "Spain"
 	flag = "es"
 
+
 def actualizar_grupo(grupo_id, usuario):
 
 	grupo = Grupo.objects.get(pk=grupo_id)
@@ -64,8 +65,10 @@ def actualizar_grupo(grupo_id, usuario):
 					team.favor += visitante_goles
 					team.contra += local_goles
 
-	grupo_id = grupo.id
-
+	# Calculo de quien pasa de la fase de grupos basandonos en sus puntos y en caso de empate
+	# en los goles a favor y en contra
+	grupo_id = grupo.id	
+	#asigno de manera aleatorio el primero y el segundo para empezar a comprar
 	primero = teams[0]
 	segundo = teams[1]
 	temporal = teams[2]
@@ -76,7 +79,9 @@ def actualizar_grupo(grupo_id, usuario):
 			segundo = temporal
 		elif (team.puntos > segundo.puntos and team.equipo_id != primero.equipo_id):
 			segundo = team
-	#print("Primero " + primero.name)
+	ordenados = sorted(teams, key=lambda team: team.puntos, reverse=True)
+	for team in ordenados:
+		print(team.name)
 	#print("Segundo " + segundo.name)
 	teams_passan = []
 	teams_passan.append([primero.equipo_id,primero.name])
