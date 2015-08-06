@@ -1,0 +1,19 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+
+    <h2><a href="">Ranking</a></h2>
+    <table class="table-condensed">
+    	<tr>
+    		<th>Usuario</th>
+    		<th>Puntos</th>
+    	</tr>
+    {% for rank in ranking %}
+    	<tr>    		
+			<td> <a href="{% url 'euro2016.views.partido_list' pk=rank.usuario.pk %}"> {{rank.usuario}} </a></td>
+			<td> {{rank.puntos}} </td>	            		
+    	</tr>
+    {% endfor %}
+    </table>
+    
+{% endblock content %}

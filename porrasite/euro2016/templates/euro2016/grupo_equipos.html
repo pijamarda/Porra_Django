@@ -1,0 +1,138 @@
+{% extends 'euro2016/base.html' %}
+
+{% block child %}
+
+    <h2>Grupo {% for grupo in grupos %}
+    	{{grupo.nombre}}
+
+    	{% endfor %}
+    </h2>
+   {% for grupo in grupos %}
+    	{% if debug %}
+    		<h4>
+	    		<b> Pasan a siguiente ronda: </b> <br />
+		    	{% for e in teams_pasan %}
+		    		<br />
+		    		{{e.0}} {{e.1}}	    		
+		    	{% endfor %}		    	
+	    	</h4>
+    	{% endif %}
+    	
+	    <table class="table-condensed table-striped">
+	    	<tr>
+	    		{% if debug %}
+	    			<th>Id</th>
+	    		{% endif %}
+	    		<th>Nombre</th>
+	    		<th>Flag</th>
+	    		<th>Ganados</th>
+	    		<th>Empatados</th>
+	    		<th>Perdidos</th>
+	    		<th>Puntos</th>
+	    		<th>Gf</th>
+	    		<th>Gc</th>
+	    	</tr>
+	    	
+    		{% for team in teams %}	    		
+		    	<tr>    
+		    		{% if debug %}		
+						<td> {{team.equipo_id}} </td>
+					{% endif %}
+					<td> {{team.name}} </td>	
+					<td> <center> <img src="/static/img/{{team.flag}}.png"> </center> </td>
+					<td> <center>{{team.ganados}} </center></td>
+					<td> <center>{{team.empatados}} </center></td>
+					<td> <center>{{team.perdidos}} </center></td>
+					<td> <center>{{team.puntos}} </center></td>
+					<td> <center>{{team.favor}} </center></td>
+					<td> <center>{{team.contra}} </center></td>
+				</tr>				
+    		{% endfor %}
+	    	
+	    </table>
+	    
+	    <table class="table-condensed">
+	    	<tr>
+	    		{% if debug %}
+	    			<th>Nº partido</th>
+	    			<th>Local</th>
+	    		{% endif %}
+	    		<th>Local</th>
+	    		<th>Goles L</th>
+	    		<th>Goles V</th>
+	    		<th>Visitante</th>
+	    		
+    		</tr>
+	    	{% for partido in partidos %}    		
+	    	
+	    		{% if partido.pk in partidos_fase_grupos %}
+			    	<tr>
+			    		{% if debug %}
+					    	<td>
+					    		<a href="{% url 'euro2016.views.partido_detalle' pk_user=usuario.pk pk=partido.pk %}"> 
+					             {{partido.partido_id}} 
+					             </a>
+					             {{partido.pk}}
+					        </td>
+					        <td> {{partido.local_id}} </td>
+					    {% endif %}
+				        <td> 
+				        	{% for equipo in equipos %}
+				        		{% if equipo.equipo_id == partido.local_id %}
+				        			{{equipo.nombre}}
+				        		{% endif %}
+				        	 {% endfor %}
+
+				        </td>
+				        <td> <center> 					        
+					        <input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
+				        </center></td>
+
+				        <td><center> 				        	
+				        	<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
+				        </center></td>
+				        
+				        <td>
+				        	{% for equipo in equipos %}
+				        		{% if equipo.equipo_id == partido.visitante_id %}
+				        			{{equipo.nombre}}
+				        		{% endif %}
+				        	 {% endfor %}
+
+				        </td>	
+				        {% if debug %}
+				        	<td> {{partido.visitante_id}} </td>
+				        			        
+					        
+				        {% endif %}
+				        <td>
+				        	{% if user.is_authenticated %}
+				        		{% if user.pk == usuario.pk %}
+					        		<button id="edit" class="edit_ajax" 
+					        			data-partidoid="{{partido.id}}" 					        			 
+					        			class="btn btn-primary" type="button">
+				                    	Ok
+				                    </button>
+				        		{% endif %}	
+				        	{% endif %}
+				        </td>
+				        {% if debug %}
+				        <td>
+					        	{% if user.is_authenticated %}
+					        		{% if user.pk == usuario.pk %}
+						        		<a href="{% url 'partido_edit_group' pk_user=usuario.pk pk=partido.pk %}"> 
+						        		EDITAR DEBUG
+						        		</a>
+					        		{% endif %}	
+					        	{% endif %}
+					        </td>
+					    {% endif %}
+	    			</tr>
+	    			
+				{% endif %}
+	    	{% endfor %}
+	    </table>
+
+    {% endfor %}
+
+{% endblock child %}

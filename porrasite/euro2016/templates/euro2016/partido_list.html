@@ -1,0 +1,91 @@
+{% extends 'euro2016/base.html' %}
+
+{% block child %}
+	
+
+    <h2><a href="">Listado de partidos de {{usuario}}</a></h2>
+    <table class="table-condensed">
+    	<tr>
+    		{% if debug %}
+    			<th>Nº partido</th>    		
+    			<th>Local - id</th>
+    		{% endif %}
+    		<th>Local</th>
+    		<th>Goles L</th>
+    		<th>Goles V</th>
+    		{% if debug %}
+    			<th>Visitante - id</th>
+    		{% endif %}
+    		<th>Visitante</th>
+    		
+    	</tr>
+    	
+	    {% for partido in partidos %}
+	    <tr>
+	    	{% if debug %}
+		    	<td>
+		    		<a href="{% url 'euro2016.views.partido_detalle' pk_user=usuario.pk pk=partido.pk %}"> 
+		             {{partido.partido_id}} 
+		             </a>	             
+		             {{partido.pk}}	             
+		        </td>
+	        	<td> {{partido.local_id}} </td>
+	        {% endif %}
+	        <td> 
+	        	{% for equipo in equipos %}
+	        		{% if equipo.equipo_id == partido.local_id %}
+	        			{{equipo.nombre}}
+	        		{% endif %}
+	        	 {% endfor %}
+
+	        </td>
+	        
+	        <td> <center> 					        
+		        <input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
+	        </center></td>
+
+	        <td><center> 				        	
+	        	<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
+	        </center></td>
+
+
+	        {% if debug %}
+	        	<td> {{partido.visitante_id}} </td>
+	        {% endif %}
+	        <td>
+	        	{% for equipo in equipos %}
+	        		{% if equipo.equipo_id == partido.visitante_id %}
+	        			{{equipo.nombre}}
+	        		{% endif %}
+	        	 {% endfor %}
+
+	        </td>
+	        <td>
+	        	{% if user.is_authenticated %}
+	        		{% if user.pk == usuario.pk %}
+		        		<button id="edit" class="edit_ajax" 
+		        			data-partidoid="{{partido.id}}" 					        			 
+		        			class="btn btn-primary" type="button">
+	                    	Ok
+	                    </button>
+	        		{% endif %}	
+	        	{% endif %}
+	        </td>
+	        {% if debug %}
+		        <td>
+		        	{% if user.is_authenticated %}
+		        		{% if user.pk == usuario.pk %}
+			        		<a href="{% url 'euro2016.views.partido_edit' pk_user=usuario.pk pk=partido.pk %}"> 
+			        		EDITAR
+			        		</a>
+		        		{% endif %}	
+		        	{% endif %}
+		        </td>
+		    {% endif %}
+	    	
+	    </tr>
+	    {% endfor %}
+	</table>
+
+
+{% endblock child %}
