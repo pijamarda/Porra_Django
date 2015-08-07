@@ -3,6 +3,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
 # Create your views here.
 
+def index(request):
+	
+	return render(request, "home/index.html", {})
+
 # Utilizado para el registro de nuevos usuarios
 def register(request):
 	if request.method == 'POST':

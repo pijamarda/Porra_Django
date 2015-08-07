@@ -7,12 +7,12 @@ from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 
 
 from .models import PartidoEuro2016, RankEuro2016, Grupo
+#BORRAR: he añadido los equipos del proyetcto anterios para nos escribirlos a mano
+# una vez tengamos los de verdad se agregaran en el panel admin
 from mundial2014.models import Equipo
 
 #
 from .tools import *
-
-# Create your views here.
 
 # Debug marca en principio:
 #	- En los templates si queremos mostrar las columnas con los ID de la mayoria de los elementos
@@ -105,8 +105,8 @@ def partido_edit(request, pk, pk_user, desde):
 			print (desde)
 			if (desde == 'grupos'):
 				return redirect('euro2016.views.grupo_equipos', pk=grupo_pk, pk_user=pk_user)
-			elif (desde == 'octavos'):
-				return redirect('euro2016.views.octavos', pk_user=pk_user)
+			elif (desde == 'eliminatorias'):
+				return redirect('euro2016.views.eliminatorias', pk_user=pk_user)
 	else:
 		form = PartidoEuro2016Form(instance=partido)
 
@@ -163,21 +163,21 @@ def edita_partido_ajax(request):
 
 	return HttpResponse(response)
 
-def octavos(request, pk_user, formato):	
+def eliminatorias(request, pk_user, formato):	
 	
 	usuario = User.objects.get(pk=pk_user)
 	rank = RankEuro2016.objects.get(usuario=pk_user)
 	partidos = PartidoEuro2016.objects.filter(usuario=pk_user).order_by('partido_id')
 	equipos = Equipo.objects.all()	
-	vengo_desde = 'octavos'
+	vengo_desde = 'eliminatorias'
 	#print(equipos_grupo)
 	grupos_todos = Grupo.objects.all().order_by('grupo_id')
 	for gr in grupos_todos:
 		actualizar_grupo(gr.pk, usuario)
 
-	template_to_render = 'euro2016/octavos.html'
+	template_to_render = 'euro2016/eliminatorias_lista.html'
 	if (formato == 'tabla'):
-		template_to_render = 'euro2016/eliminatorias.html'
+		template_to_render = 'euro2016/eliminatorias_tabla.html'
 
 	return render(request, template_to_render, {'usuario': usuario,
 														'rank': rank,

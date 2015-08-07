@@ -1,4 +1,6 @@
 from .models import PartidoEuro2016, RankEuro2016, Grupo
+#BORRAR: he añadido los equipos del proyetcto anterios para nos escribirlos a mano
+# una vez tengamos los de verdad se agregaran en el panel admin
 from mundial2014.models import Equipo
 
 class CEquipo:
@@ -23,7 +25,7 @@ def actualizar_grupo(grupo_id, usuario):
 		grupo_chungo = 4
 		print(grupo_chungo)
 	#BORRAR
-	#MODIFICAR
+	#MODIFICAR grupo_chungo antes era solo grupo_id directamente
 	grupo = Grupo.objects.get(pk=grupo_chungo)
 	equipos_grupo = Equipo.objects.filter(grupo=grupo_chungo)
 	partidos_fase_grupos = get_partidos_fase_grupos(grupo.grupo_id, usuario)

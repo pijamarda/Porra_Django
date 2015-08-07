@@ -1,7 +1,9 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
-    
+    <h1>
+        Mundial 2014
+    </h1>
     <ul class="nav nav-pills">
         <li class="active"><a href="{% url 'mundial2014.views.partido_list' pk=usuario.pk %}">Grupos</a></li>
         {% for grupo in grupos_todos %}
