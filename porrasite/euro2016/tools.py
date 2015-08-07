@@ -1,9 +1,9 @@
 from operator import itemgetter, attrgetter
 
-from .models import PartidoEuro2016, RankEuro2016, Grupo
-#BORRAR: he añadido los equipos del proyetcto anterios para nos escribirlos a mano
+from .models import PartidoEuro2016, RankEuro2016
+#BORRAR: he añadido los equipos y grupos del proyecto anterior para nos escribirlos a mano
 # una vez tengamos los de verdad se agregaran en el panel admin
-from mundial2014.models import Equipo
+from mundial2014.models import Equipo, Grupo
 
 '''
 	Aunque podria utilizar un diccionario normal, esta clase me permite visualizar facilmente
@@ -22,19 +22,12 @@ class CEquipo:
 	flag = "es"
 
 
-def actualizar_grupo(grupo_id, usuario):
-	grupo_chungo = grupo_id
-	#BORRAR:
-	if (grupo_id == '3'):
-		grupo_chungo = '4'
-		print(grupo_chungo)
-	if (grupo_id == 3):
-		grupo_chungo = 4
-		print(grupo_chungo)
-	#BORRAR
-	#MODIFICAR grupo_chungo antes era solo grupo_id directamente
-	grupo = Grupo.objects.get(pk=grupo_chungo)
-	equipos_grupo = Equipo.objects.filter(grupo=grupo_chungo)
+def actualizar_grupo(pk_grupo_id, usuario):
+	
+	
+	grupo = Grupo.objects.get(grupo_id=pk_grupo_id)
+	
+	equipos_grupo = Equipo.objects.filter(grupo=grupo.id)
 	partidos_fase_grupos = get_partidos_fase_grupos(grupo.grupo_id, usuario)
 	
 	#teams guarda los equipos del grupo que vamos a analizar

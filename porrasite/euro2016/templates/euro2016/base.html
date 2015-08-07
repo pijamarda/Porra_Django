@@ -7,7 +7,7 @@
     <ul class="nav nav-pills">
         <li class="active"><a href="{% url 'euro2016.views.partido_list' pk=usuario.pk %}">Grupos</a></li>
         {% for grupo in grupos_todos %}
-            <li><a href="{% url 'euro2016.views.grupo_equipos' pk_user=usuario.pk pk=grupo.pk %}">{{grupo.nombre}}</a></li>
+            <li><a href="{% url 'euro2016.views.grupo_equipos' pk_user=usuario.pk pk_grupo_id=grupo.grupo_id %}">{{grupo.nombre}}</a></li>
         {% endfor %}
             <li><a href="#">3rd place teams</a></li>
     </ul>

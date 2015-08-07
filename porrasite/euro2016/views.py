@@ -6,10 +6,10 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 
 
-from .models import PartidoEuro2016, RankEuro2016, Grupo
-#BORRAR: he añadido los equipos del proyetcto anterios para nos escribirlos a mano
+from .models import PartidoEuro2016, RankEuro2016
+#BORRAR: he añadido los equipos y grupos del proyetcto anterios para nos escribirlos a mano
 # una vez tengamos los de verdad se agregaran en el panel admin
-from mundial2014.models import Equipo
+from mundial2014.models import Equipo, Grupo
 
 #
 from .tools import *
@@ -57,11 +57,11 @@ def grupo_list(request):
 
 # Esta vista muestra todos los partidos del usuario, ademas de la posibilidad de navegar
 # por los grupos
-def grupo_equipos(request, pk, pk_user):
+def grupo_equipos(request, pk_grupo_id, pk_user):
 	
-	grupos = Grupo.objects.filter(pk=pk)	
+	grupos = Grupo.objects.filter(grupo_id=pk_grupo_id)	
 	equipos = Equipo.objects.all()
-	equipos_grupo = Equipo.objects.filter(grupo=pk)
+	equipos_grupo = Equipo.objects.filter(grupo=pk_grupo_id)
 	partidos = PartidoEuro2016.objects.all().order_by('partido_id')
 	usuario = User.objects.get(pk=pk_user)
 	grupos_todos = Grupo.objects.all().order_by('grupo_id')
@@ -69,7 +69,7 @@ def grupo_equipos(request, pk, pk_user):
 
 	datos = []
 	
-	datos = actualizar_grupo(pk, usuario)
+	datos = actualizar_grupo(pk_grupo_id, usuario)
 
 	teams = datos[0]
 	teams_pasan = datos[1]	
