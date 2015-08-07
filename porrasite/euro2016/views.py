@@ -88,6 +88,20 @@ def grupo_equipos(request, pk_grupo_id, pk_user):
 															  'vengo_desde': vengo_desde,
 															  })
 
+# Esta vista es la de los terceros de grupo para ir probando
+def grupo_3rd(request, pk_user):			
+	
+	grupos_todos = Grupo.objects.all().order_by('grupo_id')
+	usuario = User.objects.get(pk=pk_user)
+	datos = actualizar_grupo_3rd(pk_user)	
+
+	return render(request, 'euro2016/grupo_3rd.html', {'teams': datos,
+														'usuario':usuario,
+														'grupos_todos':grupos_todos,
+														'debug':DEBUG,
+														})
+
+
 def partido_edit(request, pk, pk_user, desde):
 
 	usuario = User.objects.get(pk=pk_user)

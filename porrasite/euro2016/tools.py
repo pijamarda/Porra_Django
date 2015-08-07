@@ -18,6 +18,7 @@ class CEquipo:
 	favor = 0
 	contra = 0
 	diff = 0
+	pasa = 0
 	name = "Spain"
 	flag = "es"
 
@@ -215,3 +216,80 @@ def get_partidos_fase_grupos(grupo_id,usuario):
 				partidos_grupo.append(partido.pk)
 
 	return(partidos_grupo)
+
+'''
+	Funcion auxiliar que nos permite calcular quienes de los terceros de grupo pasan a la siguiente ronda
+'''
+
+def actualizar_grupo_3rd(usuario):
+		
+	teams_3rd = []
+	#Tengo que recorrer todos los grupos
+	grupos = Grupo.objects.all()
+	for grupo in grupos:
+		#
+		equipos_grupo = Equipo.objects.filter(grupo=grupo.id)
+		partidos_fase_grupos = get_partidos_fase_grupos(grupo.grupo_id, usuario)
+		
+		#teams guarda los equipos del grupo que vamos a analizar
+		# y guardamos varios datos del equipo para luego utilizarlos en la vista
+		teams = []
+		for e in equipos_grupo:
+			team = CEquipo()
+			team.equipo_id = e.equipo_id
+			team.name = e.name
+			team.flag = e.flag
+			teams.append(team)		
+
+		for partido in partidos_fase_grupos:		
+			partido_temp = PartidoEuro2016.objects.get(pk=partido)
+			local_goles = partido_temp.local
+			visitante_goles = partido_temp.visitante
+			if (local_goles > visitante_goles):
+				for team in teams:
+					if (team.equipo_id == partido_temp.local_id):
+						team.puntos += 3
+						team.ganados += 1
+					elif (team.equipo_id == partido_temp.visitante_id):
+						team.perdidos += 1
+			elif (local_goles < visitante_goles):
+				for team in teams:
+					if (team.equipo_id == partido_temp.visitante_id):
+						team.puntos += 3
+						team.ganados += 1
+					elif (team.equipo_id == partido_temp.local_id):
+						team.perdidos += 1
+			else:
+				for team in teams:
+					if (team.equipo_id == partido_temp.local_id):
+						team.puntos += 1
+						team.empatados += 1
+					elif (team.equipo_id == partido_temp.visitante_id):
+						team.puntos += 1
+						team.empatados += 1
+			#Ahora voy a actualizar los goles a favor y en contra de los equipos para mostrarlos
+			# en la vista de la fase de grupos, y en caso de empate poder utilizar estos datos
+			# como desempate
+			for team in teams:
+					if (team.equipo_id == partido_temp.local_id):
+						team.favor += local_goles
+						team.contra += visitante_goles
+						team.diff = team.favor - team.contra
+					elif (team.equipo_id == partido_temp.visitante_id):
+						team.favor += visitante_goles
+						team.contra += local_goles
+						team.diff = team.favor - team.contra
+
+		# Para saber quien va primero vamos a utilizar la funcion sorted de Python lo que nos permite
+		# ordenar una lista por varios criterios de prioridad
+		ordenados = sorted(teams, key=attrgetter('puntos', 'diff','favor'), reverse=True)
+		
+		tercero = ordenados[2]		
+		teams_3rd.append(tercero)	
+
+	teams_3rd_ordenados = sorted(teams_3rd, key=attrgetter('puntos', 'diff','favor'), reverse=True)
+	teams_3rd_ordenados[0].pasa = 1
+	teams_3rd_ordenados[1].pasa = 1
+	teams_3rd_ordenados[2].pasa = 1
+	teams_3rd_ordenados[3].pasa = 1
+	return teams_3rd_ordenados

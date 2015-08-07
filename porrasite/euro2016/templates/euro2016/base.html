@@ -9,7 +9,7 @@
         {% for grupo in grupos_todos %}
             <li><a href="{% url 'euro2016.views.grupo_equipos' pk_user=usuario.pk pk_grupo_id=grupo.grupo_id %}">{{grupo.nombre}}</a></li>
         {% endfor %}
-            <li><a href="#">3rd place teams</a></li>
+            <li><a href="{% url 'euro2016.views.grupo_3rd' pk_user=usuario.pk %}">3rd place teams</a></li>
     </ul>
     <br />
     <ul class="nav nav-pills">
