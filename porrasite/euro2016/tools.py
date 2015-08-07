@@ -11,6 +11,7 @@ class CEquipo:
 	perdidos = 0
 	favor = 0
 	contra = 0
+	diff = 0
 	name = "Spain"
 	flag = "es"
 
@@ -73,9 +74,11 @@ def actualizar_grupo(grupo_id, usuario):
 				if (team.equipo_id == partido_temp.local_id):
 					team.favor += local_goles
 					team.contra += visitante_goles
+					team.diff = team.favor - team.contra
 				elif (team.equipo_id == partido_temp.visitante_id):
 					team.favor += visitante_goles
 					team.contra += local_goles
+					team.diff = team.favor - team.contra
 
 	# Calculo de quien pasa de la fase de grupos basandonos en sus puntos y en caso de empate
 	# en los goles a favor y en contra

@@ -25,12 +25,14 @@
 	    		{% endif %}
 	    		<th>Nombre</th>
 	    		<th>Flag</th>
-	    		<th>Ganados</th>
-	    		<th>Empatados</th>
-	    		<th>Perdidos</th>
-	    		<th>Puntos</th>
-	    		<th>Gf</th>
-	    		<th>Gc</th>
+	    		<th>Gan</th>
+	    		<th>Emp</th>
+	    		<th>Per</th>
+	    		<th>Gfav</th>
+	    		<th>Gcon</th>
+	    		<th>Gdif</th>
+	    		<th><b>Puntos</b></th>
+	    		
 	    	</tr>
 	    	
     		{% for team in teams %}	    		
@@ -42,10 +44,11 @@
 					<td> <center> <img src="/static/img/{{team.flag}}.png"> </center> </td>
 					<td> <center>{{team.ganados}} </center></td>
 					<td> <center>{{team.empatados}} </center></td>
-					<td> <center>{{team.perdidos}} </center></td>
-					<td> <center>{{team.puntos}} </center></td>
+					<td> <center>{{team.perdidos}} </center></td>					
 					<td> <center>{{team.favor}} </center></td>
 					<td> <center>{{team.contra}} </center></td>
+					<td> <center>{{team.diff}} </center></td>
+					<td> <center><b>{{team.puntos}}</b> </center></td>
 				</tr>				
     		{% endfor %}
 	    	
@@ -108,7 +111,7 @@
 				        <td>
 				        	{% if user.is_authenticated %}
 				        		{% if user.pk == usuario.pk %}
-					        		<button id="edit" class="edit_ajax" 
+					        		<button id="edit" class="euro2016_edit_ajax" 
 					        			data-partidoid="{{partido.id}}" 					        			 
 					        			class="btn btn-primary" type="button">
 				                    	Ok

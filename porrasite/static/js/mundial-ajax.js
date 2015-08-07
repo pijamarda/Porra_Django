@@ -13,7 +13,10 @@ $( document ).ready(function() {
 		});
 	});
 
-	$('.edit_ajax').click(function()
+	/*
+		Funcion especifica para la edicion de los partidos de la euro2016
+	*/
+	$('.euro2016_edit_ajax').click(function()
 	{
 		//console.log("actualizando partido");
 		var partidoid;
@@ -48,7 +51,7 @@ $( document ).ready(function() {
 				- Los nuevos goles del local y del visitante
 		*/
 
-		$.get('/mundial/edita_partido_ajax/', {partido_id: partidoid,
+		$.get('/euro2016/edita_partido_ajax/', {partido_id: partidoid,
 												local: local,
 												visitante: visitante,
 												});
