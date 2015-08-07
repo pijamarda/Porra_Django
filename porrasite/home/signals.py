@@ -66,30 +66,27 @@ def init_new_user(instance, created, raw, **kwargs):
 		PartidoEuro2016.objects.create(usuario=instance, partido_id=34, local_id=24, visitante_id=21, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))		
 
 		#Octavos
-		PartidoEuro2016.objects.create(usuario=instance, partido_id=49, local_id=1, visitante_id=5, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
-		PartidoEuro2016.objects.create(usuario=instance, partido_id=50, local_id=2, visitante_id=6, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
-		PartidoEuro2016.objects.create(usuario=instance, partido_id=51, local_id=9, visitante_id=13, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
-		PartidoEuro2016.objects.create(usuario=instance, partido_id=52, local_id=10, visitante_id=14, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
-		PartidoEuro2016.objects.create(usuario=instance, partido_id=53, local_id=17, visitante_id=21, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
-		PartidoEuro2016.objects.create(usuario=instance, partido_id=54, local_id=18, visitante_id=22, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
-		PartidoEuro2016.objects.create(usuario=instance, partido_id=55, local_id=25, visitante_id=29, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
-		PartidoEuro2016.objects.create(usuario=instance, partido_id=56, local_id=26, visitante_id=30, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		PartidoEuro2016.objects.create(usuario=instance, partido_id=37, local_id=1, visitante_id=5, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		PartidoEuro2016.objects.create(usuario=instance, partido_id=38, local_id=2, visitante_id=6, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		PartidoEuro2016.objects.create(usuario=instance, partido_id=39, local_id=9, visitante_id=13, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		PartidoEuro2016.objects.create(usuario=instance, partido_id=40, local_id=10, visitante_id=14, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		PartidoEuro2016.objects.create(usuario=instance, partido_id=41, local_id=17, visitante_id=21, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		PartidoEuro2016.objects.create(usuario=instance, partido_id=42, local_id=18, visitante_id=22, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		PartidoEuro2016.objects.create(usuario=instance, partido_id=43, local_id=25, visitante_id=29, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		PartidoEuro2016.objects.create(usuario=instance, partido_id=44, local_id=26, visitante_id=30, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
 		#TODO: Hay que completar el resto de partidos: fase de cuartos, semis, ect...
 
 		#Cuartos
-		PartidoEuro2016.objects.create(usuario=instance, partido_id=57, local_id=1, visitante_id=2, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
-		PartidoEuro2016.objects.create(usuario=instance, partido_id=58, local_id=9, visitante_id=10, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
-		PartidoEuro2016.objects.create(usuario=instance, partido_id=59, local_id=17, visitante_id=18, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
-		PartidoEuro2016.objects.create(usuario=instance, partido_id=60, local_id=25, visitante_id=26, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		PartidoEuro2016.objects.create(usuario=instance, partido_id=45, local_id=1, visitante_id=2, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		PartidoEuro2016.objects.create(usuario=instance, partido_id=46, local_id=9, visitante_id=10, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		PartidoEuro2016.objects.create(usuario=instance, partido_id=47, local_id=17, visitante_id=18, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		PartidoEuro2016.objects.create(usuario=instance, partido_id=48, local_id=25, visitante_id=26, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
 
 		#Semis
-		PartidoEuro2016.objects.create(usuario=instance, partido_id=61, local_id=1, visitante_id=9, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
-		PartidoEuro2016.objects.create(usuario=instance, partido_id=62, local_id=17, visitante_id=25, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
-
-		#Consolacion
-		PartidoEuro2016.objects.create(usuario=instance, partido_id=63, local_id=9, visitante_id=25, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		PartidoEuro2016.objects.create(usuario=instance, partido_id=49, local_id=1, visitante_id=9, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		PartidoEuro2016.objects.create(usuario=instance, partido_id=50, local_id=17, visitante_id=25, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))		
 
 		#Final
-		PartidoEuro2016.objects.create(usuario=instance, partido_id=64, local_id=1, visitante_id=17, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
+		PartidoEuro2016.objects.create(usuario=instance, partido_id=51, local_id=1, visitante_id=17, local=random.randrange(RESULTADO_DEFAULT), visitante=random.randrange(RESULTADO_DEFAULT))
 
         

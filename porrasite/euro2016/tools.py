@@ -287,7 +287,9 @@ def actualizar_grupo_3rd(usuario):
 		tercero = ordenados[2]		
 		teams_3rd.append(tercero)	
 
+	# Ordeno la tabla de equipos segun los criterios Uefa
 	teams_3rd_ordenados = sorted(teams_3rd, key=attrgetter('puntos', 'diff','favor'), reverse=True)
+	# A los equpos que pasan les pongo una marca para que se vea claro en la vista cuales son
 	teams_3rd_ordenados[0].pasa = 1
 	teams_3rd_ordenados[1].pasa = 1
 	teams_3rd_ordenados[2].pasa = 1
