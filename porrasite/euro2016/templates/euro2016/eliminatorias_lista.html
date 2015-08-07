@@ -4,8 +4,9 @@
 <h2><a href="">Listado de partidos de {{usuario}}</a></h2>
 <h4> Octavos </h4>
 {% for partido in partidos %}
-	{% if partido.partido_id >= 49 and partido.partido_id <= 56 %}
+	{% if partido.partido_id >= 37 and partido.partido_id <= 44 %}
 		<div>
+		{{partido.pk}}
 		{{partido.partido_id}}
 		{% for equipo in equipos %}
 			{% if equipo.equipo_id == partido.local_id %}
@@ -34,7 +35,7 @@
 <h4> Cuartos </h4>
 
 {% for partido in partidos %}
-	{% if partido.partido_id >= 57 and partido.partido_id <= 60 %}
+	{% if partido.partido_id >= 45 and partido.partido_id <= 48 %}
 		<div>
 		{{partido.partido_id}}
 		{% for equipo in equipos %}
@@ -65,7 +66,7 @@
 <h4> Semis </h4>
 
 {% for partido in partidos %}
-	{% if partido.partido_id >= 61 and partido.partido_id <= 62 %}
+	{% if partido.partido_id >= 49 and partido.partido_id <= 50 %}
 		<div>
 		{{partido.partido_id}}
 		{% for equipo in equipos %}
@@ -92,40 +93,11 @@
 	{% endif %}
 {% endfor %}
 
-<h4> Consolacion </h4>
-
-{% for partido in partidos %}
-	{% if partido.partido_id == 63 %}
-		<div>
-		{{partido.partido_id}}
-		{% for equipo in equipos %}
-			{% if equipo.equipo_id == partido.local_id %}
-				{{equipo.nombre}}
-			{% endif %}
-		{% endfor %}
-		{{partido.local}}
-		vs 
-		{{partido.visitante}}
-		{% for equipo in equipos %}
-			{% if equipo.equipo_id == partido.visitante_id %}
-				{{equipo.nombre}}
-			{% endif %}
-		{% endfor %}
-		{% if user.is_authenticated %}
-    		{% if user.pk == usuario.pk %}
-        		<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}"> 
-        		EDITAR
-        		</a>
-    		{% endif %}	
-    	{% endif %}
-    	</div>
-	{% endif %}
-{% endfor %}
 
 <h4> Final </h4>
 
 {% for partido in partidos %}
-	{% if partido.partido_id == 64 %}
+	{% if partido.partido_id == 51 %}
 		<div>
 		{{partido.partido_id}}
 		{% for equipo in equipos %}

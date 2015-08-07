@@ -90,65 +90,53 @@ def actualizar_grupo(pk_grupo_id, usuario):
 	teams_pasan.append([primero.equipo_id,primero.name])
 	teams_pasan.append([segundo.equipo_id,segundo.name])
 
-	grupo_id = grupo.id	
+	grupo_id = pk_grupo_id	
 	#Ahora recorro los grupos y segun el grupo marco los partidos como deben ser
-	#jugados en la fase de octavos
+	#jugados en la fase de octavos, ojo que no siempre hay que modificarlo ya que
+	# tambien hay que tener en cuenta la fase de 3rd
 	if (grupo_id == 1):				
-		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=49)
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=40)
 		partido_temp.local_id=primero.equipo_id
 		partido_temp.save()		
-		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=50)
-		partido_temp.visitante_id=segundo.equipo_id
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=37)
+		partido_temp.local_id=segundo.equipo_id
 		partido_temp.save()
 	elif (grupo_id == 2):		
-		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=50)
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=38)
 		partido_temp.local_id=primero.equipo_id
 		partido_temp.save()		
-		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=49)
-		partido_temp.visitante_id=segundo.equipo_id
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=44)
+		partido_temp.local_id=segundo.equipo_id
 		partido_temp.save()
 	elif (grupo_id == 3):		
-		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=51)
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=41)
 		partido_temp.local_id=primero.equipo_id
 		partido_temp.save()		
-		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=52)
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=37)
 		partido_temp.visitante_id=segundo.equipo_id
 		partido_temp.save()
 	elif (grupo_id == 4):		
-		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=52)
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=39)
 		partido_temp.local_id=primero.equipo_id
 		partido_temp.save()		
-		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=51)
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=43)
 		partido_temp.visitante_id=segundo.equipo_id
 		partido_temp.save()
 	elif (grupo_id == 5):		
-		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=53)
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=43)
 		partido_temp.local_id=primero.equipo_id
 		partido_temp.save()		
-		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=54)
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=42)
 		partido_temp.visitante_id=segundo.equipo_id
 		partido_temp.save()
 	elif (grupo_id == 6):		
-		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=54)
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=42)
 		partido_temp.local_id=primero.equipo_id
 		partido_temp.save()		
-		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=53)
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=44)
 		partido_temp.visitante_id=segundo.equipo_id
 		partido_temp.save()
-	elif (grupo_id == 7):		
-		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=55)
-		partido_temp.local_id=primero.equipo_id
-		partido_temp.save()		
-		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=56)
-		partido_temp.visitante_id=segundo.equipo_id
-		partido_temp.save()
-	elif (grupo_id == 8):		
-		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=56)
-		partido_temp.local_id=primero.equipo_id
-		partido_temp.save()		
-		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=55)
-		partido_temp.visitante_id=segundo.equipo_id
-		partido_temp.save()
+	
 	
 	#Ahora vamos a recorrer los octavos y actualizar los equipos que pasan a cuartos
 	#lo que hago es comparar simplemente los resultados de la fase de cuartos
@@ -156,14 +144,14 @@ def actualizar_grupo(pk_grupo_id, usuario):
 	partidos = PartidoEuro2016.objects.filter(usuario=usuario)
 	for partido in partidos:
 		if (partido.partido_id == 49):
-			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=57)
+			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=45)
 			if (partido.local > partido.visitante):				
 				partido_temp.local_id = partido.local_id
 			else:
 				partido_temp.local_id = partido.visitante_id
 			partido_temp.save()
 		if (partido.partido_id == 50):
-			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=57)
+			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=46	)
 			if (partido.local > partido.visitante):				
 				partido_temp.visitante_id = partido.local_id
 			else:
@@ -294,4 +282,9 @@ def actualizar_grupo_3rd(usuario):
 	teams_3rd_ordenados[1].pasa = 1
 	teams_3rd_ordenados[2].pasa = 1
 	teams_3rd_ordenados[3].pasa = 1
+
+	#Ahora tengo que montar un cristo de puta madre para calcular los enfrentamientos
+	
+
+	#
 	return teams_3rd_ordenados
