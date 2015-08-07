@@ -16,7 +16,7 @@ from .tools import *
 
 # Debug marca en principio:
 #	- En los templates si queremos mostrar las columnas con los ID de la mayoria de los elementos
-DEBUG = False
+DEBUG = True
 
 # Por ahora es nuestra pagina de inicio y muestra a todos los usuarios y sus puntos
 def rank_list(request):

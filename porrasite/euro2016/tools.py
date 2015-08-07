@@ -1,8 +1,14 @@
+from operator import itemgetter, attrgetter
+
 from .models import PartidoEuro2016, RankEuro2016, Grupo
 #BORRAR: he añadido los equipos del proyetcto anterios para nos escribirlos a mano
 # una vez tengamos los de verdad se agregaran en el panel admin
 from mundial2014.models import Equipo
 
+'''
+	Aunque podria utilizar un diccionario normal, esta clase me permite visualizar facilmente
+	el modelo de datos de equipos que quiero mandar a las vistas
+'''
 class CEquipo:
 	equipo_id = 0
 	puntos = 0
@@ -80,29 +86,17 @@ def actualizar_grupo(grupo_id, usuario):
 					team.contra += local_goles
 					team.diff = team.favor - team.contra
 
-	# Calculo de quien pasa de la fase de grupos basandonos en sus puntos y en caso de empate
-	# en los goles a favor y en contra
-	grupo_id = grupo.id	
-	#asigno de manera aleatorio el primero y el segundo para empezar a comprar
-	primero = teams[0]
-	segundo = teams[1]
-	temporal = teams[2]
-	for team in teams:
-		if (team.puntos > primero.puntos):
-			temporal = primero
-			primero = team
-			segundo = temporal
-		elif (team.puntos > segundo.puntos and team.equipo_id != primero.equipo_id):
-			segundo = team
-	ordenados = sorted(teams, key=lambda team: team.puntos, reverse=True)
-	for team in ordenados:
-		print(team.name)
-	#print("Segundo " + segundo.name)
-	teams_passan = []
-	teams_passan.append([primero.equipo_id,primero.name])
-	teams_passan.append([segundo.equipo_id,segundo.name])
-
+	# Para saber quien va primero vamos a utilizar la funcion sorted de Python lo que nos permite
+	# ordenar una lista por varios criterios de prioridad
+	ordenados = sorted(teams, key=attrgetter('puntos', 'diff','favor'), reverse=True)
 	
+	primero = ordenados[0]
+	segundo = ordenados[1]
+	teams_pasan = []
+	teams_pasan.append([primero.equipo_id,primero.name])
+	teams_pasan.append([segundo.equipo_id,segundo.name])
+
+	grupo_id = grupo.id	
 	#Ahora recorro los grupos y segun el grupo marco los partidos como deben ser
 	#jugados en la fase de octavos
 	if (grupo_id == 1):				
@@ -183,8 +177,8 @@ def actualizar_grupo(grupo_id, usuario):
 			partido_temp.save()
 
 	datos = []
-	datos.append(teams)
-	datos.append(teams_passan)
+	datos.append(ordenados)
+	datos.append(teams_pasan)
 
 	return datos
 
