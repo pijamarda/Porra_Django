@@ -1,0 +1,46 @@
+{% extends 'euro2016/base.html' %}
+
+{% block child %}
+	<h2>Terceros de grupo
+    </h2>
+    Pasan los 4 primeros
+    <table class="table-condensed table-striped">
+	    	<tr>
+	    		{% if debug %}
+	    			<th>Id</th>
+	    		{% endif %}
+	    		<th>Nombre</th>
+	    		<th>Flag</th>
+	    		<th>Gan</th>
+	    		<th>Emp</th>
+	    		<th>Per</th>
+	    		<th>Gfav</th>
+	    		<th>Gcon</th>
+	    		<th>Gdif</th>
+	    		<th><b>Puntos</b></th>
+	    		<th>Pasa</th>
+	    		
+	    	</tr>
+   {% for team in teams %}	    		
+		    	<tr>    
+		    		{% if debug %}		
+						<td> {{team.equipo_id}} </td>
+					{% endif %}
+					<td> {{team.name}} </td>	
+					<td> <center> <img src="/static/img/{{team.flag}}.png"> </center> </td>
+					<td> <center>{{team.ganados}} </center></td>
+					<td> <center>{{team.empatados}} </center></td>
+					<td> <center>{{team.perdidos}} </center></td>					
+					<td> <center>{{team.favor}} </center></td>
+					<td> <center>{{team.contra}} </center></td>
+					<td> <center>{{team.diff}} </center></td>
+					<td> <center><b>{{team.puntos}}</b> </center></td>
+					<td>
+						{% if team.pasa == 1 %}		
+							PASA
+						{% endif %}
+					</td>
+				</tr>				
+    		{% endfor %}
+    </table>
+{% endblock child %}
