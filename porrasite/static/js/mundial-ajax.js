@@ -63,10 +63,10 @@ $( document ).ready(function() {
 		
 			$(botonedit).animate(
 	            {"opacity": "0.15"},
-	            "slow")
+	            "fast")
                 .animate(
 	            {"opacity": "1"},
-	            "slow", function()
+	            "fast", function()
 	            {
 	            	$(this).html("Ok*");
 	            	var tr = '#tr_' + partidoid;
