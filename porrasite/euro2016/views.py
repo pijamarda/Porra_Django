@@ -188,6 +188,7 @@ def eliminatorias(request, pk_user, formato):
 	grupos_todos = Grupo.objects.all().order_by('grupo_id')
 	for gr in grupos_todos:
 		actualizar_grupo(gr.grupo_id, usuario)
+	actualizar_grupo_3rd(usuario)
 
 	template_to_render = 'euro2016/eliminatorias_lista.html'
 	if (formato == 'tabla'):

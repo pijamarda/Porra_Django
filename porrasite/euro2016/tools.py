@@ -19,6 +19,7 @@ class CEquipo:
 	contra = 0
 	diff = 0
 	pasa = 0
+	grupo = 0
 	name = "Spain"
 	flag = "es"
 
@@ -227,6 +228,7 @@ def actualizar_grupo_3rd(usuario):
 			team.equipo_id = e.equipo_id
 			team.name = e.name
 			team.flag = e.flag
+			team.grupo = grupo.grupo_id
 			teams.append(team)		
 
 		for partido in partidos_fase_grupos:		
@@ -283,8 +285,242 @@ def actualizar_grupo_3rd(usuario):
 	teams_3rd_ordenados[2].pasa = 1
 	teams_3rd_ordenados[3].pasa = 1
 
-	#Ahora tengo que montar un cristo de puta madre para calcular los enfrentamientos
-	
-
-	#
+	#Creo una nueva lista con solo los 4 equipos que pasan
+	teams_3rd_grupos = []
+	teams_3rd_grupos.append(teams_3rd_ordenados[0])
+	teams_3rd_grupos.append(teams_3rd_ordenados[1])
+	teams_3rd_grupos.append(teams_3rd_ordenados[2])
+	teams_3rd_grupos.append(teams_3rd_ordenados[3])
+	#Ahora voy a ordenar los equipos segun su grupo_id
+	teams_3rd_grupos = sorted(teams_3rd_grupos, key=attrgetter('grupo'))
+	for t in teams_3rd_grupos:
+		print(t.grupo)
+	# Ahora utilizando la guia de la Wikipedia puedo realizar los emparejamientos correctamente
+	# Utilizo un nombre de variable muy pequeño para que no ocupe tanto
+	t3g = teams_3rd_grupos
+	# Si pasan los equipos de los grupos ABCD
+	if (t3g[0].grupo == 1 and t3g[1].grupo == 2 and t3g[2].grupo == 3 and t3g[3].grupo == 4):
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=40)		
+		partido_temp.visitante_id=t3g[2].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=38)		
+		partido_temp.visitante_id=t3g[3].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=41)		
+		partido_temp.visitante_id=t3g[0].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=39)		
+		partido_temp.visitante_id=t3g[1].equipo_id
+		partido_temp.save()
+		print("pasan: ABCD")
+	# Si pasan los equipos de los grupos ABCE
+	if (t3g[0].grupo == 1 and t3g[1].grupo == 2 and t3g[2].grupo == 3 and t3g[3].grupo == 5):
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=40)		
+		partido_temp.visitante_id=t3g[2].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=38)		
+		partido_temp.visitante_id=t3g[0].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=41)		
+		partido_temp.visitante_id=t3g[1].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=39)		
+		partido_temp.visitante_id=t3g[3].equipo_id
+		partido_temp.save()
+		print("pasan: ABCE")
+	# Si pasan los equipos de los grupos ABCF
+	if (t3g[0].grupo == 1 and t3g[1].grupo == 2 and t3g[2].grupo == 3 and t3g[3].grupo == 6):
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=40)		
+		partido_temp.visitante_id=t3g[2].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=38)		
+		partido_temp.visitante_id=t3g[0].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=41)		
+		partido_temp.visitante_id=t3g[1].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=39)		
+		partido_temp.visitante_id=t3g[3].equipo_id
+		partido_temp.save()
+		print("pasan: ABCF")
+	# Si pasan los equipos de los grupos ABDE
+	if (t3g[0].grupo == 1 and t3g[1].grupo == 2 and t3g[2].grupo == 4 and t3g[3].grupo == 5):
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=40)		
+		partido_temp.visitante_id=t3g[2].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=38)		
+		partido_temp.visitante_id=t3g[0].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=41)		
+		partido_temp.visitante_id=t3g[1].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=39)		
+		partido_temp.visitante_id=t3g[3].equipo_id
+		partido_temp.save()
+		print("pasan: ABDE")
+	# Si pasan los equipos de los grupos ABDF
+	if (t3g[0].grupo == 1 and t3g[1].grupo == 2 and t3g[2].grupo == 4 and t3g[3].grupo == 6):
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=40)		
+		partido_temp.visitante_id=t3g[2].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=38)		
+		partido_temp.visitante_id=t3g[0].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=41)		
+		partido_temp.visitante_id=t3g[1].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=39)		
+		partido_temp.visitante_id=t3g[3].equipo_id
+		partido_temp.save()
+		print("pasan: ABDF")
+	# Si pasan los equipos de los grupos ABEF
+	if (t3g[0].grupo == 1 and t3g[1].grupo == 2 and t3g[2].grupo == 5 and t3g[3].grupo == 6):
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=40)		
+		partido_temp.visitante_id=t3g[2].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=38)		
+		partido_temp.visitante_id=t3g[0].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=41)		
+		partido_temp.visitante_id=t3g[1].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=39)		
+		partido_temp.visitante_id=t3g[3].equipo_id
+		partido_temp.save()
+		print("pasan: ABEF")
+	# Si pasan los equipos de los grupos ACDE
+	if (t3g[0].grupo == 1 and t3g[1].grupo == 3 and t3g[2].grupo == 4 and t3g[3].grupo == 5):
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=40)		
+		partido_temp.visitante_id=t3g[1].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=38)		
+		partido_temp.visitante_id=t3g[2].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=41)		
+		partido_temp.visitante_id=t3g[0].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=39)		
+		partido_temp.visitante_id=t3g[3].equipo_id
+		partido_temp.save()
+		print("pasan: ACDE")
+	# Si pasan los equipos de los grupos ACDF
+	if (t3g[0].grupo == 1 and t3g[1].grupo == 3 and t3g[2].grupo == 4 and t3g[3].grupo == 6):
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=40)		
+		partido_temp.visitante_id=t3g[1].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=38)		
+		partido_temp.visitante_id=t3g[2].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=41)		
+		partido_temp.visitante_id=t3g[0].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=39)		
+		partido_temp.visitante_id=t3g[3].equipo_id
+		partido_temp.save()
+		print("pasan: ACDF")
+	# Si pasan los equipos de los grupos ACEF
+	if (t3g[0].grupo == 1 and t3g[1].grupo == 3 and t3g[2].grupo == 5 and t3g[3].grupo == 6):
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=40)		
+		partido_temp.visitante_id=t3g[1].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=38)		
+		partido_temp.visitante_id=t3g[0].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=41)		
+		partido_temp.visitante_id=t3g[3].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=39)		
+		partido_temp.visitante_id=t3g[2].equipo_id
+		partido_temp.save()
+		print("pasan: ACEF")
+	# Si pasan los equipos de los grupos ADEF
+	if (t3g[0].grupo == 1 and t3g[1].grupo == 4 and t3g[2].grupo == 5 and t3g[3].grupo == 6):
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=40)		
+		partido_temp.visitante_id=t3g[1].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=38)		
+		partido_temp.visitante_id=t3g[0].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=41)		
+		partido_temp.visitante_id=t3g[3].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=39)		
+		partido_temp.visitante_id=t3g[2].equipo_id
+		partido_temp.save()
+		print("pasan: ADEF")
+	# Si pasan los equipos de los grupos BCDE
+	if (t3g[0].grupo == 2 and t3g[1].grupo == 3 and t3g[2].grupo == 4 and t3g[3].grupo == 5):
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=40)		
+		partido_temp.visitante_id=t3g[1].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=38)		
+		partido_temp.visitante_id=t3g[2].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=41)		
+		partido_temp.visitante_id=t3g[0].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=39)		
+		partido_temp.visitante_id=t3g[3].equipo_id
+		partido_temp.save()
+		print("pasan: BCDE")
+	# Si pasan los equipos de los grupos BCDF
+	if (t3g[0].grupo == 2 and t3g[1].grupo == 3 and t3g[2].grupo == 4 and t3g[3].grupo == 6):
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=40)		
+		partido_temp.visitante_id=t3g[1].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=38)		
+		partido_temp.visitante_id=t3g[2].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=41)		
+		partido_temp.visitante_id=t3g[0].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=39)		
+		partido_temp.visitante_id=t3g[3].equipo_id
+		partido_temp.save()
+		print("pasan: BCDF")
+	# Si pasan los equipos de los grupos BCEF
+	if (t3g[0].grupo == 2 and t3g[1].grupo == 3 and t3g[2].grupo == 5 and t3g[3].grupo == 6):
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=40)		
+		partido_temp.visitante_id=t3g[2].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=38)		
+		partido_temp.visitante_id=t3g[1].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=41)		
+		partido_temp.visitante_id=t3g[0].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=39)		
+		partido_temp.visitante_id=t3g[3].equipo_id
+		partido_temp.save()
+		print("pasan: BCEF")
+	# Si pasan los equipos de los grupos BDEF
+	if (t3g[0].grupo == 2 and t3g[1].grupo == 4 and t3g[2].grupo == 5 and t3g[3].grupo == 6):
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=40)		
+		partido_temp.visitante_id=t3g[2].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=38)		
+		partido_temp.visitante_id=t3g[1].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=41)		
+		partido_temp.visitante_id=t3g[0].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=39)		
+		partido_temp.visitante_id=t3g[3].equipo_id
+		partido_temp.save()
+		print("pasan: BDEF")
+	# Si pasan los equipos de los grupos CDEF
+	if (t3g[0].grupo == 3 and t3g[1].grupo == 4 and t3g[2].grupo == 5 and t3g[3].grupo == 6):
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=40)		
+		partido_temp.visitante_id=t3g[0].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=38)		
+		partido_temp.visitante_id=t3g[1].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=41)		
+		partido_temp.visitante_id=t3g[3].equipo_id
+		partido_temp.save()
+		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=39)		
+		partido_temp.visitante_id=t3g[2].equipo_id
+		partido_temp.save()
+		print("pasan: CDEF")
 	return teams_3rd_ordenados

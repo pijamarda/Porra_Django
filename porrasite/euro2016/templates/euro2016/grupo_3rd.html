@@ -11,6 +11,7 @@
 	    		{% endif %}
 	    		<th>Nombre</th>
 	    		<th>Flag</th>
+	    		<th>Gr</th>
 	    		<th>Gan</th>
 	    		<th>Emp</th>
 	    		<th>Per</th>
@@ -28,6 +29,7 @@
 					{% endif %}
 					<td> {{team.name}} </td>	
 					<td> <center> <img src="/static/img/{{team.flag}}.png"> </center> </td>
+					<td> <center>{{team.grupo}} </center></td>
 					<td> <center>{{team.ganados}} </center></td>
 					<td> <center>{{team.empatados}} </center></td>
 					<td> <center>{{team.perdidos}} </center></td>					
