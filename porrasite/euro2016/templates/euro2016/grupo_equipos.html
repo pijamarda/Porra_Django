@@ -64,12 +64,13 @@
 	    		<th>Goles L</th>
 	    		<th>Goles V</th>
 	    		<th>Visitante</th>
+	    		<th></th>
 	    		
     		</tr>
 	    	{% for partido in partidos %}    		
 	    	
 	    		{% if partido.pk in partidos_fase_grupos %}
-			    	<tr>
+			    	<tr id="tr_{{partido.pk}}">
 			    		{% if debug %}
 					    	<td>
 					    		<a href="{% url 'euro2016.views.partido_detalle' pk_user=usuario.pk pk=partido.pk %}"> 
@@ -111,16 +112,22 @@
 				        <td>
 				        	{% if user.is_authenticated %}
 				        		{% if user.pk == usuario.pk %}
-					        		<button id="edit" class="euro2016_edit_ajax" 
-					        			data-partidoid="{{partido.id}}" 					        			 
+					        		<button id="b_edit_{{partido.id}}" class="euro2016_edit_ajax" 
+					        			data-partidoid="{{partido.id}}"
+					        			data-complete-text="finished!"				        			 
 					        			class="btn btn-primary" type="button">
 				                    	Ok
 				                    </button>
 				        		{% endif %}	
 				        	{% endif %}
 				        </td>
+				        <td id="td_actualizar_{{partido.id}}" hidden>
+				        	<button type="button" class="b_refresh">
+								  <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+							</button>				        	
+				        </td>
 				        {% if debug %}
-				        <td>
+				        	<td>
 					        	{% if user.is_authenticated %}
 					        		{% if user.pk == usuario.pk %}
 						        		<a href="{% url 'partido_edit_group' pk_user=usuario.pk pk=partido.pk %}"> 

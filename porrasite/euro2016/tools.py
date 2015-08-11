@@ -524,3 +524,7 @@ def actualizar_grupo_3rd(usuario):
 		partido_temp.save()
 		print("pasan: CDEF")
 	return teams_3rd_ordenados
+
+# Funcion que actualiza los equipos que pasan a cuartos
+#def actualizar_cuartos(usuario):
+	

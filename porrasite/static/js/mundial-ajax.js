@@ -54,22 +54,34 @@ $( document ).ready(function() {
 		$.get('/euro2016/edita_partido_ajax/', {partido_id: partidoid,
 												local: local,
 												visitante: visitante,
-												});
-		/*, function(data)
-		{
+												}
+		//Voy a intentar que al usuario le aparezca un feedback de las modificaciones
+		, function()
+		{							
+			var botonedit = '#b_edit_' + partidoid;
 			
-				lo que hacemos aqui es actualizar los propios elementos input con los nuevos valores
-				aunque yo creo que no haria falta...
-			
-			var etiqueta_ida = '#gol_local_' + partidoid;
-			var etiqueta_vuelta = '#gol_visitante_' + partidoid;
-			//console.log(etiqueta);
-			//console.log(data.ida);
-			//console.log(data.vuelta);
-			//#console.log(data[1]);
-			$(etiqueta_ida).html(local);
-			$(etiqueta_vuelta).html(visitante);		
+		
+			$(botonedit).animate(
+	            {"opacity": "0.15"},
+	            "slow")
+                .animate(
+	            {"opacity": "1"},
+	            "slow", function()
+	            {
+	            	$(this).html("Ok*");
+	            	var tr = '#tr_' + partidoid;
+	            	$(tr).css("background-color", "lightblue");
+	            	var td = '#td_actualizar_' + partidoid;
+	            	$(td).show();          	
+	            	
+	            });           
+
 		});
-		*/
 	});
+
+	$(".b_refresh").click(function() {
+		console.log("refresco");
+        location.reload();
+	});
+
 });
