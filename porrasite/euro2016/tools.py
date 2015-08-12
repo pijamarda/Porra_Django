@@ -566,8 +566,9 @@ def actualizar_eliminatorias(usuario):
 			else:
 				partido_temp.visitante_id = partido.visitante_id
 			partido_temp.save()
+	for partido in partidos:
 		#Recorro la fase de cuartos para ver quienes pasan a semis
-		elif (partido.partido_id == 45):
+		if (partido.partido_id == 45):
 			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=49)
 			if (partido.local > partido.visitante):				
 				partido_temp.local_id = partido.local_id
@@ -599,8 +600,9 @@ def actualizar_eliminatorias(usuario):
 			else:
 				partido_temp.visitante_id = partido.visitante_id
 			partido_temp.save()
+	for partido in partidos:
 		#Recorro la fase de semis para ver quienes pasan a la final
-		elif (partido.partido_id == 49):
+		if (partido.partido_id == 49):
 			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=51)
 			if (partido.local > partido.visitante):				
 				partido_temp.local_id = partido.local_id				
@@ -615,10 +617,3 @@ def actualizar_eliminatorias(usuario):
 				partido_temp.visitante_id = partido.visitante_id
 			partido_temp.save()
 		#FINAL!
-		elif (partido.partido_id == 51):
-			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=51)
-			if (partido.local > partido.visitante):				
-				partido_temp.local_id = partido.local_id				
-			else:
-				partido_temp.local_id = partido.visitante_id
-			partido_temp.save()

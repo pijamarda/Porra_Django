@@ -46,3 +46,8 @@ h1 a {
 	text-align: center;
 	background-color: green;
 }
+
+.braket .resultado .input{
+    width: 25px;
+    text-align: center;
+}

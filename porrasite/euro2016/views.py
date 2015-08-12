@@ -1,3 +1,5 @@
+import json
+
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, get_object_or_404, render_to_response, redirect
 from django.contrib.auth.models import User
@@ -173,9 +175,29 @@ def edita_partido_ajax(request):
 			partido.local = local
 			partido.visitante = visitante
 			partido.save()
-			response = 'ok'			
+			response = 'ok'	
 
 	return HttpResponse(response)
+
+'''
+	Esta funcion devuelve todos los id de los partidos de un usuario
+'''
+def list_partido_ajax(request):
+	
+	usuario = None
+	# Primero nos traemos desde el GET el usuario
+	if request.method == 'GET':		
+		usuario = request.GET['usuario']	
+	if usuario:
+		# Si existe el partido entonces nos traemos todos los partidos del usuario
+		partidos = PartidoEuro2016.objects.filter(usuario = usuario)
+		
+		partidos_json = {}
+		for partido in partidos:
+			if (partido.partido_id >=37):
+				partidos_json[partido.partido_id] = partido.id		
+		response = json.dumps(partidos_json)
+	return HttpResponse(response, content_type="application/json")
 
 def eliminatorias(request, pk_user, formato):	
 	

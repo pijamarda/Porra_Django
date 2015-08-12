@@ -50,8 +50,8 @@ $( document ).ready(function() {
 				- El id del partido
 				- Los nuevos goles del local y del visitante
 		*/
-		console.log("local" + local);
-		console.log("visitante" + visitante);
+		console.log("local " + local);
+		console.log("visitante " + visitante);
 
 		$.get('/euro2016/edita_partido_ajax/', {partido_id: partidoid,
 												local: local,
@@ -80,6 +80,48 @@ $( document ).ready(function() {
 	        */
 
 		});
+	});
+
+	/*
+		Voy a intentar que una funcion me actualice todo el cuadro en formato tabla
+	*/
+	$('.list_partido_ajax').click(function()
+	{
+		console.log("pulso listado");
+		//me traigo el usuario
+		usuario = $(this).attr("data-usuario");
+		console.log("me traigo el user id " + usuario);
+		$.getJSON('/euro2016/list_partido_ajax/', {usuario: usuario}
+		, function(data)
+		{							
+			console.log("me traigo los datos de list");
+			//console.log(data);
+			for (var key in data)
+			{
+				if (data.hasOwnProperty(key))
+				{
+					
+					var partidoid;
+					var local;
+					var visitante;
+					partidoid = data[key]
+					id_local = '#gol_local_' + partidoid;
+					id_visitante = '#gol_visitante_' + partidoid;
+					local = $(id_local).val();
+					visitante = $(id_visitante).val();
+					
+					$.get('/euro2016/edita_partido_ajax/', {partido_id: partidoid,
+												local: local,
+												visitante: visitante,
+					});
+					
+					console.log(partidoid+" "+local+" "+visitante);
+				}				
+			}
+			console.log("terminoy recargo");
+			//location.reload();
+		});
+		
 	});
 
 	$(".b_refresh").click(function() {
