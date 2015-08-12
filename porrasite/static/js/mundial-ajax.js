@@ -50,6 +50,8 @@ $( document ).ready(function() {
 				- El id del partido
 				- Los nuevos goles del local y del visitante
 		*/
+		console.log("local" + local);
+		console.log("visitante" + visitante);
 
 		$.get('/euro2016/edita_partido_ajax/', {partido_id: partidoid,
 												local: local,
@@ -59,8 +61,8 @@ $( document ).ready(function() {
 		, function()
 		{							
 			var botonedit = '#b_edit_' + partidoid;
-			
-		
+			//location.reload();
+			/*
 			$(botonedit).animate(
 	            {"opacity": "0.15"},
 	            "fast")
@@ -72,9 +74,10 @@ $( document ).ready(function() {
 	            	var tr = '#tr_' + partidoid;
 	            	$(tr).css("background-color", "lightblue");
 	            	var td = '#td_actualizar_' + partidoid;
-	            	$(td).show();          	
-	            	
-	            });           
+	            	$(td).show();
+	            	location.reload();
+	            });
+	        */
 
 		});
 	});

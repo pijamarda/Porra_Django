@@ -13,9 +13,9 @@
 				{{equipo.nombre}}
 			{% endif %}
 		{% endfor %}
-		{{partido.local}}
+		<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
 		vs 
-		{{partido.visitante}}
+		<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
 		{% for equipo in equipos %}
 			{% if equipo.equipo_id == partido.visitante_id %}
 				{{equipo.nombre}}
@@ -23,6 +23,12 @@
 		{% endfor %}
 		{% if user.is_authenticated %}
     		{% if user.pk == usuario.pk %}
+    			<button id="b_edit_{{partido.id}}" class="euro2016_edit_ajax" 
+					        			data-partidoid="{{partido.id}}"
+					        			data-complete-text="finished!"				        			 
+					        			class="btn btn-primary" type="button">
+				                    	Ok
+				</button>
         		<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}"> 
         		EDITAR
         		</a>
@@ -37,15 +43,16 @@
 {% for partido in partidos %}
 	{% if partido.partido_id >= 45 and partido.partido_id <= 48 %}
 		<div>
+		{{partido.pk}}
 		{{partido.partido_id}}
 		{% for equipo in equipos %}
 			{% if equipo.equipo_id == partido.local_id %}
 				{{equipo.nombre}}
 			{% endif %}
 		{% endfor %}
-		{{partido.local}}
+		<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
 		vs 
-		{{partido.visitante}}
+		<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
 		{% for equipo in equipos %}
 			{% if equipo.equipo_id == partido.visitante_id %}
 				{{equipo.nombre}}
@@ -53,6 +60,12 @@
 		{% endfor %}
 		{% if user.is_authenticated %}
     		{% if user.pk == usuario.pk %}
+    			<button id="b_edit_{{partido.id}}" class="euro2016_edit_ajax" 
+					        			data-partidoid="{{partido.id}}"
+					        			data-complete-text="finished!"				        			 
+					        			class="btn btn-primary" type="button">
+				                    	Ok
+				</button>
         		<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}"> 
         		EDITAR
         		</a>
@@ -68,15 +81,18 @@
 {% for partido in partidos %}
 	{% if partido.partido_id >= 49 and partido.partido_id <= 50 %}
 		<div>
+		{{partido.pk}}
 		{{partido.partido_id}}
 		{% for equipo in equipos %}
 			{% if equipo.equipo_id == partido.local_id %}
 				{{equipo.nombre}}
 			{% endif %}
 		{% endfor %}
-		{{partido.local}}
+		{{partido.local_id}}
+		<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
 		vs 
-		{{partido.visitante}}
+		<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
+		{{partido.visitante_id}}
 		{% for equipo in equipos %}
 			{% if equipo.equipo_id == partido.visitante_id %}
 				{{equipo.nombre}}
@@ -84,6 +100,12 @@
 		{% endfor %}
 		{% if user.is_authenticated %}
     		{% if user.pk == usuario.pk %}
+    			<button id="b_edit_{{partido.id}}" class="euro2016_edit_ajax" 
+					        			data-partidoid="{{partido.id}}"
+					        			data-complete-text="finished!"				        			 
+					        			class="btn btn-primary" type="button">
+				                    	Ok
+				</button>
         		<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}"> 
         		EDITAR
         		</a>
@@ -99,15 +121,16 @@
 {% for partido in partidos %}
 	{% if partido.partido_id == 51 %}
 		<div>
+		{{partido.pk}}
 		{{partido.partido_id}}
 		{% for equipo in equipos %}
 			{% if equipo.equipo_id == partido.local_id %}
 				{{equipo.nombre}}
 			{% endif %}
 		{% endfor %}
-		{{partido.local}}
+		<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
 		vs 
-		{{partido.visitante}}
+		<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
 		{% for equipo in equipos %}
 			{% if equipo.equipo_id == partido.visitante_id %}
 				{{equipo.nombre}}
@@ -115,6 +138,12 @@
 		{% endfor %}
 		{% if user.is_authenticated %}
     		{% if user.pk == usuario.pk %}
+    			<button id="b_edit_{{partido.id}}" class="euro2016_edit_ajax" 
+					        			data-partidoid="{{partido.id}}"
+					        			data-complete-text="finished!"				        			 
+					        			class="btn btn-primary" type="button">
+				                    	Ok
+				</button>
         		<a href="{% url 'partido_edit_octavos' pk_user=usuario.pk pk=partido.pk %}"> 
         		EDITAR
         		</a>

@@ -136,28 +136,7 @@ def actualizar_grupo(pk_grupo_id, usuario):
 		partido_temp.save()		
 		partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=44)
 		partido_temp.visitante_id=segundo.equipo_id
-		partido_temp.save()
-	
-	
-	#Ahora vamos a recorrer los octavos y actualizar los equipos que pasan a cuartos
-	#lo que hago es comparar simplemente los resultados de la fase de cuartos
-
-	partidos = PartidoEuro2016.objects.filter(usuario=usuario)
-	for partido in partidos:
-		if (partido.partido_id == 49):
-			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=45)
-			if (partido.local > partido.visitante):				
-				partido_temp.local_id = partido.local_id
-			else:
-				partido_temp.local_id = partido.visitante_id
-			partido_temp.save()
-		if (partido.partido_id == 50):
-			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=46	)
-			if (partido.local > partido.visitante):				
-				partido_temp.visitante_id = partido.local_id
-			else:
-				partido_temp.visitante_id = partido.visitante_id
-			partido_temp.save()
+		partido_temp.save()	
 
 	datos = []
 	datos.append(ordenados)
@@ -525,6 +504,121 @@ def actualizar_grupo_3rd(usuario):
 		print("pasan: CDEF")
 	return teams_3rd_ordenados
 
-# Funcion que actualiza los equipos que pasan a cuartos
-#def actualizar_cuartos(usuario):
-	
+# Funcion que actualiza todos los partidos de las elminatorias
+def actualizar_eliminatorias(usuario):
+
+	#Primero recorro la fase de octavos para ver quienes pasan a cuartos
+	partidos = PartidoEuro2016.objects.filter(usuario=usuario)
+	for partido in partidos:
+		if (partido.partido_id == 37):
+			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=45)
+			if (partido.local > partido.visitante):				
+				partido_temp.local_id = partido.local_id				
+			else:
+				partido_temp.local_id = partido.visitante_id
+			partido_temp.save()
+		elif (partido.partido_id == 38):
+			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=46)
+			if (partido.local > partido.visitante):				
+				partido_temp.local_id = partido.local_id				
+			else:
+				partido_temp.local_id = partido.visitante_id
+			partido_temp.save()
+		elif (partido.partido_id == 39):
+			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=45)
+			if (partido.local > partido.visitante):				
+				partido_temp.visitante_id = partido.local_id				
+			else:
+				partido_temp.visitante_id = partido.visitante_id
+			partido_temp.save()
+		elif (partido.partido_id == 40):
+			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=48)
+			if (partido.local > partido.visitante):				
+				partido_temp.local_id = partido.local_id				
+			else:
+				partido_temp.local_id = partido.visitante_id
+			partido_temp.save()
+		elif (partido.partido_id == 41):
+			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=47)
+			if (partido.local > partido.visitante):				
+				partido_temp.local_id = partido.local_id				
+			else:
+				partido_temp.local_id = partido.visitante_id
+			partido_temp.save()
+		elif (partido.partido_id == 42):
+			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=46)
+			if (partido.local > partido.visitante):				
+				partido_temp.visitante_id = partido.local_id				
+			else:
+				partido_temp.visitante_id = partido.visitante_id
+			partido_temp.save()
+		elif (partido.partido_id == 43):
+			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=47)
+			if (partido.local > partido.visitante):				
+				partido_temp.visitante_id = partido.local_id				
+			else:
+				partido_temp.visitante_id = partido.visitante_id
+			partido_temp.save()
+		elif (partido.partido_id == 44):
+			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=48)
+			if (partido.local > partido.visitante):				
+				partido_temp.visitante_id = partido.local_id				
+			else:
+				partido_temp.visitante_id = partido.visitante_id
+			partido_temp.save()
+		#Recorro la fase de cuartos para ver quienes pasan a semis
+		elif (partido.partido_id == 45):
+			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=49)
+			if (partido.local > partido.visitante):				
+				partido_temp.local_id = partido.local_id
+				print("id 45 gana local " + str(partido.local_id))
+			else:
+				partido_temp.local_id = partido.visitante_id
+				print("id 45 gana visitante " + str(partido.visitante_id))
+			partido_temp.save()
+		elif (partido.partido_id == 46):
+			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=49)
+			if (partido.local > partido.visitante):				
+				partido_temp.visitante_id = partido.local_id
+				print("id 46 gana local " + str(partido.local_id))			
+			else:
+				partido_temp.visitante_id = partido.visitante_id
+				print("id 46 gana visitante " + str(partido.visitante_id))
+			partido_temp.save()
+		elif (partido.partido_id == 47):
+			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=50)
+			if (partido.local > partido.visitante):				
+				partido_temp.local_id = partido.local_id				
+			else:
+				partido_temp.local_id = partido.visitante_id
+			partido_temp.save()
+		elif (partido.partido_id == 48):
+			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=50)
+			if (partido.local > partido.visitante):				
+				partido_temp.visitante_id = partido.local_id				
+			else:
+				partido_temp.visitante_id = partido.visitante_id
+			partido_temp.save()
+		#Recorro la fase de semis para ver quienes pasan a la final
+		elif (partido.partido_id == 49):
+			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=51)
+			if (partido.local > partido.visitante):				
+				partido_temp.local_id = partido.local_id				
+			else:
+				partido_temp.local_id = partido.visitante_id
+			partido_temp.save()
+		elif (partido.partido_id == 50):
+			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=51)
+			if (partido.local > partido.visitante):				
+				partido_temp.visitante_id = partido.local_id				
+			else:
+				partido_temp.visitante_id = partido.visitante_id
+			partido_temp.save()
+		#FINAL!
+		elif (partido.partido_id == 51):
+			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=51)
+			if (partido.local > partido.visitante):				
+				partido_temp.local_id = partido.local_id				
+			else:
+				partido_temp.local_id = partido.visitante_id
+			partido_temp.save()
