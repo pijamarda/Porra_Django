@@ -571,20 +571,16 @@ def actualizar_eliminatorias(usuario):
 		if (partido.partido_id == 45):
 			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=49)
 			if (partido.local > partido.visitante):				
-				partido_temp.local_id = partido.local_id
-				print("id 45 gana local " + str(partido.local_id))
+				partido_temp.local_id = partido.local_id				
 			else:
-				partido_temp.local_id = partido.visitante_id
-				print("id 45 gana visitante " + str(partido.visitante_id))
+				partido_temp.local_id = partido.visitante_id				
 			partido_temp.save()
 		elif (partido.partido_id == 46):
 			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=49)
 			if (partido.local > partido.visitante):				
-				partido_temp.visitante_id = partido.local_id
-				print("id 46 gana local " + str(partido.local_id))			
+				partido_temp.visitante_id = partido.local_id				
 			else:
-				partido_temp.visitante_id = partido.visitante_id
-				print("id 46 gana visitante " + str(partido.visitante_id))
+				partido_temp.visitante_id = partido.visitante_id				
 			partido_temp.save()
 		elif (partido.partido_id == 47):
 			partido_temp = PartidoEuro2016.objects.get(usuario=usuario, partido_id=50)

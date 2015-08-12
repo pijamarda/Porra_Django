@@ -119,7 +119,7 @@ $( document ).ready(function() {
 				}				
 			}
 			console.log("terminoy recargo");
-			//location.reload();
+			location.reload();
 		});
 		
 	});
