@@ -1,3 +1,4 @@
+
 .page-header {
     background-color: #ff9400;
     margin-top: 0;
@@ -8,23 +9,25 @@
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
     color: #ffffff;
     font-size: 22pt;    
-    text-decoration: none;    
+    text-decoration: none;
     
 }
 
 .top-menu, .top-menu:hover, .top-menu:visited, .top-menu a:visited{
 
     font-size: 16pt;
-    
-    margin-right: 20px;    
+    float: right;
+    margin-right: 20px;   
+    margin-top: 20px;
+    color: #ffffff;
 }
 
 h1 a {
     color: #FCA205;
 }
 
-.content {
-    padding-left: 15px;
+.content, .nav{
+    padding-left: 25px;
 }
 
 .braket th{

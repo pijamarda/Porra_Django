@@ -20,7 +20,11 @@ from .tools import *
 #	- En los templates si queremos mostrar las columnas con los ID de la mayoria de los elementos
 DEBUG = True
 
-# Por ahora es nuestra pagina de inicio y muestra a todos los usuarios y sus puntos
+# pagina de inicio de la Eurocopa 2016
+def index(request):
+	return render(request, 'euro2016/index.html')
+
+# Muestra a todos los usuarios y sus puntos
 def rank_list(request):
 	ranking = RankEuro2016.objects.all().order_by('puntos').reverse()
 	return render(request, 'euro2016/rank_list.html', {'ranking': ranking})
