@@ -11,7 +11,7 @@ from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from .models import PartidoEuro2016, RankEuro2016
 #BORRAR: he añadido los equipos y grupos del proyetcto anterios para nos escribirlos a mano
 # una vez tengamos los de verdad se agregaran en el panel admin
-from mundial2014.models import Equipo, Grupo
+from euro2016.models import Equipo, Grupo
 
 #
 from .tools import *
