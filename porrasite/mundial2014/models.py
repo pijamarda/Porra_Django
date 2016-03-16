@@ -32,7 +32,7 @@ class Partido(models.Model):
 		return str(self.partido_id)
 
 class Rank(models.Model):
-	usuario = models.ForeignKey(User, unique=True)
+	usuario = models.OneToOneField(User)
 	puntos = models.IntegerField(default=0)
 	a1 = models.IntegerField(default=0)
 	a2 = models.IntegerField(default=0)
