@@ -88,13 +88,27 @@
 				        	 {% endfor %}
 
 				        </td>
-				        <td> <center> 					        
-					        <input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
-				        </center></td>
-
-				        <td><center> 				        	
-				        	<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
-				        </center></td>
+                        
+				        <td>
+                            <center> 					        
+					            <input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" readonly/>
+                                {% if user.is_authenticated %}
+				        		{% if user.pk == usuario.pk %}
+                                    <input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}"/>
+                                {% endif %}	
+				        	    {% endif %}
+				            </center>
+                        </td>
+				        <td>
+                            <center>		        	
+				        	    <input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" readonly/>
+                                {% if user.is_authenticated %}
+				        		{% if user.pk == usuario.pk %}
+                                    <input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
+                                {% endif %}	
+				        	    {% endif %}
+				            </center>
+                        </td>
 				        
 				        <td>
 				        	{% for equipo in equipos %}
