@@ -4,9 +4,9 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = patterns('',
-	url(r'^$', views.rank_list),
+	url(r'^$', views.index),
 	
-    #url(r'^partido/', views.partido_list),
+    url(r'^rank/', views.rank_list),
     url(r'^user/(?P<pk>[0-9]+)/$', views.partido_list),
     #url(r'^user/(?P<pk>[0-9]+)/edit/$', views.partido_edit),
     url(r'^user/(?P<pk_user>[0-9]+)/partido/(?P<pk>[0-9]+)/$', views.partido_detalle),

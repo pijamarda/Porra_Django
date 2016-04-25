@@ -3,7 +3,7 @@ from operator import itemgetter, attrgetter
 from .models import PartidoEuro2016, RankEuro2016
 #BORRAR: he añadido los equipos y grupos del proyecto anterior para nos escribirlos a mano
 # una vez tengamos los de verdad se agregaran en el panel admin
-from mundial2014.models import Equipo, Grupo
+from euro2016.models import Equipo, Grupo
 
 '''
 	Aunque podria utilizar un diccionario normal, esta clase me permite visualizar facilmente
@@ -38,7 +38,7 @@ def actualizar_grupo(pk_grupo_id, usuario):
 	for e in equipos_grupo:
 		team = CEquipo()
 		team.equipo_id = e.equipo_id
-		team.name = e.name
+		team.name = e.nombre
 		team.flag = e.flag
 		teams.append(team)		
 
@@ -205,7 +205,7 @@ def actualizar_grupo_3rd(usuario):
 		for e in equipos_grupo:
 			team = CEquipo()
 			team.equipo_id = e.equipo_id
-			team.name = e.name
+			team.name = e.nombre
 			team.flag = e.flag
 			team.grupo = grupo.grupo_id
 			teams.append(team)		

@@ -3,34 +3,39 @@
 <html>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		
+        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/readable/bootstrap.min.css" rel="stylesheet">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="{% static "js/mundial-ajax.js" %}"></script>
 		<link rel="stylesheet" href="{% static 'css/mundial.css' %}">
 
-        <title>Mundial 2014</title>
+        <title>Eurocopa 2016</title>
     </head>
     <body>
         <div class="page-header">
-            <h1> Porra LDS</h1>            
+         {% if user.is_authenticated %}
+                
+                <p class="top-menu">
+                    <a href="{% url 'django.contrib.auth.views.logout' %}">
+                    <span class="glyphicon glyphicon-share"> Logout </span>
+                    </a>
+                 </p>
+                 <p class="top-menu">
+                    <span class="glyphicon glyphicon-user"> {{ user.username }} </span>
+                 </p>
+            {% else %}
+                
+                <a href="{% url 'home.views.register' %}" class="top-menu">
+                    <span class="glyphicon glyphicon-edit"> Register </span>
+                </a>
+                <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu">
+                    <span class="glyphicon glyphicon-lock"> Login </span>
+                </a>
+            {% endif %}
+            <h1> <a href="/euro2016">Porra LDS</a></h1>
+
         </div>
-        <div class="content">
-            <div>
-                {% if user.is_authenticated %}
-                    <p class="top-menu">Hello {{ user.username }} </p>
-                    <small><a href="{% url 'django.contrib.auth.views.logout' %}">
-                            <span class="glyphicon glyphicon-share"> Logout </span>
-                    </a>
-                {% else %}
-                    <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu">
-                        <span class="glyphicon glyphicon-lock"> Login </span>
-                    </a>
-                    <a href="{% url 'home.views.register' %}" class="top-menu">
-                        <span class="glyphicon glyphicon-edit"> Register </span>
-                    </a>
-                {% endif %}
-            </div>
+        <div class="content">            
 
             <div>
                 {% block content %}
