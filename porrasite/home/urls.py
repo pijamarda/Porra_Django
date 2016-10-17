@@ -7,6 +7,6 @@ from home import views as home_views
 
 urlpatterns = [        
     url('^login/$', auth_views.login, name='login'),
-    url('^logout/$', auth_views.logout, {'next_page': '/euro2016'}),
+    url('^logout/$', auth_views.logout, {'next_page': '/euro2016'}, name='logout'),
     url('^new/$', home_views.register, name='register'),
 ]

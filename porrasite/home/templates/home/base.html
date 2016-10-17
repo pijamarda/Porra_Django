@@ -16,7 +16,7 @@
          {% if user.is_authenticated %}
                 
                 <p class="top-menu">
-                    <a href="{% url 'django.contrib.auth.views.logout' %}">
+                    <a href="{% url 'logout' %}">
                     <span class="glyphicon glyphicon-share"> Logout </span>
                     </a>
                  </p>
@@ -28,7 +28,7 @@
                 <a href="{% url 'register' %}" class="top-menu">
                     <span class="glyphicon glyphicon-edit"> Register </span>
                 </a>
-                <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu">
+                <a href="{% url 'login' %}" class="top-menu">
                     <span class="glyphicon glyphicon-lock"> Login </span>
                 </a>
             {% endif %}
