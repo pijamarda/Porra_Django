@@ -1,17 +1,22 @@
 # Porra Django
 
-## Linux install (instructions for Ubuntu Server 12.04):
+## Linux install (instructions for Ubuntu Server 14.04):
 
 ### Pre-requisites:
 
+PostgreSQL:  
+Check with:  
+*psql --version*  
+psql (PostgreSQL) 9.5.4
+
 We need to install Postgresql Database from:  
 http://www.postgresql.org/download/linux/  
-These commands should be enough (for 9.4 version):  
-*sudo apt-get install postgresql-9.4*  
-If the 9.4 is not in the repository follow instructions here:  
+These commands should be enough (for 9.5 version):  
+*sudo apt-get install postgresql-9.5*  
+If the 9.5 is not in the repository follow instructions here:  
 http://www.postgresql.org/download/linux/ubuntu/  
 and then repeat the command:  
-*sudo apt-get install postgresql-9.4*  
+*sudo apt-get install postgresql-9.5*  
 
 Python3 must be installed in the system, with pip/pip3 commands available:  
 https://www.python.org/downloads/  
@@ -25,7 +30,7 @@ We also need Git installed:
 *apt-get install git*  
 
 We need the following APT packages:  
-*sudo apt-get install postgresql-server-dev-9.4*  
+*sudo apt-get install postgresql-server-dev-9.5*  
 *sudo apt-get install python3-dev*  
 And the following PIP package:  
 *sudo pip3 install virtualenv*  
@@ -38,6 +43,7 @@ And the following PIP package:
 2. Configure PostgreSQL  
 *sudo su - postgres*  
 *createuser --interactive zeneke*  
+*Shall the new role be a superuser? (y/n) y*  
 *exit*  
 *createdb -U zeneke porra_proyect*  
 Now we restore the backup executing the script:  
