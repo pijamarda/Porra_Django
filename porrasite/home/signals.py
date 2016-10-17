@@ -3,8 +3,9 @@ import random
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from django.contrib.auth.models import User, Group
+
 from euro2016.models import RankEuro2016, PartidoEuro2016
+from django.contrib.auth.models import User, Group
 
 #Este metodo se invoca cuando se genera un usuario y lo que hace es generar todos los partidos del usuario
 #Genera 64 partidos en principio con un resultado aleatorio
