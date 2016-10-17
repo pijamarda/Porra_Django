@@ -49,7 +49,10 @@ And the following PIP package:
 Now we restore the backup executing the script:  
 *cd script*  
 *restoredb.sh*  
-
+Change the password of the user created:
+*psql porra_proyect*  
+*alter user zeneke password 'p0rr4lds';*
+  
 3. virtualENV  
 Go to the project directory  
 *cd Porra_Django*  
@@ -59,11 +62,10 @@ then activate:
 *source virtualPorra/bin/activate*  
 
 4. Install django packages:  
-*pip install django==1.7*  
-*pip install psycopg2==2.5.4*  
+*pip install -r requirements.txt*    
 
 5. And we test if everything is ok running Django:  
-*python python porrasite/manage.py runserver*  
+*python porrasite/manage.py runserver*  
 
 6. To deactivate the virtial env type:  
 *deactivate*  
