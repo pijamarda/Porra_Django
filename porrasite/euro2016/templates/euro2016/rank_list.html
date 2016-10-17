@@ -10,7 +10,7 @@
     	</tr>
     {% for rank in ranking %}
     	<tr>    		
-			<td> <a href="{% url 'euro2016.views.partido_list' pk=rank.usuario.pk %}"> {{rank.usuario}} </a></td>
+			<td> <a href="{% url 'partido_list' pk=rank.usuario.pk %}"> {{rank.usuario}} </a></td>
 			<td> {{rank.puntos}} </td>	            		
     	</tr>
     {% endfor %}

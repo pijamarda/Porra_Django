@@ -5,11 +5,11 @@
         Euro 2016
     </h1>
     <ul class="nav nav-pills">
-        <li class="active"><a href="{% url 'euro2016.views.partido_list' pk=usuario.pk %}">Grupos</a></li>
+        <li class="active"><a href="{% url 'partido_list' pk=usuario.pk %}">Grupos</a></li>
         {% for grupo in grupos_todos %}
-            <li><a href="{% url 'euro2016.views.grupo_equipos' pk_user=usuario.pk pk_grupo_id=grupo.grupo_id %}">{{grupo.nombre}}</a></li>
+            <li><a href="{% url 'grupo_equipos' pk_user=usuario.pk pk_grupo_id=grupo.grupo_id %}">{{grupo.nombre}}</a></li>
         {% endfor %}
-            <li><a href="{% url 'euro2016.views.grupo_3rd' pk_user=usuario.pk %}">3rd place teams</a></li>
+            <li><a href="{% url 'grupo_3rd' pk_user=usuario.pk %}">3rd place teams</a></li>
     </ul>
     <br />
     <ul class="nav nav-pills">

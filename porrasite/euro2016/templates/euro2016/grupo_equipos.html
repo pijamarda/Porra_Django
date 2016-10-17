@@ -73,7 +73,7 @@
 			    	<tr id="tr_{{partido.pk}}">
 			    		{% if debug %}
 					    	<td>
-					    		<a href="{% url 'euro2016.views.partido_detalle' pk_user=usuario.pk pk=partido.pk %}"> 
+					    		<a href="{% url 'partido_detalle' pk_user=usuario.pk pk=partido.pk %}"> 
 					             {{partido.partido_id}} 
 					             </a>
 					             {{partido.pk}}
