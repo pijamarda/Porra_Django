@@ -15,6 +15,7 @@ from euro2016.models import Equipo, Grupo
 
 #
 from .tools import *
+from .forms import PartidoEuro2016Form
 
 # Debug marca en principio:
 #	- En los templates si queremos mostrar las columnas con los ID de la mayoria de los elementos
@@ -124,9 +125,9 @@ def partido_edit(request, pk, pk_user, desde):
 			partido.save()
 			print (desde)
 			if (desde == 'grupos'):
-				return redirect('euro2016.views.grupo_equipos', pk=grupo_pk, pk_user=pk_user)
+				return redirect('grupo_equipos', pk_grupo_id=grupo_pk, pk_user=pk_user)
 			elif (desde == 'eliminatorias'):
-				return redirect('euro2016.views.eliminatorias', pk_user=pk_user)
+				return redirect('eliminatorias_lista', pk_user=pk_user)
 	else:
 		form = PartidoEuro2016Form(instance=partido)
 

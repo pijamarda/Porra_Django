@@ -35,7 +35,7 @@ We need the following APT packages:
 And the following PIP package:  
 *sudo pip3 install virtualenv*  
 
-### Install instruccions:
+### Install instructions:
 
 1. Clone repo:  
 *git clone https://github.com/pijamarda/Porra_Django*
