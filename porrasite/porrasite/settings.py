@@ -2,10 +2,10 @@
 Django settings for porrasite project.
 
 For more information on this file, see
-https://docs.djangoproject.com/en/1.7/topics/settings/
+https://docs.djangoproject.com/en/1.9/topics/settings/
 
 For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
+https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -14,15 +14,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '0td#ux*vs4y6pdo6yx33n=mts(v@s4t#%$kpc@p0v9%1u&wqqf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -67,7 +65,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-        },
+            'debug': DEBUG,
+        },        
     },
 ]
 
@@ -112,5 +111,10 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
 ]
 
-LOGIN_REDIRECT_URL = '/mundial'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/home/zeneke/data/proyectos/django/porra_django/porrasite/static/',
+]
+
+LOGIN_REDIRECT_URL = '/euro2016'
 

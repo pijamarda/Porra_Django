@@ -3,7 +3,7 @@ from django.contrib import admin
 
 from . import views
 
-urlpatterns = patterns('',
+urlpatterns = [
 	url(r'^$', views.index),
 	
     url(r'^rank/', views.rank_list),
@@ -21,4 +21,4 @@ urlpatterns = patterns('',
     url(r'^suma_puntos/$', views.suma_puntos, name='suma_puntos'),
     url(r'^edita_partido_ajax/$', views.edita_partido_ajax, name='edita_partido_ajax'),
     url(r'^list_partido_ajax/$', views.list_partido_ajax, name='list_partido_ajax'),
-)
+]

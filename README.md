@@ -52,7 +52,7 @@ Now we restore the backup executing the script:
 Change the password of the user created:
 *psql porra_proyect*  
 *alter user zeneke password 'p0rr4lds';*
-  
+
 3. virtualENV  
 Go to the project directory  
 *cd Porra_Django*  
@@ -67,7 +67,13 @@ then activate:
 5. And we test if everything is ok running Django:  
 *python porrasite/manage.py runserver*  
 
-6. To deactivate the virtial env type:  
+6. Modify the settings.py on the project folder, to serve static files in development:  
+*vim porrasite/porrasite/settings.py*  
+and modify:  
+*STATICFILES_DIRS* directive with the current PATH of static files  
+*'/home/zeneke/data/proyectos/django/porra_django/porrasite/static/',*   
+
+7. To deactivate the virtial env type:  
 *deactivate*  
 
 
