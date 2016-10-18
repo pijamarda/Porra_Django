@@ -1,6 +1,6 @@
 {% extends 'euro2016/base.html' %}
 
-{% block child %}
+{% block children %}
     <h2><a href="">Listado de partidos de {{usuario}}</a></h2>
     <table class="table-condensed">
     	<tr>
@@ -38,12 +38,22 @@
 
 	        </td>
 	        
-	        <td> <center> 					        
-		        <input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
+	        <td> <center>
+				{% if user.is_authenticated %}
+	        		{% if user.pk == usuario.pk %}
+		        		<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
+					{% endif %}	
+	        	{% endif %}
+				{{partido.local}}
 	        </center></td>
 
-	        <td><center> 				        	
-	        	<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
+	        <td><center> 
+				{% if user.is_authenticated %}
+	        		{% if user.pk == usuario.pk %}				        	
+	        			<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
+					{% endif %}	
+	        	{% endif %}
+				{{partido.visitante}}
 	        </center></td>
 
 
@@ -86,4 +96,4 @@
 	</table>
 
 
-{% endblock child %}
+{% endblock children %}

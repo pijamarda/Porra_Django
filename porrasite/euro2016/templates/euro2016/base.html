@@ -1,9 +1,7 @@
-{% extends 'home/base.html' %}
+{% extends 'euro2016/base_index.html' %}
 
-{% block content %}
-    <h1>
-        Euro 2016
-    </h1>
+{% block child %}
+    
     <ul class="nav nav-pills">
         <li class="active"><a href="{% url 'partido_list' pk=usuario.pk %}">Grupos</a></li>
         {% for grupo in grupos_todos %}
@@ -18,9 +16,8 @@
     </ul>
   
 
-    {% block child %}
-    {% endblock %}
-    
+    {% block children %}
+    {% endblock %}    
 
 
-{% endblock content %}
+{% endblock child %}

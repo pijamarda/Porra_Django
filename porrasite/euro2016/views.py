@@ -48,7 +48,10 @@ def partido_list(request, pk):
 # Muestra el detalle de un partido en concreto
 def partido_detalle(request, pk, pk_user):
 	partido = get_object_or_404(PartidoEuro2016, pk=pk)
-	return render(request, 'euro2016/partido_detalle.html', {'partido': partido})
+	equipos = Equipo.objects.all()
+	return render(request, 'euro2016/partido_detalle.html', {'partido': partido,
+																'equipos': equipos,
+															})
 
 # Listado de todos los equipos
 def equipo_list(request):	

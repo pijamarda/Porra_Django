@@ -1,6 +1,6 @@
 {% extends 'euro2016/base.html' %}
 
-{% block child %}
+{% block children %}
 {% if user.is_authenticated %}
 	{% if user.pk == usuario.pk %}
 		<button id="b_list" class="list_partido_ajax" 				        							        			 
@@ -711,4 +711,4 @@
 </table>
 
 
-{% endblock child %}
+{% endblock children %}

@@ -1,14 +1,16 @@
 {% extends 'euro2016/base.html' %}
 
-{% block content %}
+{% block children %}
 
     <h2>Detalle de partido</h2>
-    <table class="table-condensed">
+    <table class="table-condensed" style="border:1px;">
     	<tr>
     		<th>Usuario</th>
     		<th>PArtido ID</th>
     		<th>ID local</th>
+			<th>Local</th>
     		<th>ID visitante</th>
+			<th>Visitante</th>
     		<th>gol L</th>
     		<th>gol V</th>
     	</tr>
@@ -21,9 +23,24 @@
     	<td>
     		{{partido.local_id}}
     	</td>
+		<td> 
+			{% for equipo in equipos %}
+				{% if equipo.equipo_id == partido.local_id %}
+					{{equipo.nombre}}
+				{% endif %}
+			{% endfor %}
+	    </td>
     	<td>
     		{{partido.visitante_id}}
     	</td>
+		<td>
+	        	{% for equipo in equipos %}
+	        		{% if equipo.equipo_id == partido.visitante_id %}
+	        			{{equipo.nombre}}
+	        		{% endif %}
+	        	 {% endfor %}
+
+	        </td>
     	<td>
     		{{partido.local}}
     	</td>
@@ -34,4 +51,4 @@
     	</tr>
     </table>
 
-{% endblock content %}
+{% endblock children %}
