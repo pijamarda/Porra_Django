@@ -57,7 +57,7 @@ Change the password of the user created:
 Go to the project directory  
 *cd Porra_Django*  
 create virtualenv:  
-*virtualenv-3.4 virtualPorra*  
+*virtualenv-3.5 virtualPorra*  
 then activate:  
 *source virtualPorra/bin/activate*  
 
