@@ -29,7 +29,7 @@ if not use
 We also need Git installed:  
 *apt-get install git*  
 
-We need the following APT packages:  
+We need the following APT packages for the pip installation:  
 *sudo apt-get install postgresql-server-dev-9.5*  
 *sudo apt-get install python3-dev*  
 And the following PIP package:  
@@ -40,40 +40,46 @@ And the following PIP package:
 1. Clone repo:  
 *git clone https://github.com/pijamarda/Porra_Django*
 
-2. Configure PostgreSQL  
+2. Add user 'zeneke' to the system:  
+*sudo adduser zeneke*  
+
+3. Configure PostgreSQL  
 *sudo su - postgres*  
 *createuser --interactive zeneke*  
 *Shall the new role be a superuser? (y/n) y*  
+Change the password of the user created:  
+*psql*  
+*alter user zeneke password 'p0rr4lds';*  
+*create database porra_proyect;*  
+*grant all privileges on database porra_proyect to zeneke;*   
+*\q*  
 *exit*  
-*createdb -U zeneke porra_proyect*  
-Now we restore the backup executing the script:  
-*cd script*  
+Now we restore the backup executing the script as the user 'zeneke':  
+*su - zeneke*  
+*cd ..porra_django/script*    
 *restoredb.sh*  
-Change the password of the user created:
-*psql porra_proyect*  
-*alter user zeneke password 'p0rr4lds';*
 
-3. virtualENV  
+4. virtualENV  
 Go to the project directory  
 *cd Porra_Django*  
 create virtualenv:  
-*virtualenv-3.5 virtualPorra*  
+*virtualenv virtualPorra*  
 then activate:  
 *source virtualPorra/bin/activate*  
 
-4. Install django packages:  
+5. Install django packages:  
 *pip install -r requirements.txt*    
 
-5. And we test if everything is ok running Django:  
+6. And we test if everything is ok running Django:  
 *python porrasite/manage.py runserver*  
 
-6. Modify the settings.py on the project folder, to serve static files in development:  
+7. Modify the settings.py on the project folder, to serve static files in development:  
 *vim porrasite/porrasite/settings.py*  
 and modify:  
 *STATICFILES_DIRS* directive with the current PATH of static files  
 *'/home/zeneke/data/proyectos/django/porra_django/porrasite/static/',*   
 
-7. To deactivate the virtial env type:  
+8. To deactivate the virtial env type:  
 *deactivate*  
 
 
