@@ -5,3 +5,4 @@
 __pycache__/
 virtualPorra/
 venv/
+db.sqlite3
