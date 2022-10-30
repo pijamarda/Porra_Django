@@ -39,13 +39,13 @@
 						<td> {{team.equipo_id}} </td>
 					{% endif %}
 					<td> {{team.name}} </td>	
-					<td> <center> <img src="/static/img/{{team.flag}}.png"> </center> </td>
-					<td> <center>{{team.ganados}} </center></td>
-					<td> <center>{{team.empatados}} </center></td>
-					<td> <center>{{team.perdidos}} </center></td>
-					<td> <center>{{team.puntos}} </center></td>
-					<td> <center>{{team.favor}} </center></td>
-					<td> <center>{{team.contra}} </center></td>
+					<td>  <img src="/static/img/{{team.flag}}.png">  </td>
+					<td> {{team.ganados}} </td>
+					<td> {{team.empatados}} </td>
+					<td> {{team.perdidos}} </td>
+					<td> {{team.puntos}} </td>
+					<td> {{team.favor}} </td>
+					<td> {{team.contra}} </td>
 				</tr>				
     		{% endfor %}
 	    	
@@ -84,13 +84,13 @@
 				        	 {% endfor %}
 
 				        </td>
-				        <td> <center> 					        
+				        <td>  					        
 					        <input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
-				        </center></td>
+				        </td>
 
-				        <td><center> 				        	
+				        <td> 				        	
 				        	<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
-				        </center></td>
+				        </td>
 				        
 				        <td>
 				        	{% for equipo in equipos %}

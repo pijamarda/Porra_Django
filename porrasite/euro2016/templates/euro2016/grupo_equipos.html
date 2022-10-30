@@ -30,7 +30,7 @@
 	    		<th>Per</th>
 	    		<th>Gfav</th>
 	    		<th>Gcon</th>
-	    		<th>Gdif</th>
+	    		<th>Gdif</th>grupo_equipos
 	    		<th><b>Puntos</b></th>
 	    		
 	    	</tr>
@@ -41,14 +41,14 @@
 						<td> {{team.equipo_id}} </td>
 					{% endif %}
 					<td> {{team.name}} </td>	
-					<td> <center> <img src="/static/img/{{team.flag}}.png"> </center> </td>
-					<td> <center>{{team.ganados}} </center></td>
-					<td> <center>{{team.empatados}} </center></td>
-					<td> <center>{{team.perdidos}} </center></td>					
-					<td> <center>{{team.favor}} </center></td>
-					<td> <center>{{team.contra}} </center></td>
-					<td> <center>{{team.diff}} </center></td>
-					<td> <center><b>{{team.puntos}}</b> </center></td>
+					<td>  <img src="/static/img/{{team.flag}}.png">  </td>
+					<td> {{team.ganados}} </td>
+					<td> {{team.empatados}} </td>
+					<td> {{team.perdidos}} </td>					
+					<td> {{team.favor}} </td>
+					<td> {{team.contra}} </td>
+					<td> {{team.diff}} </td>
+					<td> <b>{{team.puntos}}</b> </td>
 				</tr>				
     		{% endfor %}
 	    	
@@ -90,7 +90,7 @@
 				        </td>
                         
 				        <td>
-                            <center> 					        
+                             					        
 					            
                                 {% if user.is_authenticated and user.pk == usuario.pk%}				        		
                                     <input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}"/>
@@ -98,17 +98,17 @@
 								{% else %}
 									<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" readonly/>
 								{% endif %}
-				            </center>
+				            
                         </td>
 				        <td>
-                            <center>		        	
+                            		        	
 				        	    
                                 {% if user.is_authenticated and user.pk == usuario.pk%}			
                                     <input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
 								{% else %}
 								<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" readonly/>                                
 				        	    {% endif %}
-				            </center>
+				            
                         </td>
 				        
 				        <td>
