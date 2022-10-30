@@ -28,15 +28,15 @@
 						<td> {{team.equipo_id}} </td>
 					{% endif %}
 					<td> {{team.name}} </td>	
-					<td> <center> <img src="/static/img/{{team.flag}}.png"> </center> </td>
-					<td> <center>{{team.grupo}} </center></td>
-					<td> <center>{{team.ganados}} </center></td>
-					<td> <center>{{team.empatados}} </center></td>
-					<td> <center>{{team.perdidos}} </center></td>					
-					<td> <center>{{team.favor}} </center></td>
-					<td> <center>{{team.contra}} </center></td>
-					<td> <center>{{team.diff}} </center></td>
-					<td> <center><b>{{team.puntos}}</b> </center></td>
+					<td>  <img src="/static/img/{{team.flag}}.png">  </td>
+					<td> {{team.grupo}} </td>
+					<td> {{team.ganados}} </td>
+					<td> {{team.empatados}} </td>
+					<td> {{team.perdidos}} </td>					
+					<td> {{team.favor}} </td>
+					<td> {{team.contra}} </td>
+					<td> {{team.diff}} </td>
+					<td> <b>{{team.puntos}}</b> </td>
 					<td>
 						{% if team.pasa == 1 %}		
 							PASA

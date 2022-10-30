@@ -38,23 +38,23 @@
 
 	        </td>
 	        
-	        <td> <center>
+	        <td> 
 				{% if user.is_authenticated %}
 	        		{% if user.pk == usuario.pk %}
 		        		<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
 					{% endif %}	
 	        	{% endif %}
 				{{partido.local}}
-	        </center></td>
+	        </td>
 
-	        <td><center> 
+	        <td> 
 				{% if user.is_authenticated %}
 	        		{% if user.pk == usuario.pk %}				        	
 	        			<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
 					{% endif %}	
 	        	{% endif %}
 				{{partido.visitante}}
-	        </center></td>
+	        </td>
 
 
 	        {% if debug %}
