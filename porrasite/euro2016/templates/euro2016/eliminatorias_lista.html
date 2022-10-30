@@ -13,9 +13,17 @@
 				{{equipo.nombre}}
 			{% endif %}
 		{% endfor %}
-		<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
+		{% if user.is_authenticated and user.pk == usuario.pk%}	
+			<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
+		{% else %}
+			<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}"  readonly/>
+		{% endif %}
 		vs 
-		<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
+		{% if user.is_authenticated and user.pk == usuario.pk%}	
+			<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
+		{% else %}
+			<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}"  readonly/>
+		{% endif %}
 		{% for equipo in equipos %}
 			{% if equipo.equipo_id == partido.visitante_id %}
 				{{equipo.nombre}}
@@ -50,9 +58,17 @@
 				{{equipo.nombre}}
 			{% endif %}
 		{% endfor %}
-		<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
+		{% if user.is_authenticated and user.pk == usuario.pk%}	
+			<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
+		{% else %}
+			<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" readonly />
+		{% endif %}
 		vs 
-		<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
+		{% if user.is_authenticated and user.pk == usuario.pk%}
+			<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
+		{% else %}
+			<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" readonly />
+		{% endif %}
 		{% for equipo in equipos %}
 			{% if equipo.equipo_id == partido.visitante_id %}
 				{{equipo.nombre}}
@@ -89,9 +105,17 @@
 			{% endif %}
 		{% endfor %}
 		{{partido.local_id}}
-		<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
-		vs 
-		<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
+		{% if user.is_authenticated and user.pk == usuario.pk%}
+			<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
+		{% else %}
+			<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" readonly/>
+		{% endif %}
+		vs
+		{% if user.is_authenticated and user.pk == usuario.pk%}
+			<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
+		{% else %}
+			<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" readonly/>
+		{% endif %}
 		{{partido.visitante_id}}
 		{% for equipo in equipos %}
 			{% if equipo.equipo_id == partido.visitante_id %}
@@ -128,9 +152,17 @@
 				{{equipo.nombre}}
 			{% endif %}
 		{% endfor %}
-		<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
+		{% if user.is_authenticated and user.pk == usuario.pk%}
+			<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" />
+		{% else %}
+			<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" readonly/>
+		{% endif %}
 		vs 
-		<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
+		{% if user.is_authenticated and user.pk == usuario.pk%}
+			<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
+		{% else %}
+		<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" readonly/>
+		{% endif %}
 		{% for equipo in equipos %}
 			{% if equipo.equipo_id == partido.visitante_id %}
 				{{equipo.nombre}}
