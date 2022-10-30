@@ -1,0 +1,50 @@
+[
+    {
+      "model": "euro2016.Grupo",
+      "pk": 1,
+      "fields": {
+        "grupo_id": "1",
+        "nombre": "Grupo A"
+      }
+    },
+    {
+      "model": "euro2016.Grupo",
+      "pk": 2,
+      "fields": {
+        "grupo_id": "2",
+        "nombre": "Grupo B"
+      }
+    },
+    {
+      "model": "euro2016.Grupo",
+      "pk": 3,
+      "fields": {
+        "grupo_id": "3",
+        "nombre": "Grupo C"
+      }
+    },
+    {
+      "model": "euro2016.Grupo",
+      "pk": 4,
+      "fields": {
+        "grupo_id": "4",
+        "nombre": "Grupo D"
+      }
+    },
+    {
+      "model": "euro2016.Grupo",
+      "pk": 5,
+      "fields": {
+        "grupo_id": "5",
+        "nombre": "Grupo E"
+      }
+    },
+    {
+      "model": "euro2016.Grupo",
+      "pk": 6,
+      "fields": {
+        "grupo_id": "6",
+        "nombre": "Grupo F"
+      }
+    }
+  ]

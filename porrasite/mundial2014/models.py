@@ -11,7 +11,7 @@ class Grupo(models.Model):
 		return self.nombre
 
 class Equipo(models.Model):
-	grupo = models.ForeignKey(Grupo)
+	grupo = models.ForeignKey(Grupo, on_delete=models.PROTECT)
 	equipo_id = models.IntegerField()	
 	nombre = models.CharField(max_length=200)
 	name = models.CharField(max_length=200)
@@ -21,7 +21,7 @@ class Equipo(models.Model):
 		return self.nombre
 
 class Partido(models.Model):
-	usuario = models.ForeignKey(User)
+	usuario = models.ForeignKey(User, on_delete=models.PROTECT)
 	partido_id = models.IntegerField()
 	local_id = models.IntegerField()
 	visitante_id = models.IntegerField()
@@ -32,7 +32,7 @@ class Partido(models.Model):
 		return str(self.partido_id)
 
 class Rank(models.Model):
-	usuario = models.OneToOneField(User)
+	usuario = models.OneToOneField(User, on_delete=models.PROTECT)
 	puntos = models.IntegerField(default=0)
 	a1 = models.IntegerField(default=0)
 	a2 = models.IntegerField(default=0)

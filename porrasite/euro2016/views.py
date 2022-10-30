@@ -1,7 +1,7 @@
 import json
 
-from django.core.urlresolvers import reverse
-from django.shortcuts import render, get_object_or_404, render_to_response, redirect
+from django.urls import reverse
+from django.shortcuts import render, get_object_or_404,  redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -49,8 +49,10 @@ def partido_list(request, pk):
 def partido_detalle(request, pk, pk_user):
 	partido = get_object_or_404(PartidoEuro2016, pk=pk)
 	equipos = Equipo.objects.all()
+	usuario = User.objects.get(pk=pk_user)
 	return render(request, 'euro2016/partido_detalle.html', {'partido': partido,
 																'equipos': equipos,
+																'usuario': usuario
 															})
 
 # Listado de todos los equipos

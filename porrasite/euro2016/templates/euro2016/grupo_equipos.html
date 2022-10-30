@@ -91,21 +91,22 @@
                         
 				        <td>
                             <center> 					        
-					            <input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" readonly/>
-                                {% if user.is_authenticated %}
-				        		{% if user.pk == usuario.pk %}
+					            
+                                {% if user.is_authenticated and user.pk == usuario.pk%}				        		
                                     <input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}"/>
-                                {% endif %}	
-				        	    {% endif %}
+				        	    
+								{% else %}
+									<input type='text' id="gol_local_{{partido.pk}}" value="{{partido.local}}" readonly/>
+								{% endif %}
 				            </center>
                         </td>
 				        <td>
                             <center>		        	
-				        	    <input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" readonly/>
-                                {% if user.is_authenticated %}
-				        		{% if user.pk == usuario.pk %}
+				        	    
+                                {% if user.is_authenticated and user.pk == usuario.pk%}			
                                     <input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" />
-                                {% endif %}	
+								{% else %}
+								<input type='text' id="gol_visitante_{{partido.pk}}" value="{{partido.visitante}}" readonly/>                                
 				        	    {% endif %}
 				            </center>
                         </td>

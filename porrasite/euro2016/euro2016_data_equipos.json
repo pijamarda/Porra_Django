@@ -1,0 +1,310 @@
+[
+    {
+      "model": "euro2016.Equipo",
+      "pk": 1,
+      "fields": {
+        "equipo_id": "1",
+        "nombre": "Brasil",
+        "name": "Brazil",
+        "flag": "br",
+        "grupo": "1"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 2,
+      "fields": {
+        "equipo_id": "2",
+        "nombre": "Croacia",
+        "name": "Croacia",
+        "flag": "cs",
+        "grupo": "1"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 3,
+      "fields": {
+        "equipo_id": "3",
+        "nombre": "Mexico",
+        "name": "Mexico",
+        "flag": "mx",
+        "grupo": "1"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 4,
+      "fields": {
+        "equipo_id": "4",
+        "nombre": "Japon",
+        "name": "Japon",
+        "flag": "jp",
+        "grupo": "1"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 5,
+      "fields": {
+        "equipo_id": "5",
+        "nombre": "Camerun",
+        "name": "Camerun",
+        "flag": "cm",
+        "grupo": "2"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 6,
+      "fields": {
+        "equipo_id": "6",
+        "nombre": "España",
+        "name": "España",
+        "flag": "es",
+        "grupo": "2"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 7,
+      "fields": {
+        "equipo_id": "7",
+        "nombre": "Grecia",
+        "name": "Grecia",
+        "flag": "gr",
+        "grupo": "2"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 8,
+      "fields": {
+        "equipo_id": "8",
+        "nombre": "Brasil",
+        "name": "Brazil",
+        "flag": "br",
+        "grupo": "4"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 9,
+      "fields": {
+        "equipo_id": "9",
+        "nombre": "Croacia",
+        "name": "Croacia",
+        "flag": "cs",
+        "grupo": "4"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 10,
+      "fields": {
+        "equipo_id": "10",
+        "nombre": "Mexico",
+        "name": "Mexico",
+        "flag": "mx",
+        "grupo": "4"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 11,
+      "fields": {
+        "equipo_id": "11",
+        "nombre": "Japon",
+        "name": "Japon",
+        "flag": "jp",
+        "grupo": "4"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 12,
+      "fields": {
+        "equipo_id": "12",
+        "nombre": "Camerun",
+        "name": "Camerun",
+        "flag": "cm",
+        "grupo": "3"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 13,
+      "fields": {
+        "equipo_id": "13",
+        "nombre": "España",
+        "name": "España",
+        "flag": "es",
+        "grupo": "3"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 14,
+      "fields": {
+        "equipo_id": "14",
+        "nombre": "Grecia",
+        "name": "Grecia",
+        "flag": "gr",
+        "grupo": "3"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 15,
+      "fields": {
+        "equipo_id": "15",
+        "nombre": "Brasil",
+        "name": "Brazil",
+        "flag": "br",
+        "grupo": "5"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 16,
+      "fields": {
+        "equipo_id": "16",
+        "nombre": "Croacia",
+        "name": "Croacia",
+        "flag": "cs",
+        "grupo": "6"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 17,
+      "fields": {
+        "equipo_id": "17",
+        "nombre": "Mexico",
+        "name": "Mexico",
+        "flag": "mx",
+        "grupo": "3"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 18,
+      "fields": {
+        "equipo_id": "18",
+        "nombre": "Japon",
+        "name": "Japon",
+        "flag": "jp",
+        "grupo": "3"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 19,
+      "fields": {
+        "equipo_id": "19",
+        "nombre": "Camerun",
+        "name": "Camerun",
+        "flag": "cm",
+        "grupo": "3"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 20,
+      "fields": {
+        "equipo_id": "20",
+        "nombre": "España",
+        "name": "España",
+        "flag": "es",
+        "grupo": "4"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 21,
+      "fields": {
+        "equipo_id": "21",
+        "nombre": "Grecia",
+        "name": "Grecia",
+        "flag": "gr",
+        "grupo": "4"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 22,
+      "fields": {
+        "equipo_id": "22",
+        "nombre": "Brasil",
+        "name": "Brazil",
+        "flag": "br",
+        "grupo": "4"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 23,
+      "fields": {
+        "equipo_id": "23",
+        "nombre": "Croacia",
+        "name": "Croacia",
+        "flag": "cs",
+        "grupo": "5"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 24,
+      "fields": {
+        "equipo_id": "24",
+        "nombre": "Mexico",
+        "name": "Mexico",
+        "flag": "mx",
+        "grupo": "5"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 25,
+      "fields": {
+        "equipo_id": "25",
+        "nombre": "Japon",
+        "name": "Japon",
+        "flag": "jp",
+        "grupo": "5"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 26,
+      "fields": {
+        "equipo_id": "26",
+        "nombre": "Camerun",
+        "name": "Camerun",
+        "flag": "cm",
+        "grupo": "6"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 27,
+      "fields": {
+        "equipo_id": "27",
+        "nombre": "España",
+        "name": "España",
+        "flag": "es",
+        "grupo": "6"
+      }
+    },
+    {
+      "model": "euro2016.Equipo",
+      "pk": 28,
+      "fields": {
+        "equipo_id": "28",
+        "nombre": "Grecia",
+        "name": "Grecia",
+        "flag": "gr",
+        "grupo": "6"
+      }
+    }
+  ]
