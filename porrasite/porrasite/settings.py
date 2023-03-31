@@ -25,7 +25,7 @@ SECRET_KEY = '0td#ux*vs4y6pdo6yx33n=mts(v@s4t#%$kpc@p0v9%1u&wqqf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["ldsporra.zeneke.com"]
+ALLOWED_HOSTS = ["ldsporra.zeneke.com","*"]
 
 
 # Application definition
