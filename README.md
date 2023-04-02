@@ -1,5 +1,33 @@
 # Porra Django
 
+## New working version running fully on containers
+
+### Prerequisites
+
+You need to have docker installed with:  
+- docker compose command
+
+### Instructions
+
+Create a .env file, you can use the file .example.env as an example  
+Type:  
+```
+source .env
+```
+Now execute  
+```
+docker compose up --build  
+```
+Now the web should be reachable on:  
+http://localhost:8000  
+with at least 2 users
+
+And the admin panel on  
+http://localhost:8000/admin  
+You can use the credentials defined on the .env file
+
+## OLD VERY OLD INSTRUCTIONS  
+
 ## Linux install (instructions for Ubuntu Server 14.04):
 
 ### Pre-requisites:
