@@ -1,10 +1,9 @@
 FROM python:3.8.16
-WORKDIR /home/fgimenez/data/proyectos/django/porra/porrasite
+WORKDIR /usr/app
 
-COPY requirements.txt ./
+COPY requirements.txt /usr/app
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY porrasite/ .
 
-#CMD [ "ls"]
-CMD [ "python", "./manage.py", "runserver","0.0.0.0:8000"]
+EXPOSE 8000

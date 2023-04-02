@@ -1,0 +1,51 @@
+services:
+  web:
+    build: .
+    environment:
+      DB_ENGINE: django.db.backends.postgresql
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: db
+    volumes:
+      - .:/usr/app
+    depends_on:
+      db:
+        condition: service_healthy
+  web_migrate:
+    extends:
+      service: web
+    command: python porrasite/manage.py migrate
+  web_loaddata:
+    extends:
+      service: web
+    environment:
+      - DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME}
+      - DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL}
+      - DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
+    command: >
+      sh -c "python porrasite/manage.py loaddata porrasite/euro2016/euro2016_data.json  &&
+             python porrasite/manage.py loaddata porrasite/euro2016/euro2016_data_equipos.json && 
+             python porrasite/manage.py createsuperuser --noinput &&
+             echo \"from django.contrib.auth.models import User; User.objects.create_user('zupo', email='email', password='password')\" | python porrasite/manage.py shell"
+    depends_on:
+      - web_migrate
+  web_run:
+    extends:
+      service: web
+    command: python porrasite/manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - web_loaddata
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d ${DB_NAME} -U ${DB_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
