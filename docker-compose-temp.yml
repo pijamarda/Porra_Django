@@ -1,0 +1,41 @@
+services:
+  web:
+    build: .
+    image: fgimenezecrtest.azurecr.io/azure-porra
+    container_name: azure-porra
+    environment:
+      DB_ENGINE: django.db.backends.postgresql
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
+  web_migrate:
+    extends:
+      service: web    
+    container_name: web-migrate
+    command: python3 manage.py migrate
+  web_loaddata:
+    extends:
+      service: web
+    
+    container_name: web-loaddata
+    environment:
+      - DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME}
+      - DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL}
+      - DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
+    command: >
+      sh -c "python3 porrasite/manage.py loaddata porrasite/euro2016/euro2016_data.json  &&
+             python3 porrasite/manage.py loaddata porrasite/euro2016/euro2016_data_equipos.json && 
+             python3 porrasite/manage.py createsuperuser --noinput &&
+             echo \"from django.contrib.auth.models import User; User.objects.create_user('zupo', email='email', password='password')\" | python3 porrasite/manage.py shell"
+    depends_on:
+      - web_migrate
+  web_run:
+    extends:
+      service: web
+    container_name: web-run
+    command: python3 manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - web_loaddata

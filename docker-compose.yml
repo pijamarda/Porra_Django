@@ -8,14 +8,16 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       DB_HOST: db
     volumes:
-      - .:/usr/app
-    depends_on:
-      db:
-        condition: service_healthy
+      - .:/usr/app    
   web_migrate:
     extends:
       service: web
-    command: python porrasite/manage.py migrate
+    command: > 
+      sh -c "python porrasite/manage.py makemigrations && 
+             python porrasite/manage.py migrate"
+    depends_on:
+      db:
+        condition: service_healthy
   web_loaddata:
     extends:
       service: web
@@ -29,7 +31,10 @@ services:
              python porrasite/manage.py createsuperuser --noinput &&
              echo \"from django.contrib.auth.models import User; User.objects.create_user('zupo', email='email', password='password')\" | python porrasite/manage.py shell"
     depends_on:
-      - web_migrate
+      web_migrate:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
   web_run:
     extends:
       service: web
@@ -37,7 +42,10 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - web_loaddata
+      web_loaddata:
+        condition: service_started
+      db:
+        condition: service_healthy
   db:
     image: postgres
     environment:
