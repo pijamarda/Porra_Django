@@ -4,7 +4,7 @@ services:
     image: fgimenezecrtest.azurecr.io/azure-porra
     container_name: azure-porra
     environment:
-      DB_ENGINE: django.db.backends.postgresql
+      DB_ENGINE: 
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
