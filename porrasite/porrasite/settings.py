@@ -22,12 +22,12 @@ print(BASE_DIR)
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '0td#ux*vs4y6pdo6yx33n=mts(v@s4t#%$kpc@p0v9%1u&wqqf'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '0td#ux*vs4y6pdo6yx33n=mts(v@s4t#%$kpc@p0v9%1u&wqqf')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ["ldsporra.zeneke.com","*"]
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 
 # Application definition
@@ -36,7 +36,9 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'mundial2014.apps.Mundial2014Config',
     'euro2016.apps.Euro2016Config',
-     
+    'tournaments.apps.TournamentsConfig',
+    'template_partials',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

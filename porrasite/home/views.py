@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-# Create your views here.
+
+from tournaments.models import Tournament
+
 
 def index(request):
-	
-	return render(request, "home/index.html", {})
+	tournaments = Tournament.objects.all().order_by('-year')
+	return render(request, "home/index.html", {'tournaments': tournaments})
 
 # Utilizado para el registro de nuevos usuarios
 def register(request):

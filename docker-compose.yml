@@ -7,6 +7,9 @@ services:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_HOST: ${DB_HOST}
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      DJANGO_DEBUG: ${DJANGO_DEBUG}
+      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS}
     volumes:
       - .:/usr/app    
   web_migrate:
@@ -26,10 +29,9 @@ services:
       - DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL}
       - DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
     command: >
-      sh -c "python porrasite/manage.py loaddata porrasite/euro2016/euro2016_data.json  &&
-             python porrasite/manage.py loaddata porrasite/euro2016/euro2016_data_equipos.json && 
-             python porrasite/manage.py createsuperuser --noinput &&
-             echo \"from django.contrib.auth.models import User; User.objects.create_user('zupo', email='email', password='password')\" | python porrasite/manage.py shell"
+      sh -c "python porrasite/manage.py loaddata euro2016 &&
+             (python porrasite/manage.py createsuperuser --noinput || true) &&
+             (echo \"from django.contrib.auth.models import User; User.objects.get_or_create(username='zupo', defaults={'email':'email'})[0].set_password('password')\" | python porrasite/manage.py shell || true)"
     depends_on:
       web_migrate:
         condition: service_completed_successfully

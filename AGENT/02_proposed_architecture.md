@@ -484,12 +484,45 @@ DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1
 
 ## Implementation order (recommended)
 
-1. `settings.py` security fixes (30 min, zero risk)
-2. New `tournaments` models + admin (1–2 hours)
-3. Load fixture data into new models (1 hour)
-4. Build group detail view + HTMX inline editing (2–3 hours) — this is the core
-5. Build knockout bracket view with HTMX (2–3 hours)
-6. Implement points scoring system (2 hours)
-7. Rankings view (1 hour)
-8. Migrate user predictions from old models (1–2 hours)
-9. Remove old apps (1 hour)
+1. ✅ `settings.py` security fixes
+2. New `tournaments` models + admin ← next
+3. Build group detail view + HTMX inline editing — core
+4. Build knockout bracket view with HTMX
+5. Implement points scoring system
+6. Rankings view
+7. Fixtures & seeding (see below)
+8. Migrate user predictions from old models
+9. Remove old apps
+
+---
+
+## Fixtures & seeding plan (Step 7)
+
+**Reference data (Django fixtures)** — static, version-controlled, idempotent:
+```
+tournaments/fixtures/
+    euro2016_data.json     # Tournament record + Groups + Teams
+    wc2026_data.json       # when ready
+```
+
+**Bracket template (management command)** — the `bracket_template` JSON is too large
+and structured to maintain safely as raw JSON in a fixture. A management command
+generates it in Python where you can use constants, loops and comments:
+
+```
+python manage.py seed_tournament euro2016
+```
+
+This creates the `Tournament` row with its `bracket_template` JSON built from Python
+dicts. Adding WC2026 = add a new function in the command, no JSON editing.
+
+**docker-compose seeding becomes:**
+```yaml
+python manage.py loaddata euro2016_data &&
+python manage.py seed_tournament euro2016 &&
+(python manage.py createsuperuser --noinput || true)
+```
+
+**Note:** the current `mundial2014.json` is a custom format (not a Django fixture)
+and has copy-paste data errors (`name`/`nombreCorto` = "Croatia" for all teams).
+It will be replaced by a proper fixture for the new app.

@@ -1,0 +1,46 @@
+{% extends "tournaments/base.html" %}
+
+{% block title %}{{ tournament.name }}{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-between mb-4">
+  <h1 class="mb-0">{{ tournament.name }}</h1>
+  <div class="d-flex gap-2">
+    <a href="{% url 'tournaments:knockout' tournament.slug %}" class="btn btn-outline-primary btn-sm">Bracket</a>
+    <a href="{% url 'tournaments:ranking' tournament.slug %}" class="btn btn-outline-secondary btn-sm">Ranking</a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h2 class="h4">Groups</h2>
+    <div class="list-group mb-4">
+      {% for group in groups %}
+        <a href="{% url 'tournaments:group_detail' tournament.slug group.pk %}"
+           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+          Group {{ group.name }}
+          <span class="badge bg-secondary">{{ group.teams.count }} teams</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if ranking %}
+  <div class="col-md-6">
+    <h2 class="h4">Ranking</h2>
+    <table class="table table-sm">
+      <thead><tr><th>#</th><th>Player</th><th>Points</th></tr></thead>
+      <tbody>
+        {% for r in ranking %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ r.user.username }}</td>
+            <td><strong>{{ r.points }}</strong></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

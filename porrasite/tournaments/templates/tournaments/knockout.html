@@ -1,0 +1,117 @@
+{% extends "tournaments/base.html" %}
+{% load partials %}
+
+{% block title %}Knockout — {{ tournament.name }}{% endblock %}
+
+{% block content %}
+<h1 class="h3 mb-4">Knockout bracket</h1>
+
+{% partialdef knockout_content inline=True %}
+{% if not predictions_open %}
+  <div class="alert alert-warning py-2 mb-3">
+    Predictions are closed. You can view your bracket but no longer edit it.
+  </div>
+{% endif %}
+<div id="knockout-content" class="d-flex gap-3 overflow-auto pb-2">
+  {% for round in bracket_rounds %}
+    <div style="min-width:220px">
+      <h6 class="text-uppercase text-muted fw-bold mb-3">{{ round.label }}</h6>
+
+      <div class="d-flex flex-column gap-2">
+        {% for match in round.matches %}
+          <div class="card {% if match.winner %}border-success{% endif %}">
+            <div class="card-body py-2 px-3">
+
+              {% if match.home and match.away and match.match %}
+                {# Both teams known — show prediction (editable if open) #}
+                {% if predictions_open %}
+                  <form hx-post="{% url 'tournaments:knockout_prediction_save' tournament.slug match.match.pk %}"
+                        hx-target="#knockout-content"
+                        hx-swap="outerHTML"
+                        class="d-flex flex-column gap-1">
+                    {% csrf_token %}
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="/static/img/{{ match.home.flag_code }}.png" height="14" alt=""
+                           onerror="this.style.display='none'">
+                      <span class="small {% if match.winner == match.home %}fw-bold text-success{% endif %}">
+                        {{ match.home.name }}
+                      </span>
+                      <input type="number" name="home_goals"
+                             value="{{ match.prediction.home_goals|default:0 }}"
+                             min="0" max="20"
+                             class="form-control form-control-sm text-center ms-auto"
+                             style="width:3rem"
+                             hx-trigger="change delay:400ms"
+                             hx-post="{% url 'tournaments:knockout_prediction_save' tournament.slug match.match.pk %}"
+                             hx-target="#knockout-content"
+                             hx-swap="outerHTML"
+                             hx-include="closest form">
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                      <img src="/static/img/{{ match.away.flag_code }}.png" height="14" alt=""
+                           onerror="this.style.display='none'">
+                      <span class="small {% if match.winner == match.away %}fw-bold text-success{% endif %}">
+                        {{ match.away.name }}
+                      </span>
+                      <input type="number" name="away_goals"
+                             value="{{ match.prediction.away_goals|default:0 }}"
+                             min="0" max="20"
+                             class="form-control form-control-sm text-center ms-auto"
+                             style="width:3rem"
+                             hx-trigger="change delay:400ms"
+                             hx-post="{% url 'tournaments:knockout_prediction_save' tournament.slug match.match.pk %}"
+                             hx-target="#knockout-content"
+                             hx-swap="outerHTML"
+                             hx-include="closest form">
+                    </div>
+                  </form>
+                {% else %}
+                  <div class="d-flex align-items-center gap-2 mb-1">
+                    <img src="/static/img/{{ match.home.flag_code }}.png" height="14" alt=""
+                         onerror="this.style.display='none'">
+                    <span class="small {% if match.winner == match.home %}fw-bold text-success{% endif %}">
+                      {{ match.home.name }}
+                    </span>
+                    <span class="ms-auto fw-bold text-secondary small">{{ match.prediction.home_goals|default:0 }}</span>
+                  </div>
+                  <div class="d-flex align-items-center gap-2">
+                    <img src="/static/img/{{ match.away.flag_code }}.png" height="14" alt=""
+                         onerror="this.style.display='none'">
+                    <span class="small {% if match.winner == match.away %}fw-bold text-success{% endif %}">
+                      {{ match.away.name }}
+                    </span>
+                    <span class="ms-auto fw-bold text-secondary small">{{ match.prediction.away_goals|default:0 }}</span>
+                  </div>
+                {% endif %}
+              {% else %}
+                {# Teams not yet determined #}
+                <div class="d-flex align-items-center gap-2 mb-1">
+                  {% if match.home %}
+                    <img src="/static/img/{{ match.home.flag_code }}.png" height="14" alt=""
+                         onerror="this.style.display='none'">
+                    <span class="small">{{ match.home.name }}</span>
+                  {% else %}
+                    <span class="small text-muted">?</span>
+                  {% endif %}
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                  {% if match.away %}
+                    <img src="/static/img/{{ match.away.flag_code }}.png" height="14" alt=""
+                         onerror="this.style.display='none'">
+                    <span class="small">{{ match.away.name }}</span>
+                  {% else %}
+                    <span class="small text-muted">?</span>
+                  {% endif %}
+                </div>
+              {% endif %}
+
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endpartialdef %}
+
+{% endblock %}

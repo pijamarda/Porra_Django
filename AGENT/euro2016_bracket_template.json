@@ -1,0 +1,26 @@
+{
+  "rounds": ["r16", "qf", "sf", "final"],
+  "r16": [
+    {"order": 1, "home": "2A", "away": "2C"},
+    {"order": 2, "home": "1B", "away": "3B"},
+    {"order": 3, "home": "1D", "away": "3D"},
+    {"order": 4, "home": "1A", "away": "3A"},
+    {"order": 5, "home": "1C", "away": "3C"},
+    {"order": 6, "home": "1F", "away": "2E"},
+    {"order": 7, "home": "1E", "away": "2D"},
+    {"order": 8, "home": "2B", "away": "2F"}
+  ],
+  "qf": [
+    {"order": 1, "home": "winner_r16_1", "away": "winner_r16_3"},
+    {"order": 2, "home": "winner_r16_2", "away": "winner_r16_6"},
+    {"order": 3, "home": "winner_r16_5", "away": "winner_r16_7"},
+    {"order": 4, "home": "winner_r16_4", "away": "winner_r16_8"}
+  ],
+  "sf": [
+    {"order": 1, "home": "winner_qf_1", "away": "winner_qf_2"},
+    {"order": 2, "home": "winner_qf_3", "away": "winner_qf_4"}
+  ],
+  "final": [
+    {"order": 1, "home": "winner_sf_1", "away": "winner_sf_2"}
+  ]
+}

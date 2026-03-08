@@ -14,4 +14,5 @@ urlpatterns = [
     path('accounts/', include('home.urls')),
     path('mundial2014/', include('mundial2014.urls')),
     path('euro2016/', include('euro2016.urls')),
+    path('tournaments/', include('tournaments.urls')),
 ]

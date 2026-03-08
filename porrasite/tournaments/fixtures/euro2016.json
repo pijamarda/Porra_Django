@@ -1,0 +1,137 @@
+[
+  {
+    "model": "tournaments.tournament",
+    "pk": 1,
+    "fields": {
+      "name": "Euro 2016",
+      "slug": "euro2016",
+      "year": 2016,
+      "active": true,
+      "classification_type": "euro_third_place",
+      "bracket_template": {
+        "rounds": ["r16", "qf", "sf", "final"],
+        "r16": [
+          {"order": 1, "home": "2A", "away": "2C"},
+          {"order": 2, "home": "1B", "away": "3B"},
+          {"order": 3, "home": "1D", "away": "3D"},
+          {"order": 4, "home": "1A", "away": "3A"},
+          {"order": 5, "home": "1C", "away": "3C"},
+          {"order": 6, "home": "1F", "away": "2E"},
+          {"order": 7, "home": "1E", "away": "2D"},
+          {"order": 8, "home": "2B", "away": "2F"}
+        ],
+        "qf": [
+          {"order": 1, "home": "winner_r16_1", "away": "winner_r16_3"},
+          {"order": 2, "home": "winner_r16_2", "away": "winner_r16_6"},
+          {"order": 3, "home": "winner_r16_5", "away": "winner_r16_7"},
+          {"order": 4, "home": "winner_r16_4", "away": "winner_r16_8"}
+        ],
+        "sf": [
+          {"order": 1, "home": "winner_qf_1", "away": "winner_qf_2"},
+          {"order": 2, "home": "winner_qf_3", "away": "winner_qf_4"}
+        ],
+        "final": [
+          {"order": 1, "home": "winner_sf_1", "away": "winner_sf_2"}
+        ]
+      }
+    }
+  },
+
+  {"model": "tournaments.group", "pk": 1, "fields": {"tournament": 1, "name": "A", "order": 1}},
+  {"model": "tournaments.group", "pk": 2, "fields": {"tournament": 1, "name": "B", "order": 2}},
+  {"model": "tournaments.group", "pk": 3, "fields": {"tournament": 1, "name": "C", "order": 3}},
+  {"model": "tournaments.group", "pk": 4, "fields": {"tournament": 1, "name": "D", "order": 4}},
+  {"model": "tournaments.group", "pk": 5, "fields": {"tournament": 1, "name": "E", "order": 5}},
+  {"model": "tournaments.group", "pk": 6, "fields": {"tournament": 1, "name": "F", "order": 6}},
+
+  {"model": "tournaments.team", "pk": 1,  "fields": {"tournament": 1, "group": 1, "name": "France",            "flag_code": "fr"}},
+  {"model": "tournaments.team", "pk": 2,  "fields": {"tournament": 1, "group": 1, "name": "Romania",           "flag_code": "ro"}},
+  {"model": "tournaments.team", "pk": 3,  "fields": {"tournament": 1, "group": 1, "name": "Albania",           "flag_code": "al"}},
+  {"model": "tournaments.team", "pk": 4,  "fields": {"tournament": 1, "group": 1, "name": "Switzerland",       "flag_code": "ch"}},
+
+  {"model": "tournaments.team", "pk": 5,  "fields": {"tournament": 1, "group": 2, "name": "England",           "flag_code": "gb-eng"}},
+  {"model": "tournaments.team", "pk": 6,  "fields": {"tournament": 1, "group": 2, "name": "Russia",            "flag_code": "ru"}},
+  {"model": "tournaments.team", "pk": 7,  "fields": {"tournament": 1, "group": 2, "name": "Wales",             "flag_code": "gb-wls"}},
+  {"model": "tournaments.team", "pk": 8,  "fields": {"tournament": 1, "group": 2, "name": "Slovakia",          "flag_code": "sk"}},
+
+  {"model": "tournaments.team", "pk": 9,  "fields": {"tournament": 1, "group": 3, "name": "Germany",           "flag_code": "de"}},
+  {"model": "tournaments.team", "pk": 10, "fields": {"tournament": 1, "group": 3, "name": "Poland",            "flag_code": "pl"}},
+  {"model": "tournaments.team", "pk": 11, "fields": {"tournament": 1, "group": 3, "name": "Northern Ireland",  "flag_code": "gb-nir"}},
+  {"model": "tournaments.team", "pk": 12, "fields": {"tournament": 1, "group": 3, "name": "Ukraine",           "flag_code": "ua"}},
+
+  {"model": "tournaments.team", "pk": 13, "fields": {"tournament": 1, "group": 4, "name": "Spain",             "flag_code": "es"}},
+  {"model": "tournaments.team", "pk": 14, "fields": {"tournament": 1, "group": 4, "name": "Croatia",           "flag_code": "hr"}},
+  {"model": "tournaments.team", "pk": 15, "fields": {"tournament": 1, "group": 4, "name": "Czech Republic",    "flag_code": "cz"}},
+  {"model": "tournaments.team", "pk": 16, "fields": {"tournament": 1, "group": 4, "name": "Turkey",            "flag_code": "tr"}},
+
+  {"model": "tournaments.team", "pk": 17, "fields": {"tournament": 1, "group": 5, "name": "Belgium",           "flag_code": "be"}},
+  {"model": "tournaments.team", "pk": 18, "fields": {"tournament": 1, "group": 5, "name": "Italy",             "flag_code": "it"}},
+  {"model": "tournaments.team", "pk": 19, "fields": {"tournament": 1, "group": 5, "name": "Republic of Ireland","flag_code": "ie"}},
+  {"model": "tournaments.team", "pk": 20, "fields": {"tournament": 1, "group": 5, "name": "Sweden",            "flag_code": "se"}},
+
+  {"model": "tournaments.team", "pk": 21, "fields": {"tournament": 1, "group": 6, "name": "Portugal",          "flag_code": "pt"}},
+  {"model": "tournaments.team", "pk": 22, "fields": {"tournament": 1, "group": 6, "name": "Iceland",           "flag_code": "is"}},
+  {"model": "tournaments.team", "pk": 23, "fields": {"tournament": 1, "group": 6, "name": "Austria",           "flag_code": "at"}},
+  {"model": "tournaments.team", "pk": 24, "fields": {"tournament": 1, "group": 6, "name": "Hungary",           "flag_code": "hu"}},
+
+  {"model": "tournaments.match", "pk": 1,  "fields": {"tournament": 1, "group": 1, "round": "group", "order": 1,  "home_team": 1,  "away_team": 2,  "home_goals": null, "away_goals": null, "date": "2016-06-10"}},
+  {"model": "tournaments.match", "pk": 2,  "fields": {"tournament": 1, "group": 1, "round": "group", "order": 2,  "home_team": 3,  "away_team": 4,  "home_goals": null, "away_goals": null, "date": "2016-06-11"}},
+  {"model": "tournaments.match", "pk": 3,  "fields": {"tournament": 1, "group": 1, "round": "group", "order": 3,  "home_team": 2,  "away_team": 4,  "home_goals": null, "away_goals": null, "date": "2016-06-15"}},
+  {"model": "tournaments.match", "pk": 4,  "fields": {"tournament": 1, "group": 1, "round": "group", "order": 4,  "home_team": 1,  "away_team": 3,  "home_goals": null, "away_goals": null, "date": "2016-06-15"}},
+  {"model": "tournaments.match", "pk": 5,  "fields": {"tournament": 1, "group": 1, "round": "group", "order": 5,  "home_team": 4,  "away_team": 1,  "home_goals": null, "away_goals": null, "date": "2016-06-19"}},
+  {"model": "tournaments.match", "pk": 6,  "fields": {"tournament": 1, "group": 1, "round": "group", "order": 6,  "home_team": 2,  "away_team": 3,  "home_goals": null, "away_goals": null, "date": "2016-06-19"}},
+
+  {"model": "tournaments.match", "pk": 7,  "fields": {"tournament": 1, "group": 2, "round": "group", "order": 7,  "home_team": 5,  "away_team": 6,  "home_goals": null, "away_goals": null, "date": "2016-06-11"}},
+  {"model": "tournaments.match", "pk": 8,  "fields": {"tournament": 1, "group": 2, "round": "group", "order": 8,  "home_team": 7,  "away_team": 8,  "home_goals": null, "away_goals": null, "date": "2016-06-11"}},
+  {"model": "tournaments.match", "pk": 9,  "fields": {"tournament": 1, "group": 2, "round": "group", "order": 9,  "home_team": 6,  "away_team": 8,  "home_goals": null, "away_goals": null, "date": "2016-06-15"}},
+  {"model": "tournaments.match", "pk": 10, "fields": {"tournament": 1, "group": 2, "round": "group", "order": 10, "home_team": 5,  "away_team": 7,  "home_goals": null, "away_goals": null, "date": "2016-06-16"}},
+  {"model": "tournaments.match", "pk": 11, "fields": {"tournament": 1, "group": 2, "round": "group", "order": 11, "home_team": 6,  "away_team": 7,  "home_goals": null, "away_goals": null, "date": "2016-06-20"}},
+  {"model": "tournaments.match", "pk": 12, "fields": {"tournament": 1, "group": 2, "round": "group", "order": 12, "home_team": 8,  "away_team": 5,  "home_goals": null, "away_goals": null, "date": "2016-06-20"}},
+
+  {"model": "tournaments.match", "pk": 13, "fields": {"tournament": 1, "group": 3, "round": "group", "order": 13, "home_team": 10, "away_team": 11, "home_goals": null, "away_goals": null, "date": "2016-06-12"}},
+  {"model": "tournaments.match", "pk": 14, "fields": {"tournament": 1, "group": 3, "round": "group", "order": 14, "home_team": 9,  "away_team": 12, "home_goals": null, "away_goals": null, "date": "2016-06-12"}},
+  {"model": "tournaments.match", "pk": 15, "fields": {"tournament": 1, "group": 3, "round": "group", "order": 15, "home_team": 12, "away_team": 11, "home_goals": null, "away_goals": null, "date": "2016-06-16"}},
+  {"model": "tournaments.match", "pk": 16, "fields": {"tournament": 1, "group": 3, "round": "group", "order": 16, "home_team": 9,  "away_team": 10, "home_goals": null, "away_goals": null, "date": "2016-06-16"}},
+  {"model": "tournaments.match", "pk": 17, "fields": {"tournament": 1, "group": 3, "round": "group", "order": 17, "home_team": 12, "away_team": 9,  "home_goals": null, "away_goals": null, "date": "2016-06-21"}},
+  {"model": "tournaments.match", "pk": 18, "fields": {"tournament": 1, "group": 3, "round": "group", "order": 18, "home_team": 11, "away_team": 10, "home_goals": null, "away_goals": null, "date": "2016-06-21"}},
+
+  {"model": "tournaments.match", "pk": 19, "fields": {"tournament": 1, "group": 4, "round": "group", "order": 19, "home_team": 13, "away_team": 15, "home_goals": null, "away_goals": null, "date": "2016-06-13"}},
+  {"model": "tournaments.match", "pk": 20, "fields": {"tournament": 1, "group": 4, "round": "group", "order": 20, "home_team": 14, "away_team": 16, "home_goals": null, "away_goals": null, "date": "2016-06-12"}},
+  {"model": "tournaments.match", "pk": 21, "fields": {"tournament": 1, "group": 4, "round": "group", "order": 21, "home_team": 15, "away_team": 14, "home_goals": null, "away_goals": null, "date": "2016-06-17"}},
+  {"model": "tournaments.match", "pk": 22, "fields": {"tournament": 1, "group": 4, "round": "group", "order": 22, "home_team": 13, "away_team": 16, "home_goals": null, "away_goals": null, "date": "2016-06-17"}},
+  {"model": "tournaments.match", "pk": 23, "fields": {"tournament": 1, "group": 4, "round": "group", "order": 23, "home_team": 15, "away_team": 16, "home_goals": null, "away_goals": null, "date": "2016-06-21"}},
+  {"model": "tournaments.match", "pk": 24, "fields": {"tournament": 1, "group": 4, "round": "group", "order": 24, "home_team": 14, "away_team": 13, "home_goals": null, "away_goals": null, "date": "2016-06-21"}},
+
+  {"model": "tournaments.match", "pk": 25, "fields": {"tournament": 1, "group": 5, "round": "group", "order": 25, "home_team": 17, "away_team": 18, "home_goals": null, "away_goals": null, "date": "2016-06-13"}},
+  {"model": "tournaments.match", "pk": 26, "fields": {"tournament": 1, "group": 5, "round": "group", "order": 26, "home_team": 19, "away_team": 20, "home_goals": null, "away_goals": null, "date": "2016-06-13"}},
+  {"model": "tournaments.match", "pk": 27, "fields": {"tournament": 1, "group": 5, "round": "group", "order": 27, "home_team": 17, "away_team": 19, "home_goals": null, "away_goals": null, "date": "2016-06-18"}},
+  {"model": "tournaments.match", "pk": 28, "fields": {"tournament": 1, "group": 5, "round": "group", "order": 28, "home_team": 18, "away_team": 20, "home_goals": null, "away_goals": null, "date": "2016-06-17"}},
+  {"model": "tournaments.match", "pk": 29, "fields": {"tournament": 1, "group": 5, "round": "group", "order": 29, "home_team": 18, "away_team": 19, "home_goals": null, "away_goals": null, "date": "2016-06-22"}},
+  {"model": "tournaments.match", "pk": 30, "fields": {"tournament": 1, "group": 5, "round": "group", "order": 30, "home_team": 20, "away_team": 17, "home_goals": null, "away_goals": null, "date": "2016-06-22"}},
+
+  {"model": "tournaments.match", "pk": 31, "fields": {"tournament": 1, "group": 6, "round": "group", "order": 31, "home_team": 21, "away_team": 22, "home_goals": null, "away_goals": null, "date": "2016-06-14"}},
+  {"model": "tournaments.match", "pk": 32, "fields": {"tournament": 1, "group": 6, "round": "group", "order": 32, "home_team": 23, "away_team": 24, "home_goals": null, "away_goals": null, "date": "2016-06-14"}},
+  {"model": "tournaments.match", "pk": 33, "fields": {"tournament": 1, "group": 6, "round": "group", "order": 33, "home_team": 22, "away_team": 24, "home_goals": null, "away_goals": null, "date": "2016-06-18"}},
+  {"model": "tournaments.match", "pk": 34, "fields": {"tournament": 1, "group": 6, "round": "group", "order": 34, "home_team": 21, "away_team": 23, "home_goals": null, "away_goals": null, "date": "2016-06-18"}},
+  {"model": "tournaments.match", "pk": 35, "fields": {"tournament": 1, "group": 6, "round": "group", "order": 35, "home_team": 22, "away_team": 23, "home_goals": null, "away_goals": null, "date": "2016-06-22"}},
+  {"model": "tournaments.match", "pk": 36, "fields": {"tournament": 1, "group": 6, "round": "group", "order": 36, "home_team": 24, "away_team": 21, "home_goals": null, "away_goals": null, "date": "2016-06-22"}},
+
+  {"model": "tournaments.match", "pk": 37, "fields": {"tournament": 1, "group": null, "round": "r16", "order": 1, "home_team": null, "away_team": null, "home_goals": null, "away_goals": null, "date": "2016-06-25"}},
+  {"model": "tournaments.match", "pk": 38, "fields": {"tournament": 1, "group": null, "round": "r16", "order": 2, "home_team": null, "away_team": null, "home_goals": null, "away_goals": null, "date": "2016-06-25"}},
+  {"model": "tournaments.match", "pk": 39, "fields": {"tournament": 1, "group": null, "round": "r16", "order": 3, "home_team": null, "away_team": null, "home_goals": null, "away_goals": null, "date": "2016-06-26"}},
+  {"model": "tournaments.match", "pk": 40, "fields": {"tournament": 1, "group": null, "round": "r16", "order": 4, "home_team": null, "away_team": null, "home_goals": null, "away_goals": null, "date": "2016-06-26"}},
+  {"model": "tournaments.match", "pk": 41, "fields": {"tournament": 1, "group": null, "round": "r16", "order": 5, "home_team": null, "away_team": null, "home_goals": null, "away_goals": null, "date": "2016-06-27"}},
+  {"model": "tournaments.match", "pk": 42, "fields": {"tournament": 1, "group": null, "round": "r16", "order": 6, "home_team": null, "away_team": null, "home_goals": null, "away_goals": null, "date": "2016-06-27"}},
+  {"model": "tournaments.match", "pk": 43, "fields": {"tournament": 1, "group": null, "round": "r16", "order": 7, "home_team": null, "away_team": null, "home_goals": null, "away_goals": null, "date": "2016-06-28"}},
+  {"model": "tournaments.match", "pk": 44, "fields": {"tournament": 1, "group": null, "round": "r16", "order": 8, "home_team": null, "away_team": null, "home_goals": null, "away_goals": null, "date": "2016-06-28"}},
+
+  {"model": "tournaments.match", "pk": 45, "fields": {"tournament": 1, "group": null, "round": "qf",  "order": 1, "home_team": null, "away_team": null, "home_goals": null, "away_goals": null, "date": "2016-06-30"}},
+  {"model": "tournaments.match", "pk": 46, "fields": {"tournament": 1, "group": null, "round": "qf",  "order": 2, "home_team": null, "away_team": null, "home_goals": null, "away_goals": null, "date": "2016-06-30"}},
+  {"model": "tournaments.match", "pk": 47, "fields": {"tournament": 1, "group": null, "round": "qf",  "order": 3, "home_team": null, "away_team": null, "home_goals": null, "away_goals": null, "date": "2016-07-01"}},
+  {"model": "tournaments.match", "pk": 48, "fields": {"tournament": 1, "group": null, "round": "qf",  "order": 4, "home_team": null, "away_team": null, "home_goals": null, "away_goals": null, "date": "2016-07-01"}},
+
+  {"model": "tournaments.match", "pk": 49, "fields": {"tournament": 1, "group": null, "round": "sf",  "order": 1, "home_team": null, "away_team": null, "home_goals": null, "away_goals": null, "date": "2016-07-06"}},
+  {"model": "tournaments.match", "pk": 50, "fields": {"tournament": 1, "group": null, "round": "sf",  "order": 2, "home_team": null, "away_team": null, "home_goals": null, "away_goals": null, "date": "2016-07-07"}},
+
+  {"model": "tournaments.match", "pk": 51, "fields": {"tournament": 1, "group": null, "round": "final","order": 1, "home_team": null, "away_team": null, "home_goals": null, "away_goals": null, "date": "2016-07-10"}}
+]

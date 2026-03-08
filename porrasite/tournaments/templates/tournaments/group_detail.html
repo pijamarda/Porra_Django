@@ -1,0 +1,115 @@
+{% extends "tournaments/base.html" %}
+{% load partials %}
+
+{% block title %}Group {{ group.name }} — {{ tournament.name }}{% endblock %}
+
+{% block content %}
+<h1 class="h3 mb-4">Group {{ group.name }}</h1>
+
+{# The group_content partial is the HTMX swap target for prediction saves #}
+{% partialdef group_content inline=True %}
+<div id="group-{{ group.pk }}-content">
+
+  {% if not predictions_open %}
+    <div class="alert alert-warning py-2 mb-3">
+      Predictions are closed. You can view your picks but no longer edit them.
+    </div>
+  {% endif %}
+
+  {# Standings table #}
+  <h2 class="h5 mb-2">Standings</h2>
+  <table class="table table-sm table-bordered mb-4">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th>
+        <th>GF</th><th>GA</th><th>GD</th><th>Pts</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in standings %}
+        <tr {% if forloop.counter <= 2 %}class="table-success"{% elif forloop.counter == 3 and third_place_qualifies %}class="table-warning"{% endif %}>
+          <td>{{ forloop.counter }}</td>
+          <td>
+            <img src="/static/img/{{ s.team.flag_code }}.png" height="16" alt=""
+                 onerror="this.style.display='none'">
+            {{ s.team.name }}
+          </td>
+          <td>{{ s.played }}</td>
+          <td>{{ s.won }}</td>
+          <td>{{ s.drawn }}</td>
+          <td>{{ s.lost }}</td>
+          <td>{{ s.gf }}</td>
+          <td>{{ s.ga }}</td>
+          <td>{{ s.gd }}</td>
+          <td><strong>{{ s.pts }}</strong></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p class="small text-muted mb-4">
+    <span class="badge bg-success">&nbsp;</span> Qualifies &nbsp;
+    {% if third_place_qualifies is not None %}
+      <span class="badge bg-warning text-dark">&nbsp;</span> Qualifies as best 3rd &nbsp;
+    {% endif %}
+    <span class="badge bg-light text-dark border">&nbsp;</span> Eliminated
+  </p>
+
+  {# Match predictions #}
+  <h2 class="h5 mb-2">Matches</h2>
+  <table class="table table-sm align-middle">
+    <tbody>
+      {% for match, prediction in match_predictions %}
+        <tr>
+          <td class="text-end w-35">
+            <img src="/static/img/{{ match.home_team.flag_code }}.png" height="16" alt=""
+                 onerror="this.style.display='none'">
+            {{ match.home_team.name }}
+          </td>
+          <td class="text-center" style="width:140px">
+            {% if user.is_authenticated and prediction %}
+              {% if predictions_open %}
+                <form hx-post="{% url 'tournaments:prediction_save' tournament.slug match.pk %}"
+                      hx-target="#group-{{ group.pk }}-content"
+                      hx-swap="outerHTML"
+                      class="d-flex align-items-center justify-content-center gap-1">
+                  {% csrf_token %}
+                  <input type="number" name="home_goals" value="{{ prediction.home_goals }}"
+                         min="0" max="20" class="form-control form-control-sm text-center"
+                         style="width:3.5rem"
+                         hx-trigger="change delay:400ms"
+                         hx-post="{% url 'tournaments:prediction_save' tournament.slug match.pk %}"
+                         hx-target="#group-{{ group.pk }}-content"
+                         hx-swap="outerHTML"
+                         hx-include="closest form">
+                  <span class="fw-bold">-</span>
+                  <input type="number" name="away_goals" value="{{ prediction.away_goals }}"
+                         min="0" max="20" class="form-control form-control-sm text-center"
+                         style="width:3.5rem"
+                         hx-trigger="change delay:400ms"
+                         hx-post="{% url 'tournaments:prediction_save' tournament.slug match.pk %}"
+                         hx-target="#group-{{ group.pk }}-content"
+                         hx-swap="outerHTML"
+                         hx-include="closest form">
+                </form>
+              {% else %}
+                <span class="fw-bold text-secondary">{{ prediction.home_goals }} - {{ prediction.away_goals }}</span>
+              {% endif %}
+            {% else %}
+              <span class="text-muted">-</span>
+            {% endif %}
+          </td>
+          <td class="w-35">
+            <img src="/static/img/{{ match.away_team.flag_code }}.png" height="16" alt=""
+                 onerror="this.style.display='none'">
+            {{ match.away_team.name }}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+{% endpartialdef %}
+
+{% endblock %}
