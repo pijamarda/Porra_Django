@@ -1,6 +1,7 @@
 services:
   web:
     build: .
+    command: ["true"]
     environment:
       DB_ENGINE: ${DB_ENGINE}
       DB_NAME: ${DB_NAME}

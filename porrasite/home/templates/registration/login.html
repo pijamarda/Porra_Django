@@ -1,26 +1,33 @@
-{% extends "home/base.html" %}
+{% extends "tournaments/base.html" %}
+
+{% block title %}Login — Porra{% endblock %}
 
 {% block content %}
+<div class="row justify-content-center">
+  <div class="col-sm-8 col-md-5 col-lg-4">
+    <h1 class="h4 mb-4">Login</h1>
 
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+    {% if form.errors %}
+      <div class="alert alert-danger py-2">Username and password didn't match. Please try again.</div>
+    {% endif %}
 
-<form method="post" action="{% url 'login' %}">
-	{% csrf_token %}
-	<table>
-	<tr>
-	    <td>{{ form.username.label_tag }}</td>
-	    <td>{{ form.username }}</td>
-	</tr>
-	<tr>
-	    <td>{{ form.password.label_tag }}</td>
-	    <td>{{ form.password }}</td>
-	</tr>
-	</table>
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="/tournaments/">
+      <div class="mb-3">
+        <label for="id_username" class="form-label">Username</label>
+        <input type="text" name="username" id="id_username" class="form-control" autofocus required>
+      </div>
+      <div class="mb-3">
+        <label for="id_password" class="form-label">Password</label>
+        <input type="password" name="password" id="id_password" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
 
-	<input type="submit" value="login" />
-	<input type="hidden" name="next" value="/euro2016" />
-</form>
-
+    <p class="mt-3 text-center small">
+      No account? <a href="{% url 'register' %}">Register</a>
+    </p>
+  </div>
+</div>
 {% endblock %}
